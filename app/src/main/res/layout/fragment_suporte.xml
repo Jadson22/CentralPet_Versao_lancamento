@@ -1,0 +1,237 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="appcentralpet.com.newcentralpet.Suporte"
+    android:background="@color/fundoPrincipal">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"
+            android:id="@+id/toolbar_suporte"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl1"
+        android:padding="@dimen/espc_telas">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aplicativo"
+            android:textSize="@dimen/txt_cad"
+            android:textColor="@color/txtgeral"
+            android:textStyle="bold"
+            android:id="@+id/sobre" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/avalieid"
+        android:layout_below="@id/rl1"
+        android:layout_margin="7dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/avalie"
+            android:text="Avalie"
+            android:textColor="@color/txtgeral"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gostou do aplicativo? Deixe sua avaliação"
+            android:textColor="@color/txtgeral"
+            android:layout_below="@+id/avalie"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linha1"
+        android:layout_below="@id/avalieid"
+        android:layout_margin="5dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/linha_info"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/compartilheid"
+        android:layout_below="@+id/linha1"
+        android:layout_margin="7dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/compartilhe"
+            android:text="Compartilhe"
+            android:textColor="@color/txtgeral"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Compartilhe o aplicativo com seus amigos"
+            android:textColor="@color/txtgeral"
+            android:layout_below="@+id/compartilhe"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linha2"
+        android:layout_below="@id/compartilheid"
+        android:layout_margin="5dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/linha_info"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linha2"
+        android:id="@+id/versaoid"
+        android:layout_margin="7dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/versao"
+            android:text="Versão do aplicativo"
+            android:textColor="@color/txtgeral"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.1.1"
+            android:textColor="@color/txtgeral"
+            android:layout_below="@+id/versao"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linhaa4"
+        android:layout_below="@id/versaoid"
+        android:layout_margin="5dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/linha_info"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl2"
+        android:padding="@dimen/espc_telas"
+        android:layout_below="@id/linhaa4">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contatos"
+            android:textSize="@dimen/txt_cad"
+            android:textColor="@color/txtgeral"
+            android:textStyle="bold"
+            android:id="@+id/contatos" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl2"
+        android:id="@+id/contatoid"
+        android:layout_margin="7dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contato"
+            android:text="Contato"
+            android:textColor="@color/txtgeral"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="appcentralpet@gmail.com"
+            android:textColor="@color/txtgeral"
+            android:layout_below="@+id/contato"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linha3"
+        android:layout_below="@id/contatoid"
+        android:layout_margin="5dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/linha_info"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linha3"
+        android:id="@+id/twitterid"
+        android:layout_margin="7dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tt"
+            android:text="Twitter"
+            android:textColor="@color/txtgeral"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acompanhe-nos no Twitter"
+            android:textColor="@color/txtgeral"
+            android:layout_below="@+id/tt"
+            android:textSize="@dimen/txt_cad"
+            android:layout_marginLeft="15dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linha5"
+        android:layout_below="@id/twitterid"
+        android:layout_margin="5dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/linha_info"/>
+    </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout>

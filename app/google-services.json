@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "178793480342",
+    "firebase_url": "https://new-central-pet.firebaseio.com",
+    "project_id": "new-central-pet",
+    "storage_bucket": "new-central-pet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178793480342:android:75f9e1d066c86c0d",
+        "android_client_info": {
+          "package_name": "appcentralpet.com.newcentralpet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "178793480342-anuadsi8qbes4eddsn4063nlrk4oraci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "appcentralpet.com.newcentralpet",
+            "certificate_hash": "b428cb3ebd00104a21b35509ad320a5fba9f0829"
+          }
+        },
+        {
+          "client_id": "178793480342-9af351sl1q338n6qom05im8i0i6acm3u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzibCxXgXporVpQIOuqTlYN8ttU1FmlHY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "178793480342-9af351sl1q338n6qom05im8i0i6acm3u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
