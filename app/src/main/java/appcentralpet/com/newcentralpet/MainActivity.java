@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -79,11 +78,11 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         //if you want to update the items at a later time it is recommended to keep it in a variable
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Adicionar Pet").withIcon(getResources().getDrawable(R.drawable.ic_action_add));
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Meus Pets").withIcon(getResources().getDrawable(R.drawable.ic_pets));
+        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Adicionar Pet").withIcon(getResources().getDrawable(R.drawable.ic_add));
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Meus Pets").withIcon(getResources().getDrawable(R.drawable.ic_pet));
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Vacinas").withIcon(getResources().getDrawable(R.drawable.ic_seringa));
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Clínicas").withIcon(getResources().getDrawable(R.drawable.ic_add_location));
-        PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("Dúvidas Frequentes").withIcon(getResources().getDrawable(R.drawable.ic_action_help));
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Clínicas").withIcon(getResources().getDrawable(R.drawable.ic_clinicas));
+        PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("Dúvidas Frequentes").withIcon(getResources().getDrawable(R.drawable.ic_duvidas));
         SectionDrawerItem item6 = new SectionDrawerItem().withName("Apoie");
         PrimaryDrawerItem item7 = new PrimaryDrawerItem().withIdentifier(6).withName("ONG - Anjos de 4 Patas").withIcon(getResources().getDrawable(R.drawable.ic_favorite_border));
         DividerDrawerItem item8 = new DividerDrawerItem();
@@ -122,11 +121,9 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case 5:
                                 break;
-                            case 6:
-                                break;
                             case 7:
-                                break;
-                            case 8:
+                                Intent ong = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/anjosdequatrop4tas"));
+                                startActivity(ong);
                                 break;
                             case 9:
                                 Suporte suporte = new Suporte();
