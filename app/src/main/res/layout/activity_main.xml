@@ -71,7 +71,8 @@
                         android:ems="10"
                         android:layout_alignParentRight="true"
                         android:layout_below="@id/imageView"
-                        android:layout_marginTop="10dp"/>
+                        android:layout_marginTop="10dp"
+                        android:text="jadson" />
                 </LinearLayout>
 
                 <RelativeLayout
