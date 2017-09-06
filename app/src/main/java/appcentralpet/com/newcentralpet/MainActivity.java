@@ -41,6 +41,7 @@ import java.io.InputStream;
 
 import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
 import appcentralpet.com.newcentralpet.BancoMeusPets.SQLiteHelper;
+import appcentralpet.com.newcentralpet.mapa.MapaClinicaActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -118,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                             case 3:
                                 break;
                             case 4:
+                                Intent intent = new Intent(MainActivity.this, MapaClinicaActivity.class);
+                                startActivity(intent);
                                 break;
                             case 5:
                                 break;
