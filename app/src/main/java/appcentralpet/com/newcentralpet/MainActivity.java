@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Adicionar Pet").withIcon(getResources().getDrawable(R.drawable.ic_add));
         PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Meus Pets").withIcon(getResources().getDrawable(R.drawable.ic_pet));
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Vacinas").withIcon(getResources().getDrawable(R.drawable.ic_seringa));
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Clínicas").withIcon(getResources().getDrawable(R.drawable.ic_clinicas));
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Clínicas e PetShops").withIcon(getResources().getDrawable(R.drawable.ic_clinicas));
         PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("Dúvidas Frequentes").withIcon(getResources().getDrawable(R.drawable.ic_duvidas));
         SectionDrawerItem item6 = new SectionDrawerItem().withName("Apoie");
         PrimaryDrawerItem item7 = new PrimaryDrawerItem().withIdentifier(6).withName("ONG - Anjos de 4 Patas").withIcon(getResources().getDrawable(R.drawable.ic_favorite_border));
