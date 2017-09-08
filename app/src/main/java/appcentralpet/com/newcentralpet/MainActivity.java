@@ -62,14 +62,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         toolbar = (Toolbar) findViewById(R.id.toolbarMain);
+        toolbar.setTitle("Cadastrar Pet");
         setSupportActionBar(toolbar);
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.header)
-                .addProfiles(
-                        new ProfileDrawerItem().withName("Nome").withEmail("email@gmail.com").withIcon(getResources().getDrawable(R.drawable.fotoperfil))
-                )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
                     public boolean onProfileChanged(View view, IProfile profile, boolean currentProfile) {
@@ -80,14 +78,15 @@ public class MainActivity extends AppCompatActivity {
 
         //if you want to update the items at a later time it is recommended to keep it in a variable
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Adicionar Pet").withIcon(getResources().getDrawable(R.drawable.ic_add));
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Meus Pets").withIcon(getResources().getDrawable(R.drawable.ic_pet));
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName("Meus Pets").withIcon(getResources().getDrawable(R.drawable.newdog));
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName("Vacinas").withIcon(getResources().getDrawable(R.drawable.ic_seringa));
-        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Clínicas e PetShops").withIcon(getResources().getDrawable(R.drawable.ic_clinicas));
+        PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName("Clínicas e Pet Shops").withIcon(getResources().getDrawable(R.drawable.ic_clinicas));
         PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName("Dúvidas Frequentes").withIcon(getResources().getDrawable(R.drawable.ic_duvidas));
-        SectionDrawerItem item6 = new SectionDrawerItem().withName("Apoie");
-        PrimaryDrawerItem item7 = new PrimaryDrawerItem().withIdentifier(6).withName("ONG - Anjos de 4 Patas").withIcon(getResources().getDrawable(R.drawable.ic_favorite_border));
-        DividerDrawerItem item8 = new DividerDrawerItem();
-        SecondaryDrawerItem item9 = new SecondaryDrawerItem().withIdentifier(8).withName("Suporte").withIcon(getResources().getDrawable(R.drawable.ic_build));
+        DividerDrawerItem item6 = new DividerDrawerItem();
+        SecondaryDrawerItem item7 = new SecondaryDrawerItem().withIdentifier(7).withName("Suporte").withIcon(getResources().getDrawable(R.drawable.ic_build));
+        SectionDrawerItem item8 = new SectionDrawerItem().withName("Apoie");
+        PrimaryDrawerItem item9 = new PrimaryDrawerItem().withIdentifier(9).withName("ONG - Anjos de 4 Patas").withIcon(getResources().getDrawable(R.drawable.ic_ong));
+
 
         //create the drawer and remember the `Drawer` result object
         final Drawer result = new DrawerBuilder()
@@ -125,21 +124,19 @@ public class MainActivity extends AppCompatActivity {
                             case 5:
                                 break;
                             case 7:
-                                Intent ong = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/anjosdequatrop4tas"));
-                                startActivity(ong);
-                                break;
-                            case 9:
                                 Suporte suporte = new Suporte();
                                 fragmentTransaction.add(R.id.rlprincipal, suporte);
                                 fragmentTransaction.commit();
+                                break;
+                            case 9:
+                                Intent ong = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/anjosdequatrop4tas"));
+                                startActivity(ong);
                                 break;
                         }
                         return true;
                     }
                 })
                 .build();
-
-
 
 
 

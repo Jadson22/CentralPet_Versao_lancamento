@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -46,10 +47,15 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
 
+    private Toolbar toolbar_mapa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
+
+        toolbar_mapa = (Toolbar) findViewById(R.id.toolbar_mapa);
+        toolbar_mapa.setTitle("Clínicas e Pet Shops");
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();

@@ -2,49 +2,56 @@
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+        <include layout="@layout/toolbar"
+            android:id="@+id/toolbar_mapa"/>
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.cursoandroid.centralpet.centralpet.activity.MapsActivity" />
+        tools:context="com.cursoandroid.centralpet.centralpet.activity.MapsActivity"/>
 
+        </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="right|bottom">
+        android:layout_height="0dp"
+        android:layout_weight="0.09"
+        android:orientation="horizontal">
 
         <Button
-            android:layout_width="70dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Clínicas"
             android:id="@+id/Clinica"
-            android:layout_gravity="right|bottom"
-            android:background="#FF04A5FB"
-            android:layout_marginBottom="188dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:radius="100dp"
-            android:allowUndo="false" />
+            android:layout_marginRight="1dp"
+            android:background="#6ecdff" />
 
         <Button
-            android:layout_width="109dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Pet Shops"
             android:id="@+id/PetShop"
-            android:background="#FF04A5FB"
-            android:allowUndo="false"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginTop="58dp"
-            android:layout_alignTop="@+id/Clinica"
-            android:layout_alignLeft="@+id/Clinica"
-            android:layout_alignStart="@+id/Clinica" />
+            android:background="#6ecdff"
+            android:layout_marginLeft="1dp"/>
 
-    </RelativeLayout>
+    </LinearLayout>
+    </LinearLayout>
 
 
 </FrameLayout>

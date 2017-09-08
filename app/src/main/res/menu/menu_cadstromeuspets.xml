@@ -5,7 +5,7 @@
     tools:context=".activity.PerfilPets.CadastroMeusPets">
 
     <item android:id="@+id/adicionar"
-        android:title="ADICIONAR"
+        android:title="Adicionar"
         android:orderInCategory="100"
         app:showAsAction="always"/>
 
