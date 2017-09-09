@@ -16,12 +16,14 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="false">
             <LinearLayout
                 android:id="@+id/relative66"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="1">
 
                 <include layout="@layout/toolbar"
                     android:id="@+id/toolbarMain"/>
@@ -42,108 +44,26 @@
                         android:layout_alignParentLeft="true"/>
 
 
-
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nome:"
-                        android:id="@+id/textView9"
-                        android:textColor="@color/primaryText"
-                        android:textSize="@dimen/txt_cad"
-                        android:layout_below="@id/imageView"
-                        android:layout_gravity="bottom"
-                        android:padding="8dp"/>
-                    <EditText
-                        android:id="@+id/editartName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:textColor="@color/primaryText"
-                        android:ems="10"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@id/imageView"
-                        android:layout_marginTop="10dp" />
-                </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <RadioGroup
-                        android:id="@+id/radioSexo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="70dp">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Macho"
-                            android:id="@+id/rbMacho"
-                            android:textColor="@color/primaryText"
-                            android:checked="true" />
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Fêmea"
-                            android:id="@+id/rbFemea"
-                            android:textColor="@color/primaryText"/>
-
-                    </RadioGroup>
-                </RelativeLayout>
-
-
-                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Raça: "
-                        android:id="@+id/textView10"
-                        android:textColor="@color/primaryText"
-                        android:textSize="@dimen/txt_cad"
-                        android:layout_below="@id/imageView"
-                        android:layout_gravity="bottom"
-                        android:padding="8dp"/>
-                    <EditText
-                        android:id="@+id/editarRaca"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:textColor="@color/primaryText"
-                        android:ems="10"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/edtName"/>
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_above="@+id/linearLayout"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
 
                     <RadioGroup
                         android:id="@+id/radioTipo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginLeft="70dp">
+                        android:layout_marginLeft="69dp"
+                        android:layout_marginStart="69dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true">
 
                         <RadioButton
                             android:layout_width="wrap_content"
@@ -151,16 +71,22 @@
                             android:text="Cão"
                             android:id="@+id/rbCao"
                             android:textColor="@color/primaryText"
-                            android:checked="true" />
+                            android:checked="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignLeft="@+id/radioTipo"
+                            android:layout_alignStart="@+id/radioTipo" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Gato"
                             android:id="@+id/rbGato"
-                            android:textColor="@color/primaryText" />
+                            android:textColor="@color/primaryText"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true" />
 
                     </RadioGroup>
+
                 </RelativeLayout>
 
                 <LinearLayout
@@ -171,29 +97,147 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="5dp">
 
-                    <TextView
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relativeLayout"
+                    android:layout_above="@+id/linearLayout"
+                    android:layout_alignRight="@+id/editarRaca"
+                    android:layout_alignEnd="@+id/editarRaca"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <RadioGroup
+                        android:id="@+id/radioSexo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Idade:"
-                        android:id="@+id/textView11"
-                        android:textColor="@color/primaryText"
-                        android:textSize="@dimen/txt_cad"
-                        android:layout_below="@id/imageView"
-                        android:layout_gravity="bottom"
-                        android:padding="8dp"/>
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:textColor="@color/primaryText"
-                        android:ems="10"
-                        android:id="@+id/editarIdade"
-                        android:layout_below="@+id/edtPrice"
-                        android:layout_alignParentRight="true" />
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginStart="70dp">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Macho"
+                            android:id="@+id/rbMacho"
+                            android:textColor="@color/primaryText"
+                            android:checked="true"
+                            android:layout_above="@+id/linearLayout"
+                            android:layout_alignLeft="@+id/editarRaca"
+                            android:layout_alignStart="@+id/editarRaca" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fêmea"
+                            android:id="@+id/rbFemea"
+                            android:textColor="@color/primaryText"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_above="@+id/linearLayout"
+                            android:layout_toRightOf="@+id/rbMacho"
+                            android:layout_toEndOf="@+id/rbMacho" />
+                    </RadioGroup>
+                </RelativeLayout>
 
             </LinearLayout>
         </ScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Idade:"
+            android:id="@+id/textView11"
+            android:textColor="@color/primaryText"
+            android:textSize="@dimen/txt_cad"
+            android:layout_gravity="bottom"
+            android:padding="8dp"
+            android:layout_alignBottom="@+id/editarIdade"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:textColor="@color/primaryText"
+            android:ems="10"
+            android:id="@+id/editarIdade"
+            android:layout_below="@+id/textView10"
+            android:layout_toRightOf="@+id/textView11"
+            android:layout_toEndOf="@+id/textView11" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout"
+            android:layout_above="@+id/editarRaca"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome:"
+                android:id="@+id/textView9"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/txt_cad"
+                android:layout_below="@id/imageView"
+                android:layout_gravity="bottom"
+                android:padding="8dp"/>
+            <EditText
+                android:id="@+id/editartName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textColor="@color/primaryText"
+                android:ems="10"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/imageView"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout2"
+            android:layout_above="@+id/textView11"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="25dp">
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Raça: "
+            android:id="@+id/textView10"
+            android:textColor="@color/primaryText"
+            android:textSize="@dimen/txt_cad"
+            android:padding="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:id="@+id/editarRaca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:textColor="@color/primaryText"
+            android:ems="10"
+            android:layout_alignBottom="@+id/textView10"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/textView10"
+            android:layout_toEndOf="@+id/textView10" />
 
     </RelativeLayout>
 
