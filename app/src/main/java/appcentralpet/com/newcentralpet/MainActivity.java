@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -41,6 +42,7 @@ import java.io.InputStream;
 
 import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
 import appcentralpet.com.newcentralpet.BancoMeusPets.SQLiteHelper;
+import appcentralpet.com.newcentralpet.ListExpansivel.DuvFrequentes;
 import appcentralpet.com.newcentralpet.mapa.MapaClinicaActivity;
 
 
@@ -55,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static SQLiteHelper sqLiteHelper;
     final int REQUEST_CODE_GALLERY = 999;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +129,9 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 break;
                             case 5:
+                                DuvFrequentes duvFrequentes = new DuvFrequentes();
+                                fragmentTransaction.add(R.id.rlprincipal, duvFrequentes);
+                                fragmentTransaction.commit();
                                 break;
                             case 7:
                                 Suporte suporte = new Suporte();
@@ -137,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .build();
+
 
 
 

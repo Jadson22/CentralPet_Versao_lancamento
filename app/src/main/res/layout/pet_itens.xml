@@ -20,8 +20,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textoName"
-        android:text="Nome"
+        android:text="Nome: "
+        android:id="@+id/idn"
         android:textSize="14sp"
         android:textColor="@color/primaryText"
         android:textAlignment="center"
@@ -32,10 +32,25 @@
         android:layout_marginLeft="5dp"/>
 
     <TextView
-        android:text="Raça"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textoRaca"
+        android:id="@+id/textoName"
+        android:text="Nome"
+        android:textSize="14sp"
+        android:textColor="@color/primaryText"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/idn"
+        android:layout_toEndOf="@+id/idn"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"/>
+
+
+    <TextView
+        android:text="Raça: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idr"
         android:textSize="14sp"
         android:textColor="@color/primaryText"
         android:textAlignment="center"
@@ -44,12 +59,25 @@
         android:layout_toEndOf="@+id/imgPerfil"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"/>
-
     <TextView
-        android:text="Idade"
+        android:text="Raça"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textoIdade"
+        android:id="@+id/textoRaca"
+        android:textSize="14sp"
+        android:textColor="@color/primaryText"
+        android:textAlignment="center"
+        android:layout_below="@+id/textoName"
+        android:layout_toRightOf="@+id/idr"
+        android:layout_toEndOf="@+id/idr"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"/>
+
+    <TextView
+        android:text="Idade: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idi"
         android:textSize="14sp"
         android:textColor="@color/primaryText"
         android:textAlignment="center"
@@ -58,11 +86,38 @@
         android:layout_toEndOf="@+id/imgPerfil"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"/>
+    <TextView
+        android:text="10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textoIdade"
+        android:textSize="14sp"
+        android:textColor="@color/primaryText"
+        android:textAlignment="center"
+        android:layout_below="@+id/textoRaca"
+        android:layout_toRightOf="@+id/idi"
+        android:layout_toEndOf="@+id/idi"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp" />
+
+    <TextView
+        android:text="anos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idy"
+        android:textSize="14sp"
+        android:textColor="@color/primaryText"
+        android:textAlignment="center"
+        android:layout_below="@+id/textoRaca"
+        android:layout_toRightOf="@+id/textoIdade"
+        android:layout_toEndOf="@+id/textoIdade"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="3dp" />
 
     <ImageView
         android:id="@+id/iconeSexo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:background="@drawable/iconemasc"
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"
@@ -70,9 +125,9 @@
 
     <ImageView
         android:id="@+id/iconeTipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/iconecao"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/iconegato"
         android:layout_alignParentRight="true"
         android:layout_below="@id/iconeSexo"
         android:layout_marginRight="5dp"
