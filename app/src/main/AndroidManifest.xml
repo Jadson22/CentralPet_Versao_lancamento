@@ -42,7 +42,8 @@
 
         <activity
             android:name=".mapa.MapaClinicaActivity"
-            android:label="@string/title_activity_mapa"></activity>
+            android:label="@string/title_activity_mapa" />
+
     </application>
 
 </manifest>

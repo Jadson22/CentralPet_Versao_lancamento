@@ -8,11 +8,14 @@
     android:background="@color/fundoPrincipal">
 
 
-    <RelativeLayout
+    <android.support.v7.widget.ContentFrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rlprincipal">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -163,13 +166,13 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:textColor="@color/primaryText"
             android:ems="10"
             android:id="@+id/editarIdade"
             android:layout_below="@+id/textView10"
             android:layout_toRightOf="@+id/textView11"
-            android:layout_toEndOf="@+id/textView11" />
+            android:layout_toEndOf="@+id/textView11"
+            android:inputType="date" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -239,6 +242,7 @@
             android:layout_toRightOf="@+id/textView10"
             android:layout_toEndOf="@+id/textView10" />
 
-    </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.ContentFrameLayout>
 
 </RelativeLayout>

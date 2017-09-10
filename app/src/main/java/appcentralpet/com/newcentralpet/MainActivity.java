@@ -43,6 +43,7 @@ import java.io.InputStream;
 import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
 import appcentralpet.com.newcentralpet.BancoMeusPets.SQLiteHelper;
 import appcentralpet.com.newcentralpet.ListExpansivel.DuvFrequentes;
+import appcentralpet.com.newcentralpet.Vacinas.Vacinas;
 import appcentralpet.com.newcentralpet.mapa.MapaClinicaActivity;
 
 
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withAccountHeader(headerResult)
                 .withToolbar(toolbar)
+                .withCloseOnClick(true)
                 .addDrawerItems(
                         item1, item2, item3, item4, item5, item6,
                         item7, item8, item9
@@ -108,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         // do something with the clicked item :D
-                        FragmentManager fragmentManager = getSupportFragmentManager();
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                         switch (position){
                             case 1:
@@ -119,10 +119,11 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case 2:
                                 PetList petList = new PetList();
-                                fragmentTransaction.add(R.id.rlprincipal, petList);
-                                fragmentTransaction.commit();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.rlprincipal, petList).commit();
                                 break;
                             case 3:
+                                Vacinas vacinas = new Vacinas();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.rlprincipal, vacinas).commit();
                                 break;
                             case 4:
                                 Intent intent = new Intent(MainActivity.this, MapaClinicaActivity.class);
@@ -130,13 +131,11 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case 5:
                                 DuvFrequentes duvFrequentes = new DuvFrequentes();
-                                fragmentTransaction.add(R.id.rlprincipal, duvFrequentes);
-                                fragmentTransaction.commit();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.rlprincipal, duvFrequentes).commit();
                                 break;
                             case 7:
                                 Suporte suporte = new Suporte();
-                                fragmentTransaction.add(R.id.rlprincipal, suporte);
-                                fragmentTransaction.commit();
+                                getSupportFragmentManager().beginTransaction().replace(R.id.rlprincipal, suporte).commit();
                                 break;
                             case 9:
                                 Intent ong = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/anjosdequatrop4tas"));
@@ -195,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

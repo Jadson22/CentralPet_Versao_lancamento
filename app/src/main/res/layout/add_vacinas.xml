@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fundoPrincipal">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pet:"
+        android:id="@+id/textView9"
+        android:textColor="@color/primaryText"
+        android:textSize="@dimen/txt_cad"
+        android:padding="5dp"/>
+
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nomePet"
+        android:completionThreshold="1"
+        android:completionHint="Nome do pet" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vacina:"
+        android:id="@+id/textView1"
+        android:textColor="@color/primaryText"
+        android:textSize="@dimen/txt_cad"
+        android:padding="5dp"/>
+
+    <EditText
+        android:id="@+id/edtVacina"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:textColor="@color/primaryText"
+        android:ems="10" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data Vacinação:"
+        android:id="@+id/textView3"
+        android:textColor="@color/primaryText"
+        android:textSize="@dimen/txt_cad"
+        android:padding="5dp"/>
+
+    <EditText
+        android:id="@+id/edtData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primaryText"
+        android:ems="10"
+        android:inputType="date" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data de Retorno:"
+        android:id="@+id/textView5"
+        android:textColor="@color/primaryText"
+        android:textSize="@dimen/txt_cad"
+        android:padding="5dp"/>
+
+    <EditText
+        android:id="@+id/edtRetorno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:textColor="@color/primaryText"
+        android:ems="10" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adicionar"
+        android:id="@+id/btnAdd"
+        android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
