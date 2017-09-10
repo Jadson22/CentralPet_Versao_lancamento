@@ -11,9 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar"
-            android:id="@+id/toolbar_suporte"/>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

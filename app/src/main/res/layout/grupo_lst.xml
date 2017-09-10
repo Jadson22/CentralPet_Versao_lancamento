@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@color/fundoPrincipal">
 
+
     <TextView
         android:id="@+id/tvGrupo"
         android:layout_width="0dp"

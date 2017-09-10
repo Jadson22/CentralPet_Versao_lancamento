@@ -4,13 +4,8 @@
     android:layout_height="match_parent"
     tools:context="appcentralpet.com.newcentralpet.ListExpansivel.DuvFrequentes">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar_duvidas"/>
-
     <ExpandableListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lst_view"
-        android:layout_below="@+id/toolbar_duvidas"/>
-
+        android:id="@+id/lst_view" />
 </FrameLayout>

@@ -57,6 +57,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         toolbar_mapa = (Toolbar) findViewById(R.id.toolbar_mapa);
         toolbar_mapa.setTitle("Clínicas e Pet Shops");
 
+
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }

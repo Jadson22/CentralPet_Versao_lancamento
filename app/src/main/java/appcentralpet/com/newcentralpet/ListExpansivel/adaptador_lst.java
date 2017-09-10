@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -104,11 +105,10 @@ public class adaptador_lst extends BaseExpandableListAdapter {
         }
 
         TextView tvItem = (TextView) view.findViewById(R.id.tvItem);
-        TextView tvValor = (TextView) view.findViewById(R.id.tvValor);
+        ImageView tvValor = (ImageView) view.findViewById(R.id.tvValor);
 
         Info_duv Info_duv = (Info_duv) getChild(i, i1);
         tvItem.setText(Info_duv.getNome());
-        tvValor.setText(String.valueOf(Info_duv.getValor()));
 
         return view;
     }

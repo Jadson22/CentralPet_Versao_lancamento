@@ -15,8 +15,6 @@ import android.widget.RelativeLayout;
  */
 public class Suporte extends Fragment {
 
-    private Toolbar toolbar_suporte;
-
     RelativeLayout compartilheid;
     RelativeLayout twitterid;
     RelativeLayout contatoid;
@@ -31,9 +29,6 @@ public class Suporte extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_suporte, container, false);
-
-        toolbar_suporte = (Toolbar) view.findViewById(R.id.toolbar_suporte);
-        toolbar_suporte.setTitle("Suporte");
 
 
         compartilheid = (RelativeLayout) view.findViewById(R.id.compartilheid);

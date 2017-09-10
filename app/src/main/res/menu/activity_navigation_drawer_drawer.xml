@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cadastro"
+            android:icon="@drawable/ic_add"
+            android:title="Novo pet" />
+        <item
+            android:id="@+id/nav_meusPets"
+            android:icon="@drawable/newdog"
+            android:title="Meus pets" />
+        <item
+            android:id="@+id/nav_vacina"
+            android:icon="@drawable/ic_seringa"
+            android:title="Vacinas" />
+        <item
+            android:id="@+id/nav_clinicas"
+            android:icon="@drawable/ic_clinicas"
+            android:title="Clínicas e Pet shops" />
+        <item
+            android:id="@+id/nav_duvFreq"
+            android:icon="@drawable/ic_duvidas"
+            android:title="Dúvidas Frequentes" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_suporte"
+            android:icon="@drawable/ic_build"
+            android:title="Suporte" />
+    </group>
+
+    <item android:title="Apoie">
+        <menu>
+            <item
+                android:id="@+id/nav_ong"
+                android:icon="@drawable/ic_ong"
+                android:title="ONG - Anjos de 4 Patas" />
+
+        </menu>
+    </item>
+
+</menu>

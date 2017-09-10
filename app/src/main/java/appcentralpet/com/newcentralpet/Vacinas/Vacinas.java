@@ -29,8 +29,6 @@ import appcentralpet.com.newcentralpet.R;
  */
 public class Vacinas extends Fragment {
 
-    private Toolbar toolbar_vacinas;
-    
     private Button btnAdd;
 
     ArrayList<Pet> lista;
@@ -49,9 +47,6 @@ public class Vacinas extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_vacinas, container, false);
 
-        toolbar_vacinas = (Toolbar) view.findViewById(R.id.toolbar_vacinas);
-        toolbar_vacinas.setTitle("Vacinas");
-        
         btnAdd = (Button) view.findViewById(R.id.btnadicionar);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override

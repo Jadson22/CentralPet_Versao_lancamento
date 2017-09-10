@@ -72,7 +72,6 @@ public class PetList extends Fragment {
         listView.setAdapter(adapter);
 
 
-        SQLiteHelper s = MainActivity.sqLiteHelper;
         Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM PET");
         list.clear();
         while (cursor.moveToNext()) {

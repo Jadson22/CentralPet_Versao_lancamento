@@ -10,9 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar_vacinas"/>
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
