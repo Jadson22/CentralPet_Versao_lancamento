@@ -14,4 +14,10 @@
         app:popupTheme="@style/AppTheme.PopupOverlay"
         app:titleTextColor="#ffffff"/>
 
+    <ImageView
+        android:layout_margin="16dp"
+        android:layout_below="@id/toolbar"
+        android:layout_width="300dp"
+        android:layout_height="200dp" />
+
 </RelativeLayout>

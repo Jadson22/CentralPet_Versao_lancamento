@@ -58,6 +58,14 @@ public class TextosDuvidas extends AppCompatActivity {
                 texto.setText("quadrupla");
             }
 
+            else if(opcaoescolhida.equals("op12")){
+                titulo.setText("Doenç 1");
+                texto.setText("quadrupla");
+            }else if(opcaoescolhida.equals("op13")){
+                titulo.setText("");
+                texto.setText("quadrupla");
+            }
+
         }
     }
 

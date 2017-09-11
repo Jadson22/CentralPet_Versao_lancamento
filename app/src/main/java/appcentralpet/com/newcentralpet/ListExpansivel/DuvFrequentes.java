@@ -25,7 +25,7 @@ import appcentralpet.com.newcentralpet.R;
 public class DuvFrequentes extends Fragment {
 
     private ExpandableListView lst_view;
-    private String [] opcao = {"op0", "op1", "op2", "op3", "op4", "op5", "op6", "op7", "op8", "op9", "op10", "op11"};
+    private String [] opcao = {"op0", "op1", "op2", "op3", "op4", "op5", "op6", "op7", "op8", "op9", "op10", "op11", "op12"};
 
     public DuvFrequentes() {
         // Required empty public constructor
@@ -88,7 +88,9 @@ public class DuvFrequentes extends Fragment {
                         }break;
                     case 2:
                         switch (i1){
-                            case 0 : //Toast.makeText(Duvidas_freq.this, "pulgas", Toast.LENGTH_SHORT).show();
+                            case 0 : Intent intent12 = new Intent(getContext(), TextosDuvidas.class);
+                                intent12.putExtra("opcao", opcao[12]);
+                                startActivity(intent12);
                                 break;
                             case 1 :// Toast.makeText(Duvidas_freq.this, "ferida", Toast.LENGTH_SHORT).show();
                                 break;
@@ -131,6 +133,7 @@ public class DuvFrequentes extends Fragment {
         dcg.add(new Info_duv("X", ""));
         dcg.add(new Info_duv("X", ""));
         dcg.add(new Info_duv("X", ""));
+        dcg.add(new Info_duv("fsdf", ""));
 
         //cria os itens de cada grupo
         List<Info_duv> dccaes = new ArrayList<>();
