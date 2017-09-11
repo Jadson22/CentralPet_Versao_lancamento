@@ -164,7 +164,7 @@ public class Cadastro extends Fragment {
                 edtName.setText("");
                 edtRaca.setText("");
                 edtIdade.setText("");
-                imageView.setImageResource(R.drawable.fotoperfil);
+                imageView.setImageResource(R.drawable.novaphoto);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -187,7 +188,8 @@ public class PetList extends Fragment {
                                 position
                         );
                         dialog.dismiss();
-                        Toast.makeText(getContext(), "Editado com sucesso!", Toast.LENGTH_SHORT).show();
+                        Snackbar snackbar = Snackbar.make(getView(), "Editado com sucesso!", Snackbar.LENGTH_SHORT);
+                        snackbar.show();
                     }
                 }catch (Exception error) {
                     Log.e("Update error", error.getMessage());
@@ -208,7 +210,8 @@ public class PetList extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 try {
                     Cadastro.sqLiteHelper.deleteData(idPet);
-                    Toast.makeText(getContext(), "Apagado", Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar.make(getView(), "Excluido com sucesso!", Snackbar.LENGTH_SHORT);
+                    snackbar.show();
                 } catch (Exception e){
                     Log.e("error", e.getMessage());
                 }
@@ -255,7 +258,8 @@ public class PetList extends Fragment {
                 startActivityForResult(intent, 888);
             }
             else {
-                Toast.makeText(getContext(), "Você não tem permissão para acessar os arquivos!", Toast.LENGTH_SHORT).show();
+                Snackbar snackbar = Snackbar.make(getView(), "Você não tem permissão para acessar os arquivos!", Snackbar.LENGTH_SHORT);
+                snackbar.show();
             }
             return;
         }
