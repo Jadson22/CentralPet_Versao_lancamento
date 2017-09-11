@@ -17,7 +17,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -51,6 +50,8 @@ public class PetList extends Fragment {
     ListView listView;
     ArrayList<Pet> list;
     PetListAdapter adapter = null;
+
+    Pet pet;
 
     public PetList() {
         // Required empty public constructor
@@ -101,8 +102,12 @@ public class PetList extends Fragment {
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
                             }
-
                             showDialogUpdate(getActivity(), arrID.get(position));
+
+                            /*Intent intent = new Intent(getContext(), EditarPet.class);
+                            intent.putExtra("PEET", arrID);
+                            startActivityForResult(intent, 0); */
+
                         }else{
                             //apagar
                             Cursor c = Cadastro.sqLiteHelper.getData("SELECT id FROM PET");
@@ -163,8 +168,7 @@ public class PetList extends Fragment {
             @Override
             public void onClick(View v) {
                 // request photo library
-                ActivityCompat.requestPermissions(
-                        getActivity(),
+                requestPermissions(
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         888
                 );

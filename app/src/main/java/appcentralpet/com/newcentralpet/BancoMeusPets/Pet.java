@@ -1,9 +1,11 @@
 package appcentralpet.com.newcentralpet.BancoMeusPets;
 
+import java.io.Serializable;
+
 /**
  * Created by L Moraes on 30/08/2017.
  */
-public class Pet {
+public class Pet implements Serializable{
     private int id;
     private String name;
     private String raca;
@@ -76,5 +78,10 @@ public class Pet {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString(){
+        return "";
     }
 }

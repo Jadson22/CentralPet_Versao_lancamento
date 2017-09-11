@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -90,11 +91,7 @@ public class Cadastro extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ActivityCompat.requestPermissions(
-                        getActivity(),
-                        new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
-                        REQUEST_CODE_GALLERY
-                );
+                escolherImg();
             }
         });
 
@@ -108,6 +105,13 @@ public class Cadastro extends Fragment {
         return view;
     }
 
+    public void escolherImg(){
+        requestPermissions(
+                new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                REQUEST_CODE_GALLERY
+        );
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(requestCode == REQUEST_CODE_GALLERY){
@@ -117,7 +121,8 @@ public class Cadastro extends Fragment {
                 startActivityForResult(intent, REQUEST_CODE_GALLERY);
             }
             else {
-                Toast.makeText(getContext(), "Você não tem permissão para acessar os arquivos!", Toast.LENGTH_SHORT).show();
+                Snackbar snackbar = Snackbar.make(getView(), "Você não tem permissão para acessar os arquivos!", Snackbar.LENGTH_SHORT);
+                snackbar.show();
             }
             return;
         }
@@ -160,7 +165,8 @@ public class Cadastro extends Fragment {
                         edtIdade.getText().toString().trim(),
                         imageViewToByte(imageView)
                 );
-                Toast.makeText(getContext(), "Adicionado com sucesso!", Toast.LENGTH_SHORT).show();
+                Snackbar snackbar = Snackbar.make(getView(), "Novo pet salvo!", Snackbar.LENGTH_SHORT);
+                snackbar.show();
                 edtName.setText("");
                 edtRaca.setText("");
                 edtIdade.setText("");

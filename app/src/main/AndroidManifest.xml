@@ -3,6 +3,7 @@
     package="appcentralpet.com.newcentralpet">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -45,7 +46,8 @@
             android:label="@string/title_activity_mapa" />
         <activity android:name=".ListExpansivel.TextosDuvidas" />
         <activity android:name=".ListExpansivel.TabelaVacinasCaes" />
-        <activity android:name=".ListExpansivel.TabelaVacinasGato"></activity>
+        <activity android:name=".ListExpansivel.TabelaVacinasGato" />
+        <activity android:name=".BancoMeusPets.EditarPet"></activity>
     </application>
 
 </manifest>
