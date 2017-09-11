@@ -239,12 +239,6 @@
             android:text="Add"
             android:id="@+id/btnSalvar"
             android:layout_below="@id/editarIdade"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Meus Pets"
-            android:id="@+id/btnLista"
-            android:layout_below="@id/btnSalvar"/>
 
     </RelativeLayout>
 

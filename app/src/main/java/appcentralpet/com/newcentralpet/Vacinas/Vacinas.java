@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -17,11 +20,11 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
+import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
 import appcentralpet.com.newcentralpet.BancoMeusPets.Pet;
 import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
 import appcentralpet.com.newcentralpet.BancoMeusPets.PetListAdapter;
 import appcentralpet.com.newcentralpet.BancoMeusPets.SQLiteHelper;
-import appcentralpet.com.newcentralpet.MainActivity;
 import appcentralpet.com.newcentralpet.R;
 
 /**
@@ -74,9 +77,8 @@ public class Vacinas extends Fragment {
 
 
         lista = new ArrayList<>();
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT name FROM PET");
+        Cursor cursor = Cadastro.sqLiteHelper.getData("SELECT name FROM PET");
 
-        //MainActivity.sqLiteHelper.getData("SELECT name = ? FROM PET");
 
         //final String[] nomes = new String[]{cursor.getString(cursor.getColumnIndex("name"))};
 
@@ -84,7 +86,6 @@ public class Vacinas extends Fragment {
         //final String[] NOMES = new String[]{c.toString()};
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, nomes );
-
         AutoCompleteTextView nomepet = (AutoCompleteTextView) dialog.findViewById(R.id.nomePet);
         nomepet.setAdapter(adp);
 
@@ -94,7 +95,24 @@ public class Vacinas extends Fragment {
         dialog.getWindow().setLayout(width, height);
         dialog.show();
 
-
     }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_meuspets, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = menu.findItem(R.id.adicionar);
+        item.setVisible(false);
+    }
+
 
 }

@@ -43,10 +43,6 @@
         <activity
             android:name=".mapa.MapaClinicaActivity"
             android:label="@string/title_activity_mapa" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/AppTheme" />
         <activity android:name=".ListExpansivel.TextosDuvidas" />
         <activity android:name=".ListExpansivel.TabelaVacinasCaes" />
         <activity android:name=".ListExpansivel.TabelaVacinasGato"></activity>

@@ -40,7 +40,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import appcentralpet.com.newcentralpet.MainActivity;
 import appcentralpet.com.newcentralpet.R;
 
 /**
@@ -48,7 +47,6 @@ import appcentralpet.com.newcentralpet.R;
  */
 public class PetList extends Fragment {
 
-    Toolbar toolbar_meusPets;
     ListView listView;
     ArrayList<Pet> list;
     PetListAdapter adapter = null;
@@ -63,8 +61,6 @@ public class PetList extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pet_list, container, false);
 
-        toolbar_meusPets = (Toolbar) view.findViewById(R.id.toolbar_MeusPets);
-        toolbar_meusPets.setTitle("Meus Pets");
 
         listView = (ListView) view.findViewById(R.id.listView11);
         list = new ArrayList<>();
@@ -72,7 +68,7 @@ public class PetList extends Fragment {
         listView.setAdapter(adapter);
 
 
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM PET");
+        Cursor cursor = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -99,7 +95,7 @@ public class PetList extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int item) {
                         if(item == 0 ){
                             //editar
-                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM PET");
+                            Cursor c = Cadastro.sqLiteHelper.getData("SELECT id FROM PET");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
@@ -108,7 +104,7 @@ public class PetList extends Fragment {
                             showDialogUpdate(getActivity(), arrID.get(position));
                         }else{
                             //apagar
-                            Cursor c = MainActivity.sqLiteHelper.getData("SELECT id FROM PET");
+                            Cursor c = Cadastro.sqLiteHelper.getData("SELECT id FROM PET");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
@@ -181,13 +177,13 @@ public class PetList extends Fragment {
                     if(edtName.getText().toString().length() == 0 ){
                         edtName.setError("Digite um nome");
                     }else {
-                        MainActivity.sqLiteHelper.updateData(
+                        Cadastro.sqLiteHelper.updateData(
                                 edtName.getText().toString().trim(),
                                 rbSexoEscolhido.getText().toString().trim(),
                                 edtRaca.getText().toString().trim(),
                                 rbTipoEscolhido.getText().toString().trim(),
                                 edtIdade.getText().toString().trim(),
-                                MainActivity.imageViewToByte(imgPet),
+                                Cadastro.imageViewToByte(imgPet),
                                 position
                         );
                         dialog.dismiss();
@@ -211,7 +207,7 @@ public class PetList extends Fragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    MainActivity.sqLiteHelper.deleteData(idPet);
+                    Cadastro.sqLiteHelper.deleteData(idPet);
                     Toast.makeText(getContext(), "Apagado", Toast.LENGTH_SHORT).show();
                 } catch (Exception e){
                     Log.e("error", e.getMessage());
@@ -231,7 +227,7 @@ public class PetList extends Fragment {
 
     private void editarPet(){
         // get all data from sqlite
-        Cursor cursor = MainActivity.sqLiteHelper.getData("SELECT * FROM PET");
+        Cursor cursor = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -290,5 +286,16 @@ public class PetList extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = menu.findItem(R.id.adicionar);
+        item.setVisible(false);
+    }
 
 }

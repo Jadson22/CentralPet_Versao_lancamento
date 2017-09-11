@@ -2,6 +2,8 @@ package appcentralpet.com.newcentralpet.ListExpansivel;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import appcentralpet.com.newcentralpet.R;
@@ -15,6 +17,12 @@ public class TextosDuvidas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_texto_duvidas);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle("Dúvidas frequentes");
 
         texto = (TextView) findViewById(R.id.setText);
         titulo = (TextView) findViewById(R.id.titulo);
@@ -51,6 +59,17 @@ public class TextosDuvidas extends AppCompatActivity {
             }
 
         }
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+            default:break;
+        }
+        return true;
     }
 }

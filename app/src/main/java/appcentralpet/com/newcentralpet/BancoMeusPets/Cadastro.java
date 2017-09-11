@@ -11,6 +11,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -26,7 +29,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import appcentralpet.com.newcentralpet.MainActivity;
 import appcentralpet.com.newcentralpet.R;
 
 /**
@@ -40,7 +42,6 @@ public class Cadastro extends Fragment {
     ImageView imageView;
 
     Button btnSalvar;
-    Button btnLista;
 
     public static SQLiteHelper sqLiteHelper;
     final int REQUEST_CODE_GALLERY = 999;
@@ -57,7 +58,6 @@ public class Cadastro extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cadastro, container, false);
 
         btnSalvar = (Button) view.findViewById(R.id.btnSalvar);
-        btnLista = (Button) view.findViewById(R.id.btnLista);
 
         edtName = (EditText) view.findViewById(R.id.editartName);
         edtRaca = (EditText) view.findViewById(R.id.editarRaca);
@@ -105,13 +105,6 @@ public class Cadastro extends Fragment {
             }
         });
 
-        btnLista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         return view;
     }
 
@@ -153,7 +146,7 @@ public class Cadastro extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void adicionar() {
+    public void adicionar() {
 
         try {
             if(edtName.getText().toString().length() == 0){
@@ -187,4 +180,20 @@ public class Cadastro extends Fragment {
     }
 
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.adicionar) {
+            adicionar();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

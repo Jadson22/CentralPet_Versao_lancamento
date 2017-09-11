@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListExpansivel.TextosDuvidas">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ListExpansivel.TextosDuvidas"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/espc_telas"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:titleTextColor="#ffffff"/>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -17,8 +22,9 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/titulo"
             android:text="Titulo"
-            android:textSize="@dimen/txt_cad"
-            android:textColor="@color/primaryText"/>
+            android:textSize="20sp"
+            android:textColor="@color/primaryText"
+            android:layout_margin="14dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,8 +34,9 @@
             android:id="@+id/setText"
             android:textSize="@dimen/txt_cad"
             android:textColor="@color/primaryText"
-            android:layout_marginTop="@dimen/espc_telas"/>
+            android:layout_marginTop="@dimen/espc_telas"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp" />
 
     </LinearLayout>
 
-</RelativeLayout>

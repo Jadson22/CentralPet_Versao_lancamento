@@ -31,6 +31,7 @@ public class NavigationDrawer extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Novo Pet");
         setSupportActionBar(toolbar);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -60,7 +61,7 @@ public class NavigationDrawer extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation_drawer, menu);
+        getMenuInflater().inflate(R.menu.menu_cadstromeuspets, menu);
         return true;
     }
 
@@ -72,7 +73,7 @@ public class NavigationDrawer extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.adicionar) {
             return true;
         }
 
@@ -89,8 +90,10 @@ public class NavigationDrawer extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Cadastro()).commit();
             getSupportActionBar().setTitle("Novo Pet");
         } else if (id == R.id.nav_meusPets) {
-            //PetList mp = new PetList();
-            //getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, mp).commit();
+            PetList mp = new PetList();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, mp).commit();
+            getSupportActionBar().setTitle("Meus Pets");
+
         } else if (id == R.id.nav_vacina) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Vacinas()).commit();
             getSupportActionBar().setTitle("Vacinas");
