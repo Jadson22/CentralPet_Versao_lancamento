@@ -16,27 +16,36 @@
         app:titleTextColor="#ffffff"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/titulo"
-            android:text="Titulo"
-            android:textSize="20sp"
-            android:textColor="@color/primaryText"
-            android:layout_margin="14dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/titulo"
+        android:textSize="20dp"
+        android:textColor="@color/primaryText"
+        android:layout_marginTop="@dimen/espc_telas"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp" /><![CDATA[/>
+
+    ]]>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/setText"
-            android:textSize="@dimen/txt_cad"
-            android:textColor="@color/primaryText"
-            android:layout_marginTop="@dimen/espc_telas"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/setText"
+                android:textSize="@dimen/txt_cad"
+                android:textColor="@color/primaryText"
+                android:layout_marginTop="@dimen/espc_telas"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp" />
+    </ScrollView>
 
-    </LinearLayout>
+</LinearLayout>
 

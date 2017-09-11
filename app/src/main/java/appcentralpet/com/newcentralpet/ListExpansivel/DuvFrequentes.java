@@ -25,7 +25,7 @@ import appcentralpet.com.newcentralpet.R;
 public class DuvFrequentes extends Fragment {
 
     private ExpandableListView lst_view;
-    private String [] opcao = {"op0", "op1", "op2", "op3", "op4", "op5", "op6", "op7", "op8", "op9", "op10", "op11", "op12"};
+    private String [] opcao = {"op0", "op1", "op2", "op3", "op4", "op5", "op6", "op7", "op8", "op9", "op10", "op11", "op12", "op13", "op14", "op15", "op16", "op17", "op18", "op19", "op20", "op21", "op22", "op23", "op24", "op25", "op26", "op27", "op28"};
 
     public DuvFrequentes() {
         // Required empty public constructor
@@ -85,25 +85,79 @@ public class DuvFrequentes extends Fragment {
                                 intent11.putExtra("opcao", opcao[11]);
                                 startActivity(intent11);
                                 break;
+                            case 5 : Intent intent12 = new Intent(getContext(), TextosDuvidas.class);
+                                intent11.putExtra("opcao", opcao[12]);
+                                startActivity(intent12);
+                                break;
+                            case 6 : Intent intent13 = new Intent(getContext(), TextosDuvidas.class);
+                                intent11.putExtra("opcao", opcao[13]);
+                                startActivity(intent13);
+                                break;
+                            case 7 : Intent intent14 = new Intent(getContext(), TextosDuvidas.class);
+                                intent11.putExtra("opcao", opcao[14]);
+                                startActivity(intent14);
+                                break;
+                            case 8 : Intent intent15 = new Intent(getContext(), TextosDuvidas.class);
+                                intent11.putExtra("opcao", opcao[15]);
+                                startActivity(intent15);
+                                break;
+                            case 9 : Intent intent16 = new Intent(getContext(), TextosDuvidas.class);
+                                intent11.putExtra("opcao", opcao[16]);
+                                startActivity(intent11);
+                                break;
                         }break;
                     case 2:
                         switch (i1){
-                            case 0 : Intent intent12 = new Intent(getContext(), TextosDuvidas.class);
-                                intent12.putExtra("opcao", opcao[12]);
-                                startActivity(intent12);
+                            case 0 : Intent intent17 = new Intent(getContext(), TextosDuvidas.class);
+                                intent17.putExtra("opcao", opcao[17]);
+                                startActivity(intent17);
                                 break;
-                            case 1 :// Toast.makeText(Duvidas_freq.this, "ferida", Toast.LENGTH_SHORT).show();
+                            case 1 :Intent intent18 = new Intent(getContext(), TextosDuvidas.class);
+                                intent18.putExtra("opcao", opcao[18]);
+                                startActivity(intent18);
                                 break;
-                            case 2 : //Toast.makeText(Duvidas_freq.this, "febre", Toast.LENGTH_SHORT).show();
+                            case 2 : Intent intent19 = new Intent(getContext(), TextosDuvidas.class);
+                                intent19.putExtra("opcao", opcao[19]);
+                                startActivity(intent19);
                                 break;
-                            case 3 : //Toast.makeText(Duvidas_freq.this, "conjuntivite", Toast.LENGTH_SHORT).show();
+                            case 3 : Intent intent20 = new Intent(getContext(), TextosDuvidas.class);
+                                intent20.putExtra("opcao", opcao[20]);
+                                startActivity(intent20);
+                                break;
+                            case 4 : Intent intent21 = new Intent(getContext(), TextosDuvidas.class);
+                                intent21.putExtra("opcao", opcao[21]);
+                                startActivity(intent21);
+                                break;
+                            case 5 : Intent intent22 = new Intent(getContext(), TextosDuvidas.class);
+                                intent22.putExtra("opcao", opcao[22]);
+                                startActivity(intent22);
+                                break;
+                            case 6 : Intent intent23 = new Intent(getContext(), TextosDuvidas.class);
+                                intent23.putExtra("opcao", opcao[23]);
+                                startActivity(intent23);
+                                break;
+                            case 7 : Intent intent24 = new Intent(getContext(), TextosDuvidas.class);
+                                intent24.putExtra("opcao", opcao[24]);
+                                startActivity(intent24);
+                                break;
+                            case 8 : Intent intent25 = new Intent(getContext(), TextosDuvidas.class);
+                                intent25.putExtra("opcao", opcao[25]);
+                                startActivity(intent25);
+                                break;
+                            case 9: Intent intent26 = new Intent(getContext(), TextosDuvidas.class);
+                                intent26.putExtra("opcao", opcao[26]);
+                                startActivity(intent26);
                                 break;
                         }break;
                     case 3:
                         switch (i1){
-                            case 0 : //Toast.makeText(Duvidas_freq.this, "pedgree", Toast.LENGTH_SHORT).show();
+                            case 0 : Intent intent27 = new Intent(getContext(), TextosDuvidas.class);
+                                intent27.putExtra("opcao", opcao[27]);
+                                startActivity(intent27);
                                 break;
-                            case 1 : //Toast.makeText(Duvidas_freq.this, "vitamax", Toast.LENGTH_SHORT).show();
+                            case 1 : Intent intent28 = new Intent(getContext(), TextosDuvidas.class);
+                                intent28.putExtra("opcao", opcao[28]);
+                                startActivity(intent28);
                                 break;
                         }break;
 
@@ -122,32 +176,43 @@ public class DuvFrequentes extends Fragment {
 
         //cria os itens de cada grupo
         List<Info_duv> vacinas = new ArrayList<>();
-        vacinas.add(new Info_duv("Tabela de vacinação cães", ""));
-        vacinas.add(new Info_duv("Tabela de vacinação gatos", ""));
+        vacinas.add(new Info_duv("Tabela de vacinação-Cães", ""));
+        vacinas.add(new Info_duv("Tabela de vacinação-Gatos", ""));
         vacinas.add(new Info_duv("Reações das vacinas", ""));
         vacinas.add(new Info_duv("Recomendações", ""));
 
         List<Info_duv> dcg = new ArrayList<>();
-        dcg.add(new Info_duv("X", ""));
-        dcg.add(new Info_duv("X", ""));
-        dcg.add(new Info_duv("X", ""));
-        dcg.add(new Info_duv("X", ""));
-        dcg.add(new Info_duv("X", ""));
-        dcg.add(new Info_duv("fsdf", ""));
+        dcg.add(new Info_duv("Peritonite Infecciosa Felina (PIF)", ""));
+        dcg.add(new Info_duv("Vírus da Imunodeficiência Felina (FIV)", ""));
+        dcg.add(new Info_duv("Rim Policístico (PKD)", ""));
+        dcg.add(new Info_duv("Vírus da Leucose Felina (FeLV)", ""));
+        dcg.add(new Info_duv("Coriza", ""));
+        dcg.add(new Info_duv("Panleucopénia", ""));
+        dcg.add(new Info_duv("Leucose", ""));
+        dcg.add(new Info_duv("Raiva", ""));
+        dcg.add(new Info_duv("Clamidiose", ""));
+        dcg.add(new Info_duv("Toxoplasmose", ""));
+
 
         //cria os itens de cada grupo
         List<Info_duv> dccaes = new ArrayList<>();
-        dccaes.add(new Info_duv("X", ""));
-        dccaes.add(new Info_duv("X", ""));
-        dccaes.add(new Info_duv("X", ""));
-        dccaes.add(new Info_duv("X", ""));
+        dccaes.add(new Info_duv("Leishmaniose", ""));
+        dccaes.add(new Info_duv("Cinomose / Esgana", ""));
+        dccaes.add(new Info_duv("Sarna", ""));
+        dccaes.add(new Info_duv("Leptospirose", ""));
+        dccaes.add(new Info_duv("Giardia", ""));
+        dccaes.add(new Info_duv("Parvovirose", ""));
+        dccaes.add(new Info_duv("Raiva", ""));
+        dccaes.add(new Info_duv("Coronavirose", ""));
+        dccaes.add(new Info_duv("Dermatofitose", ""));
+        dccaes.add(new Info_duv("Tosse dos canis", ""));
+
 
 
         //cria os itens de cada grupo
         List<Info_duv> lstAliment = new ArrayList<>();
-        lstAliment.add(new Info_duv("Quantidade certa", ""));
         lstAliment.add(new Info_duv("Alimento adequado", ""));
-        lstAliment.add(new Info_duv("Marca de rações", ""));
+        lstAliment.add(new Info_duv("Quantidade", ""));
 
         // cria o "relacionamento" dos grupos com seus itens
         HashMap<String, List<Info_duv>> lstItensGrupo = new HashMap<>();

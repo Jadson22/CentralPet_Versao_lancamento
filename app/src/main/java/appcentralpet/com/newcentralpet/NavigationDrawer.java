@@ -99,6 +99,7 @@ public class NavigationDrawer extends AppCompatActivity
             getSupportActionBar().setTitle("Vacinas");
 
         } else if (id == R.id.nav_clinicas) {
+
             Intent intent = new Intent(NavigationDrawer.this, MapaClinicaActivity.class);
             startActivity(intent);
 

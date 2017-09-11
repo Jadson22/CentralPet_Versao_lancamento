@@ -41,48 +41,6 @@
                 </LinearLayout>
 
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/linearLayout"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true">
-
-                    <RadioGroup
-                        android:id="@+id/radioTipo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginLeft="69dp"
-                        android:layout_marginStart="69dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Cão"
-                            android:id="@+id/rbCao"
-                            android:textColor="@color/primaryText"
-                            android:checked="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignLeft="@+id/radioTipo"
-                            android:layout_alignStart="@+id/radioTipo" />
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Gato"
-                            android:id="@+id/rbGato"
-                            android:textColor="@color/primaryText"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerHorizontal="true" />
-
-                    </RadioGroup>
-
-                </RelativeLayout>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -92,51 +50,6 @@
                     android:layout_marginTop="5dp">
 
                 </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/relativeLayout"
-                    android:layout_above="@+id/linearLayout"
-                    android:layout_alignRight="@+id/editarRaca"
-                    android:layout_alignEnd="@+id/editarRaca"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true">
-
-                    <RadioGroup
-                        android:id="@+id/radioSexo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginLeft="70dp"
-                        android:layout_marginStart="70dp">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Macho"
-                            android:id="@+id/rbMacho"
-                            android:textColor="@color/primaryText"
-                            android:checked="true"
-                            android:layout_above="@+id/linearLayout"
-                            android:layout_alignLeft="@+id/editarRaca"
-                            android:layout_alignStart="@+id/editarRaca" />
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Fêmea"
-                            android:id="@+id/rbFemea"
-                            android:textColor="@color/primaryText"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_above="@+id/linearLayout"
-                            android:layout_toRightOf="@+id/rbMacho"
-                            android:layout_toEndOf="@+id/rbMacho" />
-                    </RadioGroup>
-                </RelativeLayout>
 
             </LinearLayout>
         </ScrollView>
@@ -239,6 +152,91 @@
             android:text="Add"
             android:id="@+id/btnSalvar"
             android:layout_below="@id/editarIdade"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout"
+            android:layout_above="@+id/linearLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <RadioGroup
+                android:id="@+id/radioSexo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="70dp"
+                android:layout_marginStart="70dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Macho"
+                    android:id="@+id/rbMacho"
+                    android:textColor="@color/primaryText"
+                    android:checked="true"
+                    android:layout_above="@+id/linearLayout"
+                    android:layout_alignLeft="@+id/editarRaca"
+                    android:layout_alignStart="@+id/editarRaca" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fêmea"
+                    android:id="@+id/rbFemea"
+                    android:textColor="@color/primaryText"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_above="@+id/linearLayout"
+                    android:layout_toRightOf="@+id/rbMacho"
+                    android:layout_toEndOf="@+id/rbMacho" />
+            </RadioGroup>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/relativeLayout"
+            android:layout_alignRight="@+id/editarRaca"
+            android:layout_alignEnd="@+id/editarRaca">
+
+            <RadioGroup
+                android:id="@+id/radioTipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="69dp"
+                android:layout_marginStart="69dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cão"
+                    android:id="@+id/rbCao"
+                    android:textColor="@color/primaryText"
+                    android:checked="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignLeft="@+id/radioTipo"
+                    android:layout_alignStart="@+id/radioTipo" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gato"
+                    android:id="@+id/rbGato"
+                    android:textColor="@color/primaryText"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+            </RadioGroup>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

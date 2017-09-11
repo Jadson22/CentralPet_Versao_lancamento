@@ -18,7 +18,7 @@ public class TabelaVacinasCaes extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Vacinas Cães");
+        getSupportActionBar().setTitle("Tabela de Vacinação-Cães");
 
         //TU CRIA O LAYOUT COM AS IMAGENS E FAZ AI
 
