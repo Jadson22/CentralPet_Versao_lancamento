@@ -79,8 +79,7 @@ public class TextosDuvidas extends AppCompatActivity {
                 texto.setText("Sob esta designação generalizada existem duas viroses responsáveis por sintomas idênticos, associados a patologia do sistema respiratório.\n" +
                         " A infecção por calicivírus ou por herpesvírus pode provocar lesões irreversíveis na mucosa respiratória com uma desidratação generalizada intensa, podendo levar à morte dos pequenos gatinhos.\n" +
                         " Os gatos infectados já na idade adulta tornam-se portadores crônicos deste vírus.");
-            }
-            else if(opcaoescolhida.equals("op12")){
+            } else if(opcaoescolhida.equals("op12")){
                 getSupportActionBar().setTitle("Doenças comuns em gatos");
                 titulo.setText("Panleucopénia\n");
                 texto.setText("É uma doença viral provocada por um parvovírus que origina uma leucopenia (diminuição do número de glóbulos brancos), bem como uma diarreia aguda.\n" +
@@ -114,7 +113,72 @@ public class TextosDuvidas extends AppCompatActivity {
             }
 
             //Doenças comuns em cães
-
+            else if(opcaoescolhida.equals("op17")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Leishmaniose\n");
+                texto.setText("A leishmaniose canina, também conhecida como calazar, é uma doença causada por um parasita do género Leishmania, transmitido aos cães através da picada de mosquitos. Este parasita infiltra-se na medula óssea e em órgãos como o baço, o fígado e a pele.\n" +
+                        "Após o cão ser infetado, o período de incubação pode variar de apenas um mês até dois anos. Os primeiros sintomas verificam-se na pele, através da perda de pelo, descamação da pele e aparecimento de úlceras.\n" +
+                        "À medida que a doença evolui, o cão pode sofrer de emagrecimento, vómitos, perda de apetite, atrofia muscular, anemia, hemorragias nasais e alterações nos órgãos internos, em particular no fígado e nos rins.");
+            } else if(opcaoescolhida.equals("op18")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Cinomose\n");
+                texto.setText("Também conhecida como esgana ou doença de Carré, é uma doença provocada pelo vírus CDV (Canine Distemper Vírus) e uma das mais graves doenças infeciosas que podem afetar os cães — apenas a raiva possui uma taxa de mortalidade superior.\n"+"O vírus da cinomose é capaz de afetar todo o organismo do animal, em especial os pulmões, o trato intestinal e o sistema nervoso. Os primeiros sintomas costumam ser respiratórios, com o aparecimento de secreções nasais purulentas, dificuldade em respirar e até pneumonias. Nos olhos, também aparecem secreções purulentas, as conhecidas remelas, em quantidade excessiva.");
+            } else if(opcaoescolhida.equals("op19")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Sarna\n");
+                texto.setText("A sarna é uma doença provocada por ácaros nocivos, que danificam de diferentes formas a pele dos cães.\n" +
+                        "Existem três tipos de sarna, cada um provocado por um determinado tipo de ácaros, cada um deles com as suas características e diferentes formas de atacar os animais.\n" +
+                        "É muito importante que não se aplique medicação por iniciativa própria, uma vez que cada tipo de sarna tem o seu modo de atuação e o seu respetivo tratamento. Deve ser sempre o veterinário a fazer o diagnóstico e então recomendar o tratamento mais adequado.");
+            } else if(opcaoescolhida.equals("op20")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Leptospirose\n");
+                texto.setText("A leptospirose é uma doença provocada por bactérias do género Leptospira, que afeta diversos mamíferos incluindo seres humanos.\n" +
+                        "A bactéria desenvolve-se nos rins do animal infetado. Quando este urina, a bactéria é libertada viva para o ambiente, onde consegue sobreviver por vários meses caso encontre as condições ideais: épocas chuvosas e águas paradas. A chuva arrasta a urina até fontes de águas paradas, que ficam assim infetadas.\n" +
+                        "Um cão pode apanhar leptospirose apenas por cheirar a urina de um animal infetado, aumentando as hipóteses de contaminação se beber ou brincar em água contaminada. A bactéria também consegue entrar no organismo através de feridas abertas, ou através da simples mordida num alimento que tenha estado em contacto com a bactéria.");
+            } else if(opcaoescolhida.equals("op21")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Giardia\n");
+                texto.setText("A giardíase é uma doença causada por parasitas do género Giardia, que invadem o sistema digestivo do animal e se alimentam dos nutrientes que este ingere. A giardíase também afeta gatos e seres humanos.\n" +
+                        "A transmissão deste parasita é feita através de cistos, que chegam ao meio ambiente através das fezes de outros animais previamente infetados. Mesmo após a remoção das fezes, os cistos são capazes de sobreviver durante meses.\n" +
+                        "Para o cão ser infetado, basta pisar os cistos na rua e posteriormente ingeri-los ao lamber as patas. A ingestão de água ou alimentos contaminados também dá origem à infeção. Uma vez dentro do organismo, os cistos desenvolvem-se nos parasitas adultos.\n" +
+                        "Como a Giardia absorve os nutrientes da alimentação do animal, o cão começa a perder peso e a desidratar, aos quais são associados sintomas como as dores abdominais, a diarreia e os vómitos, que ainda enfraquecem mais o animal.");
+            } else if(opcaoescolhida.equals("op22")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Parvovirose\n");
+                texto.setText("A parvovirose é uma doença provocada por um vírus da família Parvoviridae, de atuação muito rápida e aguda especialmente perigosa para os cães mais jovens. É uma doença conhecida há relativamente pouco tempo, com os primeiros casos a terem sido reportados na Austrália em 1978.\n" +
+                        "Geralmente os cães contraem esta doença através do solo contaminado. Como o vírus se desenvolve no trato intestinal dos cães infetados, é libertado em grandes quantidades nas fezes, que por sua vez vão para os solos. Trata-se de um vírus muito resistente, capaz de sobreviver durante meses no solo até infetar o próximo animal.\n" +
+                        "Cerca de 4 a 14 dias após a infeção, o animal começa a ter febre e a perder o apetite. Um ou dois dias depois, chegam os vómitos e a diarreia, que contém progressivamente mais sangue de cada vez que o animal defeca. Os sintomas progridem muito rapidamente e a taxa de mortalidade é elevada.");
+            } else if(opcaoescolhida.equals("op23")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Raiva\n");
+                texto.setText("A raiva é uma das doenças mais conhecidas e temidas pelas pessoas, que atinge não apenas os cães como todos os mamíferos, particularmente raposas, furões, coiotes, guaxinins, morcegos, doninhas e seres humanos.\n" +
+                        "Apesar de ser uma doença erradicada em vários países, é incurável e tem um prognóstico muito grave, que na esmagadora maioria dos casos se revela fatal. Aliás, é a doença com a mais elevada taxa de mortalidade nos cães.\n" +
+                        "A raiva é uma doença provocada por um vírus da família Rhabdoviridae, que atinge o sistema nervoso. O principal método de transmissão é através da saliva, pelo que um animal pode ser infetado através de uma mordedura, arranhão ou lambidela.\n" +
+                        "Afetando o sistema nervoso, a raiva provoca uma alteração profunda no comportamento do animal. Os cães ficam extremamente agitados, com espasmos intensos nos músculos, não respondem aos donos e procuram locais escuros e escondidos para ficar.\n" +
+                        "Em poucos dias, evolui para um quadro de agressividade, com muita salivação, o animal deixa de comer e de beber, até chegar a um estado paralisia que leva o animal à morte.");
+            } else if(opcaoescolhida.equals("op24")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Coronavirose\n");
+                texto.setText("Tal como o nome indica, trata-se de uma doença provocada por um vírus do género Coronavirus. Este vírus, altamente contagioso, desenvolve-se no interior do intestino dos cães e transmite-se assim através de fezes infetadas. É também conhecida como Gastroenterite Contagiosa dos Cães.\n" +
+                        "A infeção provocada por Coronavirus não é considerada grave, e geralmente provoca apenas vómitos e diarreia durante alguns dias até ao animal recuperar, sem necessidade de tomar medicação.\n" +
+                        "No entanto, animais com sistema imunitário mais frágil (como bebés) estão em maior risco de desenvolver complicações graves, como inflamação no intestino, diarreia prolongada e desidratação.\n" +
+                        "O facto de a coronavirose poder passar sem tratamento específico não implica que se deva deixar de ir ao veterinário quando os sintomas aparecem — até porque os sintomas são semelhantes ao da parvovirose, que é mais grave. Pode-se pensar que é uma coisa, e é outra. Tem de ser o veterinário a diagnosticar, atempadamente, para evitar complicações maiores.");
+            } else if(opcaoescolhida.equals("op25")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Dermatofitose\n");
+                texto.setText("A dermatofitose é uma doença de pele provocada por fungos. Geralmente não é considerada uma doença grave em cães saudáveis, com o sistema imunitário normal, uma vez que este é capaz de combater os fungos.\n" +
+                        "Em cães com sistema imunitário mais frágil, como os mais novos, mais velhos ou que tenham outra doença a interferir, é necessário ter outro tipo de cuidados, pois pode chegar a evoluir para um quadro clínico grave e mesmo crónico.\n" +
+                        "A transmissão da dermatofitose dá-se através do contacto direto com o pelo de outros animais infetados. O fungo infeta diversos mamíferos, incluindo gatos e nós próprios.\n" +
+                        "A dermatofitose é facilmente identificada no corpo do animal, pois provoca lesões redondas com peladas, com maior incidência na face e nas patas dianteiras. Em casos mais graves, o cão coça-se muito e fica com dores nos locais afetados.");
+            } else if(opcaoescolhida.equals("op26")){
+                getSupportActionBar().setTitle("Doenças comuns em cães");
+                titulo.setText("Tosse dos canis\n");
+                texto.setText("A tosse dos canis, mais corretamente chamada de traqueobronquite infecciosa canina, é uma doença respiratória relativamente comum nos cães.\n" +
+                        "Na sua base não está apenas um microrganismo, mas vários, em particular os vírus Parainfluenza canina, Influenza canina e Adenovírus canino tipo 2, bem como a bactéria Bordetella bronchiseptica, esta última capaz de infetar também seres humanos.\n" +
+                        "Sendo uma doença transmitida por contacto direto, tem uma grande capacidade de propagação em sítios onde são mantidos muitos animais juntos, como associações e canis (daí a origem do nome).\n" +
+                        "Os animais infetados sofrem de tosse seca constante e espirros, que por vezes são desencadeados em sessões que parecem intermináveis. Em casos mais graves, podem surgir sintomas como febre, perda de apetite, secreções nos olhos ou tosse com catarro.\n" +
+                        "A doença pode chegar a evoluir para uma pneumonia. Cães mais jovens e mais idosos são os que correm maior risco.");
+            }
 
             //alimentação
             else if(opcaoescolhida.equals("op27")){
