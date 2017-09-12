@@ -115,6 +115,22 @@ public class TextosDuvidas extends AppCompatActivity {
 
             //Doenças comuns em cães
 
+
+            //alimentação
+            else if(opcaoescolhida.equals("op27")){
+                getSupportActionBar().setTitle("Alimento adequado");
+                texto.setText("Raça, tamanho, peso, idade, necessidades especiais, tudo isso deve ser levado em consideração antes de escolher o alimento correto para o animal.\n" +
+                        "Os nutrientes que o animal necessita e a quantidade mudam de acordo com a idade. Bem como obesidade, alergias e outros problemas de saúde que podem criar  necessidade de uma ração com ingredientes especiais.\n" +
+                        "Leia atentamente a informação nutricional no  rótulo das rações, e escolha a que melhor se adapte às necessidades do seu pet\n");
+            } else if(opcaoescolhida.equals("op28")){
+                getSupportActionBar().setTitle("Quantidade");
+                texto.setText("É comum os pets comerem o que você servir, seja muito ou pouco. Por isso, você é o responsável por determinar essa quantidade visando a nutrição ideal para ele, sem ganho de peso excessivo.\n" +
+                        "Sirva a quantidade adequada, assim você evita que o pet se acostume mal e que fique obeso, adquirindo todos os problemas vindos dessa condição\n" +
+                        "Divida a quantidade recomendada para o seu pet em mais de uma refeição diária. O ideal são duas ou mesmo três refeições por dia, com a quantidade diária indicada na embalagem da ração, mas dividida em porções.\n"
+                        +
+                        "Dessa forma ele aproveita muito mais os nutrientes e não passa fome entre os intervalos da alimentação\n");
+            }
+
         }
     }
 
