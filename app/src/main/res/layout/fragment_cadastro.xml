@@ -5,239 +5,172 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro">
 
-    <!-- TODO: Update blank fragment layout -->
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="false">
+            android:orientation="vertical">
+
             <LinearLayout
-                android:id="@+id/relative66"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:weightSum="1">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp">
-
-
+                android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                     <ImageView
                         android:id="@+id/imageView"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         app:srcCompat="@drawable/novaphoto"
                         android:layout_alignParentLeft="true"/>
-
-
-                </LinearLayout>
-
-
+                </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="5dp">
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="8dp">
 
+                    <RadioGroup
+                        android:id="@+id/radioTipo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cão"
+                            android:id="@+id/rbCao"
+                            android:textColor="@color/primaryText"
+                            android:checked="true" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gato"
+                            android:id="@+id/rbGato"/>
+                    </RadioGroup>
+
+                    <RadioGroup
+                        android:id="@+id/radioSexo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Macho"
+                            android:id="@+id/rbMacho"
+                            android:textColor="@color/primaryText"
+                            android:checked="true" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fêmea"
+                            android:id="@+id/rbFemea"
+                            android:textColor="@color/primaryText" />
+                    </RadioGroup>
                 </LinearLayout>
-
             </LinearLayout>
-        </ScrollView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Idade:"
-            android:id="@+id/textView11"
-            android:textColor="@color/primaryText"
-            android:textSize="@dimen/txt_cad"
-            android:layout_gravity="bottom"
-            android:padding="8dp"
-            android:layout_alignBottom="@+id/editarIdade"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/primaryText"
-            android:ems="10"
-            android:id="@+id/editarIdade"
-            android:layout_below="@+id/textView10"
-            android:layout_toRightOf="@+id/textView11"
-            android:layout_toEndOf="@+id/textView11"
-            android:inputType="date" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/linearLayout"
-            android:layout_above="@+id/editarRaca"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nome:"
-                android:id="@+id/textView9"
-                android:textColor="@color/primaryText"
-                android:textSize="@dimen/txt_cad"
-                android:layout_below="@id/imageView"
-                android:layout_gravity="bottom"
-                android:padding="8dp"/>
-            <EditText
-                android:id="@+id/editartName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:textColor="@color/primaryText"
-                android:ems="10"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/imageView"
-                android:layout_marginTop="10dp" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/linearLayout2"
-            android:layout_above="@+id/textView11"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="25dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nome:"
+                    android:id="@+id/textView9"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/txt_cad"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"/>
+                <EditText
+                    android:id="@+id/editartName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/primaryText"
+                    android:ems="10"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
 
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Raça: "
-            android:id="@+id/textView10"
-            android:textColor="@color/primaryText"
-            android:textSize="@dimen/txt_cad"
-            android:padding="8dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:id="@+id/editarRaca"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:textColor="@color/primaryText"
-            android:ems="10"
-            android:layout_alignBottom="@+id/textView10"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_toRightOf="@+id/textView10"
-            android:layout_toEndOf="@+id/textView10" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add"
-            android:id="@+id/btnSalvar"
-            android:layout_below="@id/editarIdade"/>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout"
-            android:layout_above="@+id/linearLayout"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <RadioGroup
-                android:id="@+id/radioSexo"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="70dp"
-                android:layout_marginStart="70dp">
+                android:id="@+id/linearLayout2">
 
-                <RadioButton
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Macho"
-                    android:id="@+id/rbMacho"
+                    android:text="Raça: "
+                    android:id="@+id/textView10"
                     android:textColor="@color/primaryText"
-                    android:checked="true"
-                    android:layout_above="@+id/linearLayout"
-                    android:layout_alignLeft="@+id/editarRaca"
-                    android:layout_alignStart="@+id/editarRaca" />
+                    android:textSize="@dimen/txt_cad"
+                    android:padding="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
-                <RadioButton
+                <EditText
+                    android:id="@+id/editarRaca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/primaryText"
+                    android:ems="10"
+                    android:layout_alignBottom="@+id/textView10"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_toRightOf="@+id/textView10"
+                    android:layout_toEndOf="@+id/textView10" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fêmea"
-                    android:id="@+id/rbFemea"
+                    android:text="Idade:"
+                    android:id="@+id/textView11"
                     android:textColor="@color/primaryText"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_above="@+id/linearLayout"
-                    android:layout_toRightOf="@+id/rbMacho"
-                    android:layout_toEndOf="@+id/rbMacho" />
-            </RadioGroup>
-        </RelativeLayout>
+                    android:textSize="@dimen/txt_cad"
+                    android:padding="8dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/relativeLayout"
-            android:layout_alignRight="@+id/editarRaca"
-            android:layout_alignEnd="@+id/editarRaca">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primaryText"
+                    android:ems="10"
+                    android:id="@+id/editarIdade"
+                    android:inputType="date" />
+            </LinearLayout>
 
-            <RadioGroup
-                android:id="@+id/radioTipo"
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="69dp"
-                android:layout_marginStart="69dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
+                android:text="Add"
+                android:id="@+id/btnSalvar"
+                android:layout_gravity="center_horizontal"/>
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cão"
-                    android:id="@+id/rbCao"
-                    android:textColor="@color/primaryText"
-                    android:checked="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignLeft="@+id/radioTipo"
-                    android:layout_alignStart="@+id/radioTipo" />
+        </LinearLayout>
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gato"
-                    android:id="@+id/rbGato"
-                    android:textColor="@color/primaryText"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-            </RadioGroup>
-
-        </RelativeLayout>
-
-    </RelativeLayout>
+    </ScrollView>
 
 </FrameLayout>

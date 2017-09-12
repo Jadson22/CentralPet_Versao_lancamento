@@ -15,9 +15,21 @@
         app:titleTextColor="#ffffff"/>
 
     <ImageView
+        android:id="@+id/image"
         android:layout_margin="16dp"
         android:layout_below="@id/toolbar"
-        android:layout_width="300dp"
-        android:layout_height="200dp" />
+        android:layout_width="400dp"
+        android:layout_height="250dp"
+        android:background="@drawable/tbc"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primaryText"
+        android:layout_below="@id/image"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Depois do primeiro ano, o animal é vacinado anualmente com uma dose de cada vacina - V8 ou V10, Gripe Canina, Giardíase e Anti-rábica. A melhor maneira de organizar o calendário de imunização é fazendo todas as vacinas em uma mesma data que deve ser repetida anualmente."/>
+
 
 </RelativeLayout>
