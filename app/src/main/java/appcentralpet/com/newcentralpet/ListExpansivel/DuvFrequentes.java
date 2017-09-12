@@ -2,6 +2,7 @@ package appcentralpet.com.newcentralpet.ListExpansivel;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +40,14 @@ public class DuvFrequentes extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_duv_frequentes, container, false);
 
+        TextView link = (TextView) view.findViewById(R.id.setText);
+        link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.mundodosanimais.pt/"));
+                startActivity(it);
+            }
+        });
         lst_view = (ExpandableListView) view.findViewById(R.id.lst_view);
 
         lst_view.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {

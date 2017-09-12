@@ -6,7 +6,20 @@
 
     <ExpandableListView
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="466dp"
         android:id="@+id/lst_view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Para mais informações clique aqui"
+        android:id="@+id/setText"
+        android:textSize="@dimen/txt_cad"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="8dp"/>
 
 </FrameLayout>
