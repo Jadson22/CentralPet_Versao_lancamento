@@ -74,7 +74,8 @@ public class NavigationDrawer extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.adicionar) {
-            return true;
+            Cadastro cadastro = new Cadastro();
+            cadastro.adicionar();
         }
 
         return super.onOptionsItemSelected(item);

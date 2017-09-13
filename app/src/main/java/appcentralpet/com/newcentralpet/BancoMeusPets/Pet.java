@@ -82,6 +82,6 @@ public class Pet implements Serializable{
 
     @Override
     public String toString(){
-        return "";
+        return name;
     }
 }

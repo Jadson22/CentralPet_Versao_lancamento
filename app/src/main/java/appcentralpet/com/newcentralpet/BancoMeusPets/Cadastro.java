@@ -194,11 +194,11 @@ public class Cadastro extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.adicionar) {
-            adicionar();
-            return true;
+
+        switch (item.getItemId()) {
+            case R.id.adicionar:
+                adicionar();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
