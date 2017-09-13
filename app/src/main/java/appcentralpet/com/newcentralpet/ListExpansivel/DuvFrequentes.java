@@ -238,16 +238,4 @@ public class DuvFrequentes extends Fragment {
 
         return view;
     }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.adicionar);
-        item.setVisible(false);
-    }
 }
