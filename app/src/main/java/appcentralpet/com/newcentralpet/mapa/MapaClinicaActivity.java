@@ -108,6 +108,8 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
+            Toast.makeText(MapaClinicaActivity.this,"Falha ao acessar \n Ative o GPS e confira sua conexão", Toast.LENGTH_LONG).show();
+
         }
 
         final Button btnClinica = (Button) findViewById(R.id.Clinica);
@@ -223,6 +225,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
             Log.d("onLocationChanged", "Removing Location Updates");
+
         }
         Log.d("onLocationChanged", "Exit");
 
