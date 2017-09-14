@@ -105,10 +105,17 @@ public class CadastroMeusPets extends Fragment {
 
         return view;
 
-        //Bundle bundle = this.getArguments();
-        //if(bundle != null){
-        //    String recu = bundle.getString("PET");
-        //}
+
+       //Bundle arguments = getArguments();
+
+        //pets = arguments.getParcelable("PET");
+
+        //if((arguments != null) && (arguments.containsKey("PET")))  {
+
+            //pets = (Pets)arguments.getSerializable("PET");
+
+            //}
+
 
     }
 

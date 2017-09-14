@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,10 +73,17 @@ public class ListaPets extends Fragment implements AdapterView.OnItemClickListen
         //AQUI ------------------
 
         Pets pets = adpPet.getItem(position);
+        CadastroMeusPets cadastroMeusPets = new CadastroMeusPets();
 
-        Bundle bundle = new Bundle();
-        bundle.putString("PET", pets.toString());
-        Fragment fragment = new CadastroMeusPets();
-        fragment.setArguments(bundle);
+        Bundle arguments = new Bundle();
+        //arguments.putString("PET", adpPet.getItem(position) );
+        cadastroMeusPets.setArguments(arguments);
+
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction().replace(R.id.frameprincipal, cadastroMeusPets);
+        transaction.commit();
+
+
+
     }
 }
