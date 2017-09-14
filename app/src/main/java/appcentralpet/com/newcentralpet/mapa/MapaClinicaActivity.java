@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -108,7 +109,9 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
-            Toast.makeText(MapaClinicaActivity.this,"Falha ao acessar \n Ative o GPS e confira sua conexão", Toast.LENGTH_LONG).show();
+            Snackbar snackbar = Snackbar.make(findViewById(R.id.rl4), "Novo pet salvo!", Snackbar.LENGTH_SHORT);
+            snackbar.show();
+            //Toast.makeText(MapaClinicaActivity.this,"Falha ao acessar \n Ative o GPS e confira sua conexão", Toast.LENGTH_LONG).show();
 
         }
 
