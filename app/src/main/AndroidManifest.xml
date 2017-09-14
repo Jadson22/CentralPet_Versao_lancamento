@@ -47,7 +47,9 @@
         <activity android:name=".ListExpansivel.TextosDuvidas" />
         <activity android:name=".ListExpansivel.TabelaVacinasCaes" />
         <activity android:name=".ListExpansivel.TabelaVacinasGato" />
-        <activity android:name=".BancoMeusPets.EditarPet"></activity>
+        <activity android:name=".BancoMeusPets.EditarPet" />
+        <activity android:name=".newBancoDados.ModeloPerfil" />
+        <activity android:name=".newBancoDados.CadastroPets"></activity>
     </application>
 
 </manifest>
