@@ -39,6 +39,7 @@ import com.bumptech.glide.Glide;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import appcentralpet.com.newcentralpet.R;
@@ -46,7 +47,7 @@ import appcentralpet.com.newcentralpet.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PetList extends Fragment {
+public class PetList extends Fragment implements Serializable{
 
     ListView listView;
     ArrayList<Pet> list;
@@ -74,7 +75,7 @@ public class PetList extends Fragment {
         listView.setAdapter(adapter);
 
 
-        //Cadastro cadastro= new Cadastro();
+        Cadastro cadastro= new Cadastro();
         //cadastro.sqLiteHelper.getReadableDatabase();
         //sqLiteHelper.getData("SELECT * FROM PET");
 
@@ -82,6 +83,7 @@ public class PetList extends Fragment {
         //conn = sqLiteHelper.getWritableDatabase();
 
 
+        cadastro.getActivity();
 
 
         Cursor cursor = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");

@@ -30,14 +30,16 @@ import com.bumptech.glide.Glide;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.Serializable;
 
+import appcentralpet.com.newcentralpet.BancoMeusPets.Pet;
 import appcentralpet.com.newcentralpet.BancoMeusPets.SQLiteHelper;
 import appcentralpet.com.newcentralpet.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CadastroMeusPets extends Fragment {
+public class CadastroMeusPets extends Fragment implements Serializable {
 
     EditText edtName, edtRaca, edtIdade;
     RadioGroup radioGroupSexo, radioGroupTipo;
@@ -103,19 +105,21 @@ public class CadastroMeusPets extends Fragment {
             dlg.show();
         }
 
+
+        Bundle arguments = getArguments();
+
+        if((arguments != null) && (arguments.containsKey("PET")))  {
+
+            String id = getArguments().getString("PET");
+            //pets = getArguments().getString(arguments);
+            preencheDados();
+
+        }
+        else{
+            pets = new Pets();
+        }
+
         return view;
-
-
-       //Bundle arguments = getArguments();
-
-        //pets = arguments.getParcelable("PET");
-
-        //if((arguments != null) && (arguments.containsKey("PET")))  {
-
-            //pets = (Pets)arguments.getSerializable("PET");
-
-            //}
-
 
     }
 
@@ -187,7 +191,9 @@ public class CadastroMeusPets extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.adicionar) {
+            if(pets.getId() == 0) {
                 inserir();
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -234,6 +240,16 @@ public class CadastroMeusPets extends Fragment {
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
+    }
+
+    private void preencheDados(){
+
+        edtName.setText(pets.getName());
+        edtRaca.setText(pets.getRaca());
+        edtIdade.setText(pets.getIdade());
+        imageView.setImageBitmap(null);
+        rbTipoEscolhido.setText("null");
+        rbSexoEscolhido.setText("null");
     }
 
 }

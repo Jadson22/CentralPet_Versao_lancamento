@@ -17,12 +17,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.Serializable;
+
 import appcentralpet.com.newcentralpet.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListaPets extends Fragment implements AdapterView.OnItemClickListener{
+public class ListaPets extends Fragment implements AdapterView.OnItemClickListener, Serializable{
 
     ListView listView;
 
@@ -44,6 +46,8 @@ public class ListaPets extends Fragment implements AdapterView.OnItemClickListen
         View view = inflater.inflate(R.layout.fragment_lista_pets, container, false);
 
         listView = (ListView) view.findViewById(R.id.listView11);
+
+        listView.setOnItemClickListener(this);
 
         try {
             dataBase = new DataBase(getContext());
@@ -72,17 +76,20 @@ public class ListaPets extends Fragment implements AdapterView.OnItemClickListen
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //AQUI ------------------
 
-        Pets pets = adpPet.getItem(position);
         CadastroMeusPets cadastroMeusPets = new CadastroMeusPets();
+        ListaPets listaPets = new ListaPets();
+
+
+        Pets pets = adpPet.getItem(position);
+        Fragment cadastroMP = new CadastroMeusPets();
 
         Bundle arguments = new Bundle();
-        //arguments.putString("PET", adpPet.getItem(position) );
-        cadastroMeusPets.setArguments(arguments);
+        arguments.putString("PET", pets.toString());
+        cadastroMP.setArguments(arguments);
 
-
-        FragmentTransaction transaction = getFragmentManager().beginTransaction().replace(R.id.frameprincipal, cadastroMeusPets);
-        transaction.commit();
-
+        final FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameprincipal, cadastroMP).commit();
 
 
     }
