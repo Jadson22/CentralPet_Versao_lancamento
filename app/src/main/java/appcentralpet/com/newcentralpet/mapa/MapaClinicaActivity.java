@@ -109,8 +109,8 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
-            Snackbar snackbar = Snackbar.make(findViewById(R.id.rl4), "Novo pet salvo!", Snackbar.LENGTH_SHORT);
-            snackbar.show();
+            //Snackbar snackbar = Snackbar.make(findViewById(R.id.rl4), "Novo pet salvo!", Snackbar.LENGTH_SHORT);
+            //snackbar.show();
             //Toast.makeText(MapaClinicaActivity.this,"Falha ao acessar \n Ative o GPS e confira sua conexão", Toast.LENGTH_LONG).show();
 
         }

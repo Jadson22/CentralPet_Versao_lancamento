@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -52,6 +53,9 @@ public class PetList extends Fragment {
     PetListAdapter adapter = null;
 
     Pet pet;
+    private SQLiteHelper sqLiteHelper;
+    private SQLiteDatabase conn;
+
 
     public PetList() {
         // Required empty public constructor
@@ -68,6 +72,16 @@ public class PetList extends Fragment {
         list = new ArrayList<>();
         adapter = new PetListAdapter(getContext(), R.layout.pet_itens, list);
         listView.setAdapter(adapter);
+
+
+        //Cadastro cadastro= new Cadastro();
+        //cadastro.sqLiteHelper.getReadableDatabase();
+        //sqLiteHelper.getData("SELECT * FROM PET");
+
+        //sqLiteHelper = new SQLiteHelper(getContext(), "PetDB.sqlite", null, 4);
+        //conn = sqLiteHelper.getWritableDatabase();
+
+
 
 
         Cursor cursor = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
@@ -103,10 +117,6 @@ public class PetList extends Fragment {
                                 arrID.add(c.getInt(0));
                             }
                             showDialogUpdate(getActivity(), arrID.get(position));
-
-                            /*Intent intent = new Intent(getContext(), EditarPet.class);
-                            intent.putExtra("PEET", arrID);
-                            startActivityForResult(intent, 0); */
 
                         }else{
                             //apagar
@@ -277,8 +287,6 @@ public class PetList extends Fragment {
             Uri uri = data.getData();
             try {
                 InputStream inputStream = getContext().getContentResolver().openInputStream(uri);
-                //Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                //imgPet.setImageBitmap(bitmap);
 
                 Glide.with(this)
                         .load(uri)
@@ -292,18 +300,6 @@ public class PetList extends Fragment {
         }
 
         super.onActivityResult(requestCode, resultCode, data);
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        MenuItem item = menu.findItem(R.id.adicionar);
-        item.setVisible(false);
     }
 
 }

@@ -74,8 +74,8 @@ public class PetListAdapter extends BaseAdapter {
         Pet pet = petList.get(position);
 
         holder.textoName.setText(pet.getName());
-        holder.textoRaca.setText(pet.getIdade());
-        holder.textoIdade.setText(pet.getTipo());
+        holder.textoRaca.setText(pet.getRaca());
+        holder.textoIdade.setText(pet.getIdade());
         byte[] petImage = pet.getImage();
         Glide.with(this.context)
                 .load(petImage)
@@ -84,7 +84,7 @@ public class PetListAdapter extends BaseAdapter {
                 .into(holder.imgPerfil);
 
         //getraca
-        if(pet.getRaca().equals("Macho")){
+        if(pet.getSexo().equals("Macho")){
             holder.iconeSexo.setImageResource(R.drawable.iconemasc);
         }else{
             holder.iconeSexo.setImageResource(R.drawable.iconefem);
@@ -96,8 +96,6 @@ public class PetListAdapter extends BaseAdapter {
         }else{
             holder.iconeTipo.setImageResource(R.drawable.iconegato);
         }
-
-
         return row;
     }
 }

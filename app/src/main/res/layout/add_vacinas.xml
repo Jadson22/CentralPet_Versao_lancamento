@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/nomePet"
         android:completionThreshold="1"
-        android:completionHint="Nome do pet" />
+        android:hint="Nome do pet" />
 
     <TextView
         android:layout_width="wrap_content"

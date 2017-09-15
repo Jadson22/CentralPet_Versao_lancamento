@@ -9,10 +9,4 @@
         android:orderInCategory="100"
         app:showAsAction="always"/>
 
-    <item android:id="@+id/excluir"
-        android:title="Excluir"
-        android:orderInCategory="200"
-        app:showAsAction="never"
-        android:visible="false"/>
-
 </menu>
