@@ -70,6 +70,8 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         }
         else {
             Log.d("onCreate","Google Play Services available.");
+            //Toast.makeText(MapaClinicaActivity.this,"Confira sua conexão", Toast.LENGTH_LONG).show();
+
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -82,12 +84,15 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
         int result = googleAPI.isGooglePlayServicesAvailable(this);
         if(result != ConnectionResult.SUCCESS) {
-            if(googleAPI.isUserResolvableError(result)) {
+           if(googleAPI.isUserResolvableError(result)){
                 googleAPI.getErrorDialog(this, result,
                         0).show();
+               //Toast.makeText(MapaClinicaActivity.this,"Confira sua conexão", Toast.LENGTH_LONG).show();
             }
             return false;
-        }
+        }//else{
+           // Toast.makeText(MapaClinicaActivity.this,"Confira sua conexão", Toast.LENGTH_LONG).show();
+        //}
         return true;
     }
 
@@ -109,9 +114,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         else {
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
-            //Snackbar snackbar = Snackbar.make(findViewById(R.id.rl4), "Novo pet salvo!", Snackbar.LENGTH_SHORT);
-            //snackbar.show();
-            //Toast.makeText(MapaClinicaActivity.this,"Falha ao acessar \n Ative o GPS e confira sua conexão", Toast.LENGTH_LONG).show();
+            //Toast.makeText(MapaClinicaActivity.this,"Ative o GPS e confira sua conexão", Toast.LENGTH_LONG).show();
 
         }
 
@@ -173,7 +176,11 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        }
+        }/*else{
+            Toast.makeText(MapaClinicaActivity.this,"fechando mapa por falta de conexão", Toast.LENGTH_LONG).show();
+
+            finish();
+        }*/
     }
 
     private String getUrl(double latitude, double longitude, String nearbyPlace) {
