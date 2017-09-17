@@ -51,7 +51,7 @@
             android:id="@+id/upnome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="textCapSentences"
             android:textColor="@color/primaryText"
             android:ems="10"
             android:layout_alignParentRight="true"
@@ -107,13 +107,13 @@
             android:layout_below="@id/upfoto"
             android:layout_gravity="bottom"
             android:padding="8dp"/>
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/upraca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="textCapSentences"
             android:textColor="@color/primaryText"
-            android:ems="10"
+            android:completionThreshold="1"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/edtName"/>
 
@@ -169,7 +169,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:textColor="@color/primaryText"
             android:ems="10"
             android:id="@+id/upidade"

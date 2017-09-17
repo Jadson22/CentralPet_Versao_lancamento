@@ -27,7 +27,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/nomePet"
         android:completionThreshold="1"
-        android:hint="Nome do pet" />
+        android:hint="Nome do pet"
+        android:inputType="textCapSentences"
+        android:textColor="@color/primaryText"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,13 +40,13 @@
         android:textSize="@dimen/txt_cad"
         android:padding="5dp"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/edtVacina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:textColor="@color/primaryText"
-        android:ems="10" />
+        android:inputType="textCapSentences"
+        android:completionThreshold="1"
+        android:textColor="@color/primaryText"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,8 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/primaryText"
-        android:ems="10"
-        android:inputType="date" />
+        android:inputType="number" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,9 +77,8 @@
         android:id="@+id/edtRetorno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="date"
-        android:textColor="@color/primaryText"
-        android:ems="10" />
+        android:inputType="number"
+        android:textColor="@color/primaryText" />
 
     <Button
         android:layout_width="wrap_content"

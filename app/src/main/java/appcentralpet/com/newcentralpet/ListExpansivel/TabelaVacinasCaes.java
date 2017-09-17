@@ -19,11 +19,7 @@ public class TabelaVacinasCaes extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle("Tabela de Vacinação-Cães");
-
-
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

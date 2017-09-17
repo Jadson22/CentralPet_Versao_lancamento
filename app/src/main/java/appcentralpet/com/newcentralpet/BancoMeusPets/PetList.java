@@ -8,32 +8,24 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -68,17 +60,6 @@ public class PetList extends Fragment implements Serializable{
         list = new ArrayList<>();
         adapter = new PetListAdapter(getContext(), R.layout.pet_itens, list);
         listView.setAdapter(adapter);
-
-
-        Cadastro cadastro= new Cadastro();
-        //cadastro.sqLiteHelper.getReadableDatabase();
-        //sqLiteHelper.getData("SELECT * FROM PET");
-
-        //sqLiteHelper = new SQLiteHelper(getContext(), "PetDB.sqlite", null, 4);
-        //conn = sqLiteHelper.getWritableDatabase();
-
-
-        cadastro.getActivity();
 
 
         Cursor cursor = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
@@ -137,7 +118,6 @@ public class PetList extends Fragment implements Serializable{
 
     ImageView imgPet;
     RadioGroup upradioSexo, upradioTipo;
-    RadioButton rbSexoEscolhido, rbTipoEscolhido;
 
     private void showDialogUpdate(Activity activity, final int position){
 
@@ -147,7 +127,9 @@ public class PetList extends Fragment implements Serializable{
 
         imgPet = (ImageView) dialog.findViewById(R.id.upfoto);
         final EditText edtName = (EditText) dialog.findViewById(R.id.upnome);
-        final EditText edtRaca = (EditText) dialog.findViewById(R.id.upraca);
+        final AutoCompleteTextView edtRaca = (AutoCompleteTextView) dialog.findViewById(R.id.upraca);
+        ArrayAdapter<String> array = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, Cadastro.RACAS);
+        edtRaca.setAdapter(array);
         final EditText edtIdade = (EditText) dialog.findViewById(R.id.upidade);
 
         upradioSexo = (RadioGroup) dialog.findViewById(R.id.upradioSexo);

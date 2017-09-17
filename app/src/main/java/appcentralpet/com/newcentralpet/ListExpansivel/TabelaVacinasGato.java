@@ -1,6 +1,5 @@
 package appcentralpet.com.newcentralpet.ListExpansivel;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -20,7 +19,6 @@ public class TabelaVacinasGato extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setTitle("Vacinas Gato");
-
     }
 
     @Override

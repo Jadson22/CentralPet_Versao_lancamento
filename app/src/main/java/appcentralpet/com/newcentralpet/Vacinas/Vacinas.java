@@ -5,13 +5,10 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteQueryBuilder;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,17 +22,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
-import appcentralpet.com.newcentralpet.BancoMeusPets.Pet;
-import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
-import appcentralpet.com.newcentralpet.BancoMeusPets.PetListAdapter;
-import appcentralpet.com.newcentralpet.BancoMeusPets.SQLiteHelper;
 import appcentralpet.com.newcentralpet.R;
+import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,8 +37,8 @@ public class Vacinas extends Fragment implements Serializable {
 
     public static SQLiteHelperVacinas sqLiteHelperVacinas;
 
-    EditText edtVacina, edtData, edtRetorno;
-    AutoCompleteTextView nomepet;
+    EditText edtData, edtRetorno;
+    AutoCompleteTextView nomepet, edtVacina;
 
     ListView listaVacinas;
     ArrayList<Vacina> list;
@@ -76,7 +69,6 @@ public class Vacinas extends Fragment implements Serializable {
         list = new ArrayList<>();
         adapter = new VacinaListAdapter(getContext(), R.layout.vacina_itens, list);
         listaVacinas.setAdapter(adapter);
-
 
         Cursor cursor = sqLiteHelperVacinas.getData("SELECT * FROM VACINAS");
         list.clear();
@@ -126,9 +118,10 @@ public class Vacinas extends Fragment implements Serializable {
             }
         });
 
+
+
         return view;
     }
-
 
     private void showDialogUpdate(Activity activity, final int position) {
 
@@ -136,9 +129,15 @@ public class Vacinas extends Fragment implements Serializable {
         dialogEdit.setContentView(R.layout.add_vacinas);
         dialogEdit.setTitle("Editar");
 
-        final EditText editarVacina = (EditText) dialogEdit.findViewById(R.id.edtVacina);
+        final AutoCompleteTextView editarVacina = (AutoCompleteTextView) dialogEdit.findViewById(R.id.edtVacina);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, VACINAS);
+        editarVacina.setAdapter(arrayAdapter);
         final EditText editarPdata = (EditText) dialogEdit.findViewById(R.id.edtData);
+        MaskEditTextChangedListener maskpData = new MaskEditTextChangedListener("##/##/####", editarPdata);
+        editarPdata.addTextChangedListener(maskpData);
         final EditText editarSData = (EditText) dialogEdit.findViewById(R.id.edtRetorno);
+        MaskEditTextChangedListener masksData = new MaskEditTextChangedListener("##/##/####", editarSData);
+        editarSData.addTextChangedListener(masksData);
         Button btnEditar = (Button) dialogEdit.findViewById(R.id.btnAdd);
 
         Cursor c = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
@@ -180,7 +179,6 @@ public class Vacinas extends Fragment implements Serializable {
                 }catch (Exception error){
                     Log.e("Update erro: ", error.getMessage());
                 }
-
                 atualizarListView();
             }
         });
@@ -215,6 +213,7 @@ public class Vacinas extends Fragment implements Serializable {
         dialogDelete.show();
     }
 
+    public static final String[] VACINAS = new String[]{"V8", "V10", "Gripe Canina", "Giardíase", "Anti-rábica", "Quádrupla Felina"};
 
     private void ShowDialogAdd() {
 
@@ -222,10 +221,17 @@ public class Vacinas extends Fragment implements Serializable {
         dialog.setContentView(R.layout.add_vacinas);
         dialog.setTitle("Adicionar");
 
-        //RECUPERANDO OS CAMPOS PARA O BANCO
-         edtVacina = (EditText) dialog.findViewById(R.id.edtVacina);
+
+         edtVacina = (AutoCompleteTextView) dialog.findViewById(R.id.edtVacina);
+         ArrayAdapter<String> adpVac = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, VACINAS);
+         edtVacina.setAdapter(adpVac);
+
          edtData = (EditText) dialog.findViewById(R.id.edtData);
+         MaskEditTextChangedListener maskedtdata = new MaskEditTextChangedListener("##/##/####", edtData);
+         edtData.addTextChangedListener(maskedtdata);
          edtRetorno = (EditText) dialog.findViewById(R.id.edtRetorno);
+         MaskEditTextChangedListener maskedtretorno = new MaskEditTextChangedListener("##/##/####", edtRetorno);
+         edtRetorno.addTextChangedListener(maskedtretorno);
         Cursor c = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
         ArrayAdapter<String> arrID = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
         while (c.moveToNext()){

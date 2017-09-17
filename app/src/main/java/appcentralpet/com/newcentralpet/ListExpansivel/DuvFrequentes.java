@@ -4,12 +4,8 @@ package appcentralpet.com.newcentralpet.ListExpansivel;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
@@ -33,7 +29,6 @@ public class DuvFrequentes extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,7 +48,6 @@ public class DuvFrequentes extends Fragment {
         lst_view.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-                //Toast.makeText(Duvidas_freq.this, "clic", Toast.LENGTH_SHORT).show();
                 switch (i) {
                     case 0:
                         switch (i1){
@@ -176,7 +170,6 @@ public class DuvFrequentes extends Fragment {
             }
         });
 
-
         //cria os grupos
         List<String> lstgrupos = new ArrayList<>();
         lstgrupos.add("Vacinação");
@@ -203,7 +196,6 @@ public class DuvFrequentes extends Fragment {
         dcg.add(new Info_duv("Clamidiose", ""));
         dcg.add(new Info_duv("Toxoplasmose", ""));
 
-
         //cria os itens de cada grupo
         List<Info_duv> dccaes = new ArrayList<>();
         dccaes.add(new Info_duv("Leishmaniose", ""));
@@ -216,8 +208,6 @@ public class DuvFrequentes extends Fragment {
         dccaes.add(new Info_duv("Coronavirose", ""));
         dccaes.add(new Info_duv("Dermatofitose", ""));
         dccaes.add(new Info_duv("Tosse dos canis", ""));
-
-
 
         //cria os itens de cada grupo
         List<Info_duv> lstAliment = new ArrayList<>();

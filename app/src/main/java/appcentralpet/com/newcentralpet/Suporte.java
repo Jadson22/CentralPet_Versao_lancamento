@@ -3,14 +3,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +21,6 @@ public class Suporte extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,7 +34,7 @@ public class Suporte extends Fragment {
             public void onClick(View view) {
                 Intent it = new Intent(Intent.ACTION_SEND);
                 it.setType("text/plain");
-                it.putExtra(Intent.EXTRA_TEXT, "Baixe o aplicativo Central Pet! \n https://.....");
+                it.putExtra(Intent.EXTRA_TEXT, "Baixe o aplicativo Central Pet!");
                 startActivity(it);
             }
         });
