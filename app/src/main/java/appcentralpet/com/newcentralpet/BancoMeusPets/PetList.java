@@ -53,11 +53,6 @@ public class PetList extends Fragment implements Serializable{
     ArrayList<Pet> list;
     PetListAdapter adapter = null;
 
-    Pet pet;
-    private SQLiteHelper sqLiteHelper;
-    private SQLiteDatabase conn;
-
-
     public PetList() {
         // Required empty public constructor
     }
@@ -158,16 +153,6 @@ public class PetList extends Fragment implements Serializable{
         upradioSexo = (RadioGroup) dialog.findViewById(R.id.upradioSexo);
         upradioTipo = (RadioGroup) dialog.findViewById(R.id.upradioTipo);
 
-        int idRbSexoEscolhido = upradioSexo.getCheckedRadioButtonId();
-        if(idRbSexoEscolhido > 0 ){
-            rbSexoEscolhido = (RadioButton) dialog.findViewById(idRbSexoEscolhido);
-        }
-
-        int idRbTipoEscolhido = upradioTipo.getCheckedRadioButtonId();
-        if(idRbTipoEscolhido > 0 ){
-            rbTipoEscolhido = (RadioButton) dialog.findViewById(idRbTipoEscolhido);
-        }
-
         Button btnUpdate = (Button) dialog.findViewById(R.id.btn_up);
 
         //tamanho da caixa dialog
@@ -190,15 +175,34 @@ public class PetList extends Fragment implements Serializable{
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String sexo = null;
+                switch (upradioSexo.getCheckedRadioButtonId()){
+                    case R.id.rbMacho:
+                        sexo = "macho";
+                        break;
+                    case R.id.rbFemea:
+                        sexo = "femea";
+                }
+
+                String tipo = null;
+                switch (upradioTipo.getCheckedRadioButtonId()){
+                    case R.id.rbCao:
+                        tipo = "cao";
+                        break;
+                    case R.id.rbGato:
+                        tipo = "gato";
+                }
+
                 try {
                     if(edtName.getText().toString().length() == 0 ){
                         edtName.setError("Digite um nome");
                     }else {
                         Cadastro.sqLiteHelper.updateData(
                                 edtName.getText().toString().trim(),
-                                rbSexoEscolhido.getText().toString().trim(),
+                                sexo.trim(),
                                 edtRaca.getText().toString().trim(),
-                                rbTipoEscolhido.getText().toString().trim(),
+                                tipo.trim(),
                                 edtIdade.getText().toString().trim(),
                                 Cadastro.imageViewToByte(imgPet),
                                 position

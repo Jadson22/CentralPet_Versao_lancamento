@@ -84,14 +84,14 @@ public class PetListAdapter extends BaseAdapter {
                 .into(holder.imgPerfil);
 
         //getraca
-        if(pet.getSexo().equals("Macho")){
+        if(pet.getSexo().equals("macho")){
             holder.iconeSexo.setImageResource(R.drawable.iconemasc);
         }else{
             holder.iconeSexo.setImageResource(R.drawable.iconefem);
         }
 
         //getsexo
-        if (pet.getTipo().equals("Cão")){
+        if (pet.getTipo().equals("cao")){
             holder.iconeTipo.setImageResource(R.drawable.iconecao);
         }else{
             holder.iconeTipo.setImageResource(R.drawable.iconegato);

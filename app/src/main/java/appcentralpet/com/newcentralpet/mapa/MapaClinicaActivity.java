@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
@@ -68,10 +69,9 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
             Log.d("onCreate", "Finishing test case since Google Play Services are not available");
             finish();
         }
+
         else {
             Log.d("onCreate","Google Play Services available.");
-            //Toast.makeText(MapaClinicaActivity.this,"Confira sua conexão", Toast.LENGTH_LONG).show();
-
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -83,18 +83,16 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
     private boolean CheckGooglePlayServices() {
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
         int result = googleAPI.isGooglePlayServicesAvailable(this);
-        if(result != ConnectionResult.SUCCESS) {
-           if(googleAPI.isUserResolvableError(result)){
+        if (result != ConnectionResult.SUCCESS) {
+            if (googleAPI.isUserResolvableError(result)) {
                 googleAPI.getErrorDialog(this, result,
                         0).show();
-               //Toast.makeText(MapaClinicaActivity.this,"Confira sua conexão", Toast.LENGTH_LONG).show();
             }
             return false;
-        }//else{
-           // Toast.makeText(MapaClinicaActivity.this,"Confira sua conexão", Toast.LENGTH_LONG).show();
-        //}
+        }
         return true;
     }
+
 
 
     @Override
@@ -109,30 +107,29 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
                     == PackageManager.PERMISSION_GRANTED) {
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
+            }else {
+                buildGoogleApiClient();
+                mMap.setMyLocationEnabled(true);
             }
         }
-        else {
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-            //Toast.makeText(MapaClinicaActivity.this,"Ative o GPS e confira sua conexão", Toast.LENGTH_LONG).show();
 
-        }
 
         final Button btnClinica = (Button) findViewById(R.id.Clinica);
         btnClinica.setOnClickListener(new View.OnClickListener() {
             String veterinary_care  = "veterinary_care";
             @Override
             public void onClick(View v) {
-                Log.d("onClick", "Button is Clicked");
-                mMap.clear();
-                String url = getUrl(latitude, longitude, veterinary_care);
-                Object[] DataTransfer = new Object[2];
-                DataTransfer[0] = mMap;
-                DataTransfer[1] = url;
-                Log.d("onClick", url);
-                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-                getNearbyPlacesData.execute(DataTransfer);
-                Toast.makeText(MapaClinicaActivity.this,"Clinicas Veterinárias", Toast.LENGTH_LONG).show();
+
+                    Log.d("onClick", "Button is Clicked");
+                    mMap.clear();
+                    String url = getUrl(latitude, longitude, veterinary_care);
+                    Object[] DataTransfer = new Object[2];
+                    DataTransfer[0] = mMap;
+                    DataTransfer[1] = url;
+                    Log.d("onClick", url);
+                    GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+                    getNearbyPlacesData.execute(DataTransfer);
+                    Toast.makeText(MapaClinicaActivity.this, "Clinicas Veterinárias", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -176,11 +173,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        }/*else{
-            Toast.makeText(MapaClinicaActivity.this,"fechando mapa por falta de conexão", Toast.LENGTH_LONG).show();
-
-            finish();
-        }*/
+        }
     }
 
     private String getUrl(double latitude, double longitude, String nearbyPlace) {
@@ -302,7 +295,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
                 } else {
 
                     // Permission denied, Disable the functionality that depends on this permission.
-                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Permissão negada", Toast.LENGTH_LONG).show();
                 }
                 return;
             }
