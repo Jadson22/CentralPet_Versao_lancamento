@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
@@ -69,7 +67,6 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
             Log.d("onCreate", "Finishing test case since Google Play Services are not available");
             finish();
         }
-
         else {
             Log.d("onCreate","Google Play Services available.");
         }
@@ -83,8 +80,8 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
     private boolean CheckGooglePlayServices() {
         GoogleApiAvailability googleAPI = GoogleApiAvailability.getInstance();
         int result = googleAPI.isGooglePlayServicesAvailable(this);
-        if (result != ConnectionResult.SUCCESS) {
-            if (googleAPI.isUserResolvableError(result)) {
+        if(result != ConnectionResult.SUCCESS) {
+            if(googleAPI.isUserResolvableError(result)) {
                 googleAPI.getErrorDialog(this, result,
                         0).show();
             }
@@ -92,7 +89,6 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         }
         return true;
     }
-
 
 
     @Override
@@ -107,29 +103,28 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
                     == PackageManager.PERMISSION_GRANTED) {
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
-            }else {
-                buildGoogleApiClient();
-                mMap.setMyLocationEnabled(true);
             }
         }
-
+        else {
+            buildGoogleApiClient();
+            mMap.setMyLocationEnabled(true);
+        }
 
         final Button btnClinica = (Button) findViewById(R.id.Clinica);
         btnClinica.setOnClickListener(new View.OnClickListener() {
             String veterinary_care  = "veterinary_care";
             @Override
             public void onClick(View v) {
-
-                    Log.d("onClick", "Button is Clicked");
-                    mMap.clear();
-                    String url = getUrl(latitude, longitude, veterinary_care);
-                    Object[] DataTransfer = new Object[2];
-                    DataTransfer[0] = mMap;
-                    DataTransfer[1] = url;
-                    Log.d("onClick", url);
-                    GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
-                    getNearbyPlacesData.execute(DataTransfer);
-                    Toast.makeText(MapaClinicaActivity.this, "Clinicas Veterinárias", Toast.LENGTH_LONG).show();
+                Log.d("onClick", "Button is Clicked");
+                mMap.clear();
+                String url = getUrl(latitude, longitude, veterinary_care);
+                Object[] DataTransfer = new Object[2];
+                DataTransfer[0] = mMap;
+                DataTransfer[1] = url;
+                Log.d("onClick", url);
+                GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
+                getNearbyPlacesData.execute(DataTransfer);
+                Toast.makeText(MapaClinicaActivity.this,"Clinicas Veterinárias", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -295,7 +290,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
                 } else {
 
                     // Permission denied, Disable the functionality that depends on this permission.
-                    Toast.makeText(this, "Permissão negada", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
                 }
                 return;
             }
