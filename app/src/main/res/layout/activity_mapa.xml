@@ -40,7 +40,8 @@
             android:text="Clínicas"
             android:id="@+id/Clinica"
             android:layout_marginRight="1dp"
-            android:background="#6ecdff" />
+            android:background="#6ecdff"
+            android:textColor="#ffffff"/>
 
         <Button
             android:layout_width="match_parent"
@@ -49,7 +50,8 @@
             android:text="Pet Shops"
             android:id="@+id/PetShop"
             android:background="#6ecdff"
-            android:layout_marginLeft="1dp"/>
+            android:layout_marginLeft="1dp"
+            android:textColor="#ffffff"/>
 
     </LinearLayout>
     </LinearLayout>

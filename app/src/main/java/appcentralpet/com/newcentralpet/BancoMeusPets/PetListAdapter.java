@@ -46,7 +46,7 @@ public class PetListAdapter extends BaseAdapter {
 
     private class ViewHolder{
         ImageView imgPerfil, iconeSexo, iconeTipo;
-        TextView textoName, textoRaca, textoIdade;
+        TextView textoName, textoRaca, textoIdade, textoAnos;
     }
 
     @Override
@@ -65,6 +65,7 @@ public class PetListAdapter extends BaseAdapter {
             holder.imgPerfil = (ImageView) row.findViewById(R.id.imgPerfil);
             holder.iconeSexo = (ImageView) row.findViewById(R.id.iconeSexo);
             holder.iconeTipo = (ImageView) row.findViewById(R.id.iconeTipo);
+            holder.textoAnos = (TextView) row.findViewById(R.id.idy) ;
 
             row.setTag(holder);
         }else{
@@ -96,6 +97,13 @@ public class PetListAdapter extends BaseAdapter {
         }else{
             holder.iconeTipo.setImageResource(R.drawable.iconegato);
         }
+
+        if(pet.getIdade().equals("1")){
+            holder.textoAnos.setText("ano");
+        }else{
+            holder.textoAnos.setText("anos");
+        }
+
         return row;
     }
 }
