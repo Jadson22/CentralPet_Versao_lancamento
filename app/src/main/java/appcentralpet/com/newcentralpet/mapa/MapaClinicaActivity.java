@@ -1,8 +1,11 @@
 package appcentralpet.com.newcentralpet.mapa;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -57,7 +60,9 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         toolbar_mapa = (Toolbar) findViewById(R.id.toolbar_mapa);
         toolbar_mapa.setTitle("Clínicas e Pet Shops");
 
-
+        if(!Online()){
+            Log.d("onCreate","tem conexão");
+        }
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
@@ -68,13 +73,25 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
             finish();
         }
         else {
-            Log.d("onCreate","Google Play Services available.");
+            Log.d("onCreate", "Google Play Services available.");
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+    //verificando conexão
+    public boolean Online() {
+        ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMgr.getActiveNetworkInfo();
+
+        if(netInfo == null || !netInfo.isConnected() || !netInfo.isAvailable()){
+            Toast.makeText(this, "Verifique a conexão com a internet", Toast.LENGTH_LONG).show();
+            finish();
+            return false;
+        }
+        return true;
     }
 
     private boolean CheckGooglePlayServices() {
@@ -95,21 +112,18 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
         //Initialize Google Play Services
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-                    == PackageManager.PERMISSION_GRANTED) {
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED) {
+                    buildGoogleApiClient();
+                    mMap.setMyLocationEnabled(true);
+                }
+            } else {
                 buildGoogleApiClient();
                 mMap.setMyLocationEnabled(true);
             }
-        }
-        else {
-            buildGoogleApiClient();
-            mMap.setMyLocationEnabled(true);
-        }
-
         final Button btnClinica = (Button) findViewById(R.id.Clinica);
         btnClinica.setOnClickListener(new View.OnClickListener() {
             String veterinary_care  = "veterinary_care";
@@ -290,7 +304,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
                 } else {
 
                     // Permission denied, Disable the functionality that depends on this permission.
-                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Permissão negada", Toast.LENGTH_LONG).show();
                 }
                 return;
             }
