@@ -14,7 +14,7 @@ public class Pet implements Serializable{
     private String tipo;
     private byte[] image;
 
-    public Pet(int id, String name, String raca, String idade, String sexo, String tipo, byte[] image) {
+    public Pet(int id, String name, String sexo, String raca, String tipo, String idade,  byte[] image) {
         this.id = id;
         this.name = name;
         this.raca = raca;
@@ -82,6 +82,6 @@ public class Pet implements Serializable{
 
     @Override
     public String toString(){
-        return name;
+        return "";
     }
 }

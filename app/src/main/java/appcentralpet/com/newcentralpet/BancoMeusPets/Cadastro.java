@@ -1,6 +1,5 @@
 package appcentralpet.com.newcentralpet.BancoMeusPets;
 
-
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -9,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,65 +15,69 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.io.Serializable;
 
 import appcentralpet.com.newcentralpet.R;
+import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Cadastro extends Fragment {
+public class Cadastro extends Fragment implements Serializable{
 
-    EditText edtName, edtRaca, edtIdade;
+    EditText edtName, edtIdade;
+    AutoCompleteTextView edtRaca;
     RadioGroup radioGroupSexo, radioGroupTipo;
-    RadioButton rbSexoEscolhido, rbTipoEscolhido;
     ImageView imageView;
-
-    Button btnSalvar;
 
     public static SQLiteHelper sqLiteHelper;
     final int REQUEST_CODE_GALLERY = 999;
+
+    public static final String[] RACAS = new String[]{"","Afghan Hound", "Airedale Terrier", "Akita", "American Staffordshire Terrier", "Boiadeiro Australiano",
+            "Basenji", "Basset Hound", "Beagle", "Bernese Mountain Dog", "Bichon Frisé", "Bloodhound", "Border Collie", "Borzoi", "Boston Terrier",
+            "Boxer", "Buldogue Francês", "Buldogue Inglês", "Bull Terrier", "Cane Corso", "Cão de Crista Chinês", "Cavalier King Charles Spaniel",
+            "Chihuahua", "Chow Chow", "Cocker Spaniel Americano", "Cocker Spaniel Inglês", "Collie", "Dachshund (Teckel)", "Dálmata", "Doberman",
+            "Dogo Argentino", "Dogue Alemão", "Dogue de Bordeaux", "Fila Brasileiro", "Fox Paulistinha", "Golden Retriever", "Greyhound", "Griffon de Bruxelas",
+            "Griffon de Bruxelas", "Husky Siberiano", "Jack Russell Terrier", " kuvasz", "Kuvasz", "Labrador", "Leão da Rodésia – Rhodesian Ridgeback", "Lhasa Apso",
+            "Lulu da Pomerânia Spitaz Alemão", "Malamute do Alasca", "Maltês", "Mastiff", "Old English Sheepdog", "Papillon", "Pastor Alemão (Capa Preta)", "Pastor Australiano",
+            "Pastor Belga", "Pastor Branco Suíço (Pastor Canadense)", "Pastor de Shetland", "Pastor Maremano Abruzês", "Pequinês", "Pinscher", "Pit Bull", "Pointer Inglês", "Poodle",
+            "Pug", "Rottweiler", "Samoieda", "São Bernardo", "Schnauzer Miniatura", "Setter Irlandês", "Shar Pei", "Shiba Inu", "Shih Tzu", "Spitz Japonês", "Staffordshire Bull Terrier",
+            "(SRD) Vira Lata", "Weimaraner", "Welsh Corgi Pembroke", "West Highland White Terrier", "Whippet", "Yorkshire Terrier",
+
+            "Persa", "Siamês", "Himalaia", "Maine Coon", "Angorá", "Siberiano", "Sphynx", "Burmese", "Ragdoll", "British Shorthair", "Exótico",
+            "Munchkin", "Burmese"};
 
     public Cadastro() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cadastro, container, false);
 
-        btnSalvar = (Button) view.findViewById(R.id.btnSalvar);
-
         edtName = (EditText) view.findViewById(R.id.editartName);
-        edtRaca = (EditText) view.findViewById(R.id.editarRaca);
+        edtRaca = (AutoCompleteTextView) view.findViewById(R.id.editarRaca);
+        ArrayAdapter<String> array = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, RACAS);
+        edtRaca.setAdapter(array);
+
         edtIdade = (EditText) view.findViewById(R.id.editarIdade);
+        MaskEditTextChangedListener maskedtIdade = new MaskEditTextChangedListener("##", edtIdade);
+        edtIdade.addTextChangedListener(maskedtIdade);
 
         radioGroupSexo = (RadioGroup) view.findViewById(R.id.radioSexo);
         radioGroupTipo = (RadioGroup) view.findViewById(R.id.radioTipo);
-
-        int idRbSexoEscolhido = radioGroupSexo.getCheckedRadioButtonId();
-        if(idRbSexoEscolhido > 0 ){
-            rbSexoEscolhido = (RadioButton) view.findViewById(idRbSexoEscolhido);
-        }
-
-        int idRbTipoEscolhido = radioGroupTipo.getCheckedRadioButtonId();
-        if(idRbTipoEscolhido > 0 ){
-            rbTipoEscolhido = (RadioButton) view.findViewById(idRbTipoEscolhido);
-        }
 
         imageView = (ImageView) view.findViewById(R.id.imageView);
 
@@ -92,13 +94,6 @@ public class Cadastro extends Fragment {
             @Override
             public void onClick(View view) {
                 escolherImg();
-            }
-        });
-
-        btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                adicionar();
             }
         });
 
@@ -153,15 +148,33 @@ public class Cadastro extends Fragment {
 
     public void adicionar() {
 
+        String sexo = null;
+        switch (radioGroupSexo.getCheckedRadioButtonId()){
+            case R.id.rbMacho:
+                sexo = "macho";
+                break;
+            case R.id.rbFemea:
+                sexo = "femea";
+        }
+
+        String tipo = null;
+        switch (radioGroupTipo.getCheckedRadioButtonId()){
+            case R.id.rbCao:
+                tipo = "cao";
+                break;
+            case R.id.rbGato:
+                tipo = "gato";
+        }
+
         try {
             if(edtName.getText().toString().length() == 0){
                 edtName.setError("Digite um nome");
             }else {
                 sqLiteHelper.insertData(
                         edtName.getText().toString().trim(),
-                        rbSexoEscolhido.getText().toString().trim(),
+                        sexo.trim(),
                         edtRaca.getText().toString().trim(),
-                        rbTipoEscolhido.getText().toString().trim(),
+                        tipo.trim(),
                         edtIdade.getText().toString().trim(),
                         imageViewToByte(imageView)
                 );
@@ -191,14 +204,25 @@ public class Cadastro extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_cadstromeuspets, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = menu.findItem(R.id.adicionar);
+        item.setVisible(true);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-            case R.id.adicionar:
-                adicionar();
-                break;
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.adicionar) {
+            adicionar();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

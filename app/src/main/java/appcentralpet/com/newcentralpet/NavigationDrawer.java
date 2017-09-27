@@ -12,15 +12,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import java.io.Serializable;
+
+import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
+import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
 import appcentralpet.com.newcentralpet.ListExpansivel.DuvFrequentes;
 import appcentralpet.com.newcentralpet.Vacinas.Vacinas;
 import appcentralpet.com.newcentralpet.mapa.MapaClinicaActivity;
-import appcentralpet.com.newcentralpet.newBancoDados.CadastroMeusPets;
-import appcentralpet.com.newcentralpet.newBancoDados.CadastroPets;
-import appcentralpet.com.newcentralpet.newBancoDados.ListaPets;
 
 public class NavigationDrawer extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, Serializable{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +31,12 @@ public class NavigationDrawer extends AppCompatActivity
         toolbar.setTitle("Novo Pet");
         setSupportActionBar(toolbar);
 
+        Cadastro cadastro = new Cadastro();
+        cadastro.getClass();
+
+
         FragmentManager fragmentManager = getSupportFragmentManager();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new ListaPets()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Cadastro()).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -41,7 +46,7 @@ public class NavigationDrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        navigationView.getMenu().getItem(1).setChecked(true);
+        navigationView.getMenu().getItem(0).setChecked(true);
     }
 
     @Override
@@ -54,7 +59,6 @@ public class NavigationDrawer extends AppCompatActivity
         }
     }
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -62,10 +66,11 @@ public class NavigationDrawer extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_cadastro) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new CadastroMeusPets()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Cadastro()).commit();
             getSupportActionBar().setTitle("Novo Pet");
+
         } else if (id == R.id.nav_meusPets) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new ListaPets()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new PetList()).commit();
             getSupportActionBar().setTitle("Meus Pets");
 
         } else if (id == R.id.nav_vacina) {
@@ -73,6 +78,7 @@ public class NavigationDrawer extends AppCompatActivity
             getSupportActionBar().setTitle("Vacinas");
 
         } else if (id == R.id.nav_clinicas) {
+            //getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new MapaClinicaActivity()).commit();
             Intent intent = new Intent(NavigationDrawer.this, MapaClinicaActivity.class);
             startActivity(intent);
 
