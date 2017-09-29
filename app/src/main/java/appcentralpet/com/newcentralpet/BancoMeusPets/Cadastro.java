@@ -44,7 +44,7 @@ public class Cadastro extends Fragment implements Serializable{
     public static SQLiteHelper sqLiteHelper;
     final int REQUEST_CODE_GALLERY = 999;
 
-    public static final String[] RACAS = new String[]{"jadson medeiros","Afghan Hound", "Airedale Terrier", "Akita", "American Staffordshire Terrier", "Boiadeiro Australiano",
+    public static final String[] RACAS = new String[]{"Afghan Hound", "Airedale Terrier", "Akita", "American Staffordshire Terrier", "Boiadeiro Australiano",
             "Basenji", "Basset Hound", "Beagle", "Bernese Mountain Dog", "Bichon Frisé", "Bloodhound", "Border Collie", "Borzoi", "Boston Terrier",
             "Boxer", "Buldogue Francês", "Buldogue Inglês", "Bull Terrier", "Cane Corso", "Cão de Crista Chinês", "Cavalier King Charles Spaniel",
             "Chihuahua", "Chow Chow", "Cocker Spaniel Americano", "Cocker Spaniel Inglês", "Collie", "Dachshund (Teckel)", "Dálmata", "Doberman",

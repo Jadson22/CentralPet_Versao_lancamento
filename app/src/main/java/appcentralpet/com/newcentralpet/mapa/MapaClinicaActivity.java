@@ -65,6 +65,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         }
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
+
         }
 
         //Check if Google Play Services Available or not
@@ -121,8 +122,8 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
                     mMap.setMyLocationEnabled(true);
                 }
             } else {
-                buildGoogleApiClient();
-                mMap.setMyLocationEnabled(true);
+                    buildGoogleApiClient();
+                    mMap.setMyLocationEnabled(true);
             }
         final Button btnClinica = (Button) findViewById(R.id.Clinica);
         btnClinica.setOnClickListener(new View.OnClickListener() {
@@ -138,7 +139,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
                 Log.d("onClick", url);
                 GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
                 getNearbyPlacesData.execute(DataTransfer);
-                Toast.makeText(MapaClinicaActivity.this,"Clinicas Veterinárias", Toast.LENGTH_LONG).show();
+                Toast.makeText(MapaClinicaActivity.this,"Clínicas Veterinárias", Toast.LENGTH_LONG).show();
             }
         });
 
