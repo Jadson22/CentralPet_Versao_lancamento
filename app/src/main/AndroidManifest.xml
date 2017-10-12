@@ -14,6 +14,20 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    //permissão da notificação
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <service android:name=".Receiver2" android:enabled="true">
+        <intent-filter> <action android:name="NOTIFICATION_SERVICE" /></intent-filter>
+    </service>
+    <receiver android:name=".AlarmReceiver" >
+        <intent-filter>
+            <action android:name="NOTIFICATION_SERVICE" />
+        </intent-filter>
+    </receiver>
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="10" />
 
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -54,6 +68,11 @@
         <activity android:name=".BancoMeusPets.EditarPet" />
         <activity android:name=".newBancoDados.ModeloPerfil" />
         <activity android:name=".newBancoDados.CadastroPets"></activity>
+
+        <service android:name=".MyAlarmService"
+            android:enabled="true" />
+
+        <receiver android:name=".MyReceiver"/>
     </application>
 
 </manifest>
