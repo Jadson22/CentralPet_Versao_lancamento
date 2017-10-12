@@ -34,8 +34,7 @@ public class NavigationDrawer extends AppCompatActivity
         //Notificação
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.HOUR,16);
-
+        calendar.set(Calendar.HOUR,16,50);
 
         Intent myIntent = new Intent(NavigationDrawer.this, MyReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(NavigationDrawer.this, 0, myIntent,0);
