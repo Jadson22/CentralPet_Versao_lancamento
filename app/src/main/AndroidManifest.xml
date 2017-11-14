@@ -7,8 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera"/>
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -16,6 +14,20 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    //permissão da notificação
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <service android:name=".Receiver2" android:enabled="true">
+        <intent-filter> <action android:name="NOTIFICATION_SERVICE" /></intent-filter>
+    </service>
+    <receiver android:name=".AlarmReceiver" >
+        <intent-filter>
+            <action android:name="NOTIFICATION_SERVICE" />
+        </intent-filter>
+    </receiver>
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="10" />
 
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -53,9 +65,14 @@
         <activity android:name=".ListExpansivel.TextosDuvidas" />
         <activity android:name=".ListExpansivel.TabelaVacinasCaes" />
         <activity android:name=".ListExpansivel.TabelaVacinasGato" />
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
+        <activity android:name=".BancoMeusPets.EditarPet" />
+        <activity android:name=".newBancoDados.ModeloPerfil" />
+        <activity android:name=".newBancoDados.CadastroPets"></activity>
 
+        <service android:name=".MyAlarmService"
+            android:enabled="true" />
+
+        <receiver android:name=".MyReceiver"/>
     </application>
 
 </manifest>

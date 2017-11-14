@@ -1,5 +1,7 @@
 package appcentralpet.com.newcentralpet;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
 import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
@@ -23,6 +26,7 @@ import appcentralpet.com.newcentralpet.mapa.MapaClinicaActivity;
 
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Serializable{
+    private PendingIntent pendingIntent;
 
     public static SQLiteHelper sqLiteHelper;
 
@@ -30,6 +34,18 @@ public class NavigationDrawer extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
+        //Notificação
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.HOUR,16,50);
+
+        Intent myIntent = new Intent(NavigationDrawer.this, MyReceiver.class);
+        pendingIntent = PendingIntent.getBroadcast(NavigationDrawer.this, 0, myIntent,0);
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+        //
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Vacinas");
         setSupportActionBar(toolbar);

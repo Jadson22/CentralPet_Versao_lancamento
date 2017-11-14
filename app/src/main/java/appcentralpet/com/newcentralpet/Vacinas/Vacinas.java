@@ -50,7 +50,6 @@ public class Vacinas extends Fragment implements Serializable {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -190,7 +189,7 @@ public class Vacinas extends Fragment implements Serializable {
         final AlertDialog.Builder dialogDelete = new AlertDialog.Builder(getContext());
 
         dialogDelete.setTitle("Atenção!");
-        dialogDelete.setMessage("Apagar Pet?");
+        dialogDelete.setMessage("Apagar Vacina?");
         dialogDelete.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
