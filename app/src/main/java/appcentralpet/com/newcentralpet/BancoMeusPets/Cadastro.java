@@ -1,14 +1,19 @@
 package appcentralpet.com.newcentralpet.BancoMeusPets;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,16 +23,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.Serializable;
 
+import appcentralpet.com.newcentralpet.NavigationDrawer;
 import appcentralpet.com.newcentralpet.R;
 import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 
@@ -36,13 +45,15 @@ import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
  */
 public class Cadastro extends Fragment implements Serializable{
 
+
     EditText edtName, edtIdade;
     AutoCompleteTextView edtRaca;
     RadioGroup radioGroupSexo, radioGroupTipo;
-    ImageView imageView;
+    ImageButton imageView;
 
-    public static SQLiteHelper sqLiteHelper;
+
     final int REQUEST_CODE_GALLERY = 999;
+    final int REQUEST_CODE_CAMERA = 200;
 
     public static final String[] RACAS = new String[]{"Afghan Hound", "Airedale Terrier", "Akita", "American Staffordshire Terrier", "Boiadeiro Australiano",
             "Basenji", "Basset Hound", "Beagle", "Bernese Mountain Dog", "Bichon Frisé", "Bloodhound", "Border Collie", "Borzoi", "Boston Terrier",
@@ -79,25 +90,37 @@ public class Cadastro extends Fragment implements Serializable{
         radioGroupSexo = (RadioGroup) view.findViewById(R.id.radioSexo);
         radioGroupTipo = (RadioGroup) view.findViewById(R.id.radioTipo);
 
-        imageView = (ImageView) view.findViewById(R.id.imageView);
-
-        sqLiteHelper = new SQLiteHelper(getContext(), "PetDB.sqlite", null, 4);
-        sqLiteHelper.queryData( "CREATE TABLE IF NOT EXISTS PET (Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name VARCHAR, " +
-                "sexo VARCHAR, " +
-                "raca VARCHAR, " +
-                "tipo VARCHAR, " +
-                "idade VARCHAR, " +
-                "image BLOB)");
-
+        imageView = (ImageButton) view.findViewById(R.id.imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                escolherImg();
+                CharSequence[] itens = {"Tirar foto", "Escolher da galeria"};
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+
+                dialog.setTitle("Escolher imagem");
+                dialog.setItems(itens, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int item) {
+                        if(item == 0 ){
+                            //tirar foto
+                            abrircamera();
+                        }else{
+                            //galeria
+                            escolherImg();
+                        }
+                    }
+                });
+                dialog.show();
             }
         });
 
         return view;
+    }
+
+    private void abrircamera() {
+        requestPermissions(
+                new String[]{Manifest.permission.CAMERA},
+                REQUEST_CODE_CAMERA);
     }
 
     public void escolherImg(){
@@ -110,12 +133,21 @@ public class Cadastro extends Fragment implements Serializable{
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(requestCode == REQUEST_CODE_GALLERY){
-            if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, REQUEST_CODE_GALLERY);
+            } else {
+                Snackbar snackbar = Snackbar.make(getView(), "Você não tem permissão para acessar os arquivos!", Snackbar.LENGTH_SHORT);
+                snackbar.show();
             }
-            else {
+            return;
+        }
+        else if(requestCode == REQUEST_CODE_CAMERA){
+            if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, REQUEST_CODE_CAMERA);
+            } else {
                 Snackbar snackbar = Snackbar.make(getView(), "Você não tem permissão para acessar os arquivos!", Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
@@ -128,23 +160,42 @@ public class Cadastro extends Fragment implements Serializable{
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == REQUEST_CODE_GALLERY && resultCode == getActivity().RESULT_OK && data != null){
             Uri uri = data.getData();
-
-
-            try {
-                InputStream inputStream = getActivity().getContentResolver().openInputStream(uri);
-
                 Glide.with(this)
-                        .load(uri)
-                        .asBitmap()
-                        .centerCrop()
-                        .into(imageView);
+                .load(uri)
+                .asBitmap()
+                .into(imageView);
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+        }  else if(requestCode == REQUEST_CODE_CAMERA && resultCode == getActivity().RESULT_OK && data!= null){
+            Uri uir = data.getData();
+            Glide.with(this)
+                    .load(uir)
+                    .asBitmap()
+                    .into(imageView);
+            /* CropImage.activity(uir)
+                    .setAspectRatio(1, 1)
+                    .start(getContext(), this);
+
+            if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                if (resultCode == getActivity().RESULT_OK) {
+                    Uri resultUri = result.getUri();
+                        Glide.with(this)
+                                .load(resultUri)
+                                .asBitmap()
+                                .into(imageView);
+
+                } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                    Exception error = result.getError();
+                }
             }
+            */
         }
+
         super.onActivityResult(requestCode, resultCode, data);
+
     }
+
+    NavigationDrawer nv = new NavigationDrawer();
 
     public void adicionar() {
 
@@ -167,10 +218,15 @@ public class Cadastro extends Fragment implements Serializable{
         }
 
         try {
-            if(edtName.getText().toString().length() == 0){
-                edtName.setError("Digite um nome");
+            if((edtName.getText().toString().length() == 0) || (edtRaca.getText().toString().length() == 0)){
+                if(edtName.getText().toString().length() == 0) {
+                    edtName.setError("Digite um nome");
+                }else {
+                    edtRaca.setError("Digite uma raça");
+                }
             }else {
-                sqLiteHelper.insertData(
+
+                nv.sqLiteHelper.insertData(
                         edtName.getText().toString().trim(),
                         sexo.trim(),
                         edtRaca.getText().toString().trim(),
@@ -226,4 +282,5 @@ public class Cadastro extends Fragment implements Serializable{
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

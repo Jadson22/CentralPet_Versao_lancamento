@@ -34,6 +34,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import appcentralpet.com.newcentralpet.NavigationDrawer;
 import appcentralpet.com.newcentralpet.R;
 
 /**
@@ -62,7 +63,7 @@ public class PetList extends Fragment implements Serializable{
         listView.setAdapter(adapter);
 
 
-        Cursor cursor = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
+        Cursor cursor = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
@@ -89,7 +90,7 @@ public class PetList extends Fragment implements Serializable{
                     public void onClick(DialogInterface dialogInterface, int item) {
                         if(item == 0 ){
                             //editar
-                            Cursor c = Cadastro.sqLiteHelper.getData("SELECT id FROM PET");
+                            Cursor c = NavigationDrawer.sqLiteHelper.getData("SELECT id FROM PET");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
@@ -98,7 +99,7 @@ public class PetList extends Fragment implements Serializable{
 
                         }else{
                             //apagar
-                            Cursor c = Cadastro.sqLiteHelper.getData("SELECT id FROM PET");
+                            Cursor c = NavigationDrawer.sqLiteHelper.getData("SELECT id FROM PET");
                             ArrayList<Integer> arrID = new ArrayList<Integer>();
                             while (c.moveToNext()){
                                 arrID.add(c.getInt(0));
@@ -180,7 +181,7 @@ public class PetList extends Fragment implements Serializable{
                     if(edtName.getText().toString().length() == 0 ){
                         edtName.setError("Digite um nome");
                     }else {
-                        Cadastro.sqLiteHelper.updateData(
+                        NavigationDrawer.sqLiteHelper.updateData(
                                 edtName.getText().toString().trim(),
                                 sexo.trim(),
                                 edtRaca.getText().toString().trim(),
@@ -211,7 +212,7 @@ public class PetList extends Fragment implements Serializable{
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    Cadastro.sqLiteHelper.deleteData(idPet);
+                    NavigationDrawer.sqLiteHelper.deleteData(idPet);
                     Snackbar snackbar = Snackbar.make(getView(), "Excluido com sucesso!", Snackbar.LENGTH_SHORT);
                     snackbar.show();
                 } catch (Exception e){
@@ -232,7 +233,7 @@ public class PetList extends Fragment implements Serializable{
 
     private void editarPet(){
         // get all data from sqlite
-        Cursor cursor = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
+        Cursor cursor = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");
         list.clear();
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);

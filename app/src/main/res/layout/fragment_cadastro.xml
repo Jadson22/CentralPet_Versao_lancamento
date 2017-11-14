@@ -22,12 +22,14 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                    <ImageView
+
+                    <ImageButton
                         android:id="@+id/imageView"
                         android:layout_width="130dp"
                         android:layout_height="130dp"
                         app:srcCompat="@drawable/novaphoto"
                         android:layout_alignParentLeft="true"/>
+
                 </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"

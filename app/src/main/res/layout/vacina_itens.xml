@@ -81,6 +81,17 @@
         android:layout_marginLeft="@dimen/margin_left" />
 
     <TextView
+        android:text="ponto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ponto"
+        android:textSize="14sp"
+        android:textColor="#535353"
+        android:layout_below="@+id/setarVacina"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
         android:text="Retornar em: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

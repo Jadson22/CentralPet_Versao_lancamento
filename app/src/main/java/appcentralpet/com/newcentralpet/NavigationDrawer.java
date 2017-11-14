@@ -16,6 +16,7 @@ import java.io.Serializable;
 
 import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
 import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
+import appcentralpet.com.newcentralpet.BancoMeusPets.SQLiteHelper;
 import appcentralpet.com.newcentralpet.ListExpansivel.DuvFrequentes;
 import appcentralpet.com.newcentralpet.Vacinas.Vacinas;
 import appcentralpet.com.newcentralpet.mapa.MapaClinicaActivity;
@@ -23,20 +24,28 @@ import appcentralpet.com.newcentralpet.mapa.MapaClinicaActivity;
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Serializable{
 
+    public static SQLiteHelper sqLiteHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Novo Pet");
+        toolbar.setTitle("Vacinas");
         setSupportActionBar(toolbar);
 
-        Cadastro cadastro = new Cadastro();
-        cadastro.getClass();
+        sqLiteHelper = new SQLiteHelper(this, "PetDB.sqlite", null, 4);
+        sqLiteHelper.queryData( "CREATE TABLE IF NOT EXISTS PET (Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name VARCHAR, " +
+                "sexo VARCHAR, " +
+                "raca VARCHAR, " +
+                "tipo VARCHAR, " +
+                "idade VARCHAR, " +
+                "image BLOB)");
 
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Cadastro()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Vacinas()).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

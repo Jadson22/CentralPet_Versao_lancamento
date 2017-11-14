@@ -2,18 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_cadastro"
-            android:icon="@drawable/ic_add"
-            android:title="Novo pet" />
+            android:id="@+id/nav_vacina"
+            android:icon="@drawable/ic_seringa"
+            android:title="Vacinas" />
         <item
             android:id="@+id/nav_meusPets"
             android:icon="@drawable/newdog"
             android:title="Meus pets" />
         <item
-            android:id="@+id/nav_vacina"
-            android:icon="@drawable/ic_seringa"
-            android:title="Vacinas" />
+            android:id="@+id/nav_cadastro"
+            android:icon="@drawable/ic_add"
+            android:title="Novo pet" />
         <item
             android:id="@+id/nav_clinicas"
             android:icon="@drawable/ic_clinicas"

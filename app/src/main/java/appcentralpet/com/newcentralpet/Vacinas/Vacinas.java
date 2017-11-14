@@ -27,6 +27,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
+import appcentralpet.com.newcentralpet.NavigationDrawer;
 import appcentralpet.com.newcentralpet.R;
 import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 
@@ -140,7 +141,7 @@ public class Vacinas extends Fragment implements Serializable {
         editarSData.addTextChangedListener(masksData);
         Button btnEditar = (Button) dialogEdit.findViewById(R.id.btnAdd);
 
-        Cursor c = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
+        Cursor c = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");
         ArrayAdapter<String> arrID = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
         while (c.moveToNext()){
             arrID.add(c.getString(1));
@@ -232,7 +233,7 @@ public class Vacinas extends Fragment implements Serializable {
          edtRetorno = (EditText) dialog.findViewById(R.id.edtRetorno);
          MaskEditTextChangedListener maskedtretorno = new MaskEditTextChangedListener("##/##/####", edtRetorno);
          edtRetorno.addTextChangedListener(maskedtretorno);
-        Cursor c = Cadastro.sqLiteHelper.getData("SELECT * FROM PET");
+        Cursor c = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");
         ArrayAdapter<String> arrID = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
         while (c.moveToNext()){
             arrID.add(c.getString(1));
