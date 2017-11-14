@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -65,9 +66,6 @@
         <activity android:name=".ListExpansivel.TextosDuvidas" />
         <activity android:name=".ListExpansivel.TabelaVacinasCaes" />
         <activity android:name=".ListExpansivel.TabelaVacinasGato" />
-        <activity android:name=".BancoMeusPets.EditarPet" />
-        <activity android:name=".newBancoDados.ModeloPerfil" />
-        <activity android:name=".newBancoDados.CadastroPets"></activity>
 
         <service android:name=".MyAlarmService"
             android:enabled="true" />
