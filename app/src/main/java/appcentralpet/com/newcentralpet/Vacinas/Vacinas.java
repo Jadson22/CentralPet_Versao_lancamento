@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.Dialog;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -25,12 +26,14 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
 import appcentralpet.com.newcentralpet.NavigationDrawer;
@@ -253,8 +256,33 @@ public class Vacinas extends Fragment implements Serializable {
                 adicionarVacina();
                 dialog.dismiss();
 
+                // time at which alarm will be scheduled here alarm is scheduled at 1 day from current time,
+                // we fetch  the current time in milliseconds and added 1 day time
+                // i.e. 24*60*60*1000= 86,400,000   milliseconds in a day
+                Long time = new GregorianCalendar().getTimeInMillis()+5000;
+                //24*60*60*1000
+
+                // create an Intent and set the class which will execute when Alarm triggers, here we have
+                // given AlarmReciever in the Intent, the onRecieve() method of this class will execute when
+                // alarm triggers and
+                //we will write the code to send SMS inside onRecieve() method pf Alarmreciever class
+                Intent intentAlarm = new Intent(getContext(), MyReceiver.class);
+
+                // create the object
+                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+
+                //set the alarm for particular time
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time, time, PendingIntent.getBroadcast(getContext(),1 ,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+                Toast.makeText(getContext(), "Será avisado quando estiver no dia", Toast.LENGTH_LONG).show();
 
             }
+
+
+
+
+
+
+
         });
 
         int width = (int) (getActivity().getResources().getDisplayMetrics().widthPixels * 0.95);
@@ -320,15 +348,6 @@ public class Vacinas extends Fragment implements Serializable {
         }catch (Exception e){
             e.printStackTrace();
         }
-        /*//notificação
-        String data=edtData.getText().toString();
-        ComponentName serviceName= new ComponentName(getContext(), ServicoAlarme.class);
-        JobInfo jobInfo= new JobInfo.Builder(0, serviceName).setPeriodic(Integer.parseInt(data))
-                //.setMinimumLatency(Integer.parseInt(data))
-                .setRequiresCharging(false).build();
-        JobScheduler scheduler= (JobScheduler) getContext().getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        int result= scheduler.schedule(jobInfo);
-        if(result== JobScheduler.RESULT_SUCCESS)Log.d("MainActivity", "vacina agendad;a!");*/
         atualizarListView();
     }
 
@@ -348,6 +367,7 @@ public class Vacinas extends Fragment implements Serializable {
         adapter.notifyDataSetChanged();
 
     }
+
 
 
     @Override

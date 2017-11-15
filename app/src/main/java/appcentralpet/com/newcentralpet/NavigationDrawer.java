@@ -77,7 +77,7 @@ public class NavigationDrawer extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        notificação();
+        //notificação();
     }
 
     @Override
@@ -131,7 +131,7 @@ public class NavigationDrawer extends AppCompatActivity
         return true;
     }
 
-    public void notificação() {
+   /* public void notificação() {
         Calendar calendar = Calendar.getInstance();
         Date data = calendar.getTime();
         DateFormat format = DateFormat.getDateInstance(DateFormat.MEDIUM);
@@ -145,11 +145,11 @@ public class NavigationDrawer extends AppCompatActivity
         while(dt.equals(pData)) {
 
                 AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+                alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),5000, pendingIntent);
 
             return;
         }
-        }
+        }*/
     }
 
 

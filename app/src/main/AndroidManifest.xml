@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
-
+    <uses-permission android:name = "com.android.alarm.permission.SET_ALARM" />
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -67,11 +67,12 @@
         <activity android:name=".ListExpansivel.TabelaVacinasCaes" />
         <activity android:name=".ListExpansivel.TabelaVacinasGato" />
 
-        <service android:name=".MyAlarmService"
+        <service android:name=".Vacinas.MyAlarmService"
             android:enabled="true" />
 
 
-        <receiver android:name=".MyReceiver"/>
+        <receiver android:name=".Vacinas.MyReceiver"/>
+
     </application>
 
 </manifest>
