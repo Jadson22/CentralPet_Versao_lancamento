@@ -2,8 +2,11 @@ package appcentralpet.com.newcentralpet.Vacinas;
 
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -24,7 +27,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
 import appcentralpet.com.newcentralpet.NavigationDrawer;
@@ -40,7 +46,6 @@ public class Vacinas extends Fragment implements Serializable {
 
     EditText edtData, edtRetorno;
     AutoCompleteTextView nomepet, edtVacina;
-
     ListView listaVacinas;
     ArrayList<Vacina> list;
     VacinaListAdapter adapter = null;
@@ -53,8 +58,11 @@ public class Vacinas extends Fragment implements Serializable {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_vacinas, container, false);
+
+
 
         sqLiteHelperVacinas = new SQLiteHelperVacinas(getContext(), "PetVacina.sqlite", null, 1);
         sqLiteHelperVacinas.queryData("CREATE TABLE IF NOT EXISTS VACINAS " +
@@ -117,8 +125,6 @@ public class Vacinas extends Fragment implements Serializable {
                 return true;
             }
         });
-
-
 
         return view;
     }
@@ -215,7 +221,7 @@ public class Vacinas extends Fragment implements Serializable {
 
     public static final String[] VACINAS = new String[]{"V8", "V10", "Gripe Canina", "Giardíase", "Anti-rábica", "Quádrupla Felina"};
 
-    private void ShowDialogAdd() {
+    private void ShowDialogAdd(){
 
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.add_vacinas);
@@ -246,6 +252,8 @@ public class Vacinas extends Fragment implements Serializable {
             public void onClick(View v) {
                 adicionarVacina();
                 dialog.dismiss();
+
+
             }
         });
 
@@ -257,7 +265,34 @@ public class Vacinas extends Fragment implements Serializable {
 
     }
 
+
+
+
+
+
+        /*
+        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(edtData.getText().toString()));
+
+        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(PData.getText.toString()));
+        Intent myIntent = new Intent(.this, MyReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(Vacina.this, 0, myIntent, 0);
+
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);*/
+
+        /*String data=edtData.getText().toString();
+        ComponentName serviceName= new ComponentName(getContext(), ServicoAlarme.class);
+        JobInfo jobInfo= new JobInfo.Builder(0, serviceName).setPeriodic(21/10/2017)
+                .setMinimumLatency(12)
+                .setRequiresCharging(false).build();
+        JobScheduler scheduler= (JobScheduler) getContext().getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        int result= scheduler.schedule(jobInfo);
+        if(result== JobScheduler.RESULT_SUCCESS)Log.d("MainActivity", "vacina agendada!");*/
+
+
+
     private void adicionarVacina() {
+
         try{
 
             if((nomepet.getText().toString().length() == 0) || (edtVacina.getText().toString().length() == 0)){
@@ -285,7 +320,15 @@ public class Vacinas extends Fragment implements Serializable {
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        /*//notificação
+        String data=edtData.getText().toString();
+        ComponentName serviceName= new ComponentName(getContext(), ServicoAlarme.class);
+        JobInfo jobInfo= new JobInfo.Builder(0, serviceName).setPeriodic(Integer.parseInt(data))
+                //.setMinimumLatency(Integer.parseInt(data))
+                .setRequiresCharging(false).build();
+        JobScheduler scheduler= (JobScheduler) getContext().getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        int result= scheduler.schedule(jobInfo);
+        if(result== JobScheduler.RESULT_SUCCESS)Log.d("MainActivity", "vacina agendad;a!");*/
         atualizarListView();
     }
 
@@ -305,6 +348,7 @@ public class Vacinas extends Fragment implements Serializable {
         adapter.notifyDataSetChanged();
 
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -331,4 +375,6 @@ public class Vacinas extends Fragment implements Serializable {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

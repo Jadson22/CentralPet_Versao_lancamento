@@ -74,5 +74,6 @@ public class VacinaListAdapter extends BaseAdapter {
         holder.ponto.setText("");
 
         return row;
+
     }
 }
