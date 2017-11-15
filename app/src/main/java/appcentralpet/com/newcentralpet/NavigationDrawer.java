@@ -77,7 +77,7 @@ public class NavigationDrawer extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        SqLiteHelperVacinas();
+        notificação();
     }
 
     @Override
@@ -131,7 +131,7 @@ public class NavigationDrawer extends AppCompatActivity
         return true;
     }
 
-    public void SqLiteHelperVacinas() {
+    public void notificação() {
         Calendar calendar = Calendar.getInstance();
         Date data = calendar.getTime();
         DateFormat format = DateFormat.getDateInstance(DateFormat.MEDIUM);
