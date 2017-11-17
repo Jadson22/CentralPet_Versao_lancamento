@@ -242,7 +242,7 @@ public class Vacinas extends Fragment implements Serializable {
          MaskEditTextChangedListener maskedtretorno = new MaskEditTextChangedListener("##/##/####", edtRetorno);
          edtRetorno.addTextChangedListener(maskedtretorno);
         Cursor c = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");
-        ArrayAdapter<String> arrID = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
+        final ArrayAdapter<String> arrID = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
         while (c.moveToNext()){
             arrID.add(c.getString(1));
         }
@@ -259,7 +259,11 @@ public class Vacinas extends Fragment implements Serializable {
                 // time at which alarm will be scheduled here alarm is scheduled at 1 day from current time,
                 // we fetch  the current time in milliseconds and added 1 day time
                 // i.e. 24*60*60*1000= 86,400,000   milliseconds in a day
-                Long time = new GregorianCalendar().getTimeInMillis()+5000;
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.HOUR,8);
+                calendar.set(Calendar.MINUTE,38);
+                Long time = new GregorianCalendar().getTimeInMillis()+3000;
+                long intervalo =  10 * 1000;
                 //24*60*60*1000
 
                 // create an Intent and set the class which will execute when Alarm triggers, here we have
@@ -267,12 +271,11 @@ public class Vacinas extends Fragment implements Serializable {
                 // alarm triggers and
                 //we will write the code to send SMS inside onRecieve() method pf Alarmreciever class
                 Intent intentAlarm = new Intent(getContext(), MyReceiver.class);
-
                 // create the object
                 AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
 
                 //set the alarm for particular time
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time, time, PendingIntent.getBroadcast(getContext(),1 ,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time, intervalo, PendingIntent.getBroadcast(getContext(),1 ,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
                 Toast.makeText(getContext(), "Será avisado quando estiver no dia", Toast.LENGTH_LONG).show();
 
             }

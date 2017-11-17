@@ -29,22 +29,20 @@ public class MyReceiver extends BroadcastReceiver
         Calendar calendar = Calendar.getInstance();
         long date = System.currentTimeMillis();
         SimpleDateFormat sfd = new SimpleDateFormat("d/M/yyyy");
-        String dt = sfd.format(date);
+        String dataAtual = sfd.format(date);
 
         Cursor c = Vacinas.sqLiteHelperVacinas.getData("SELECT * FROM VACINAS");
         ArrayList<String> arrID = new ArrayList<>();
         while (c.moveToNext()){
             arrID.add(c.getString(3));
         }
-        Toast.makeText(context, dt, Toast.LENGTH_LONG).show();
 
-        String hj="[" + dt + "]";
-        if(hj.equals(arrID.toString())){
+        String hoje="[" + dataAtual + "]";
+        if(hoje.equals(arrID.toString())){
         Intent service1 = new Intent(context, MyAlarmService.class);
         context.startService(service1);
-
     }else{
-            Toast.makeText(context, "não é o dia", Toast.LENGTH_LONG).show();
+
         }
 
     }
