@@ -67,7 +67,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Data de Retorno:"
+        android:text="Local:"
         android:id="@+id/textView5"
         android:textColor="@color/primaryText"
         android:textSize="@dimen/txt_cad"
@@ -77,7 +77,7 @@
         android:id="@+id/edtRetorno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="textPersonName"
         android:textColor="@color/primaryText" />
 
     <Button

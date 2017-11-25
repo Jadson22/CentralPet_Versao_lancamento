@@ -13,9 +13,11 @@ import android.widget.RelativeLayout;
  */
 public class Suporte extends Fragment {
 
+    RelativeLayout avalieid;
     RelativeLayout compartilheid;
     RelativeLayout twitterid;
     RelativeLayout contatoid;
+    RelativeLayout politica;
 
     public Suporte() {
         // Required empty public constructor
@@ -27,6 +29,14 @@ public class Suporte extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_suporte, container, false);
 
+        avalieid = (RelativeLayout) view.findViewById(R.id.avalieid);
+        avalieid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ava = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=appcentralpet.com.newcentralpet"));
+                startActivity(ava);
+            }
+        });
 
         compartilheid = (RelativeLayout) view.findViewById(R.id.compartilheid);
         compartilheid.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +44,7 @@ public class Suporte extends Fragment {
             public void onClick(View view) {
                 Intent it = new Intent(Intent.ACTION_SEND);
                 it.setType("text/plain");
-                it.putExtra(Intent.EXTRA_TEXT, "Baixe o aplicativo Central Pet!");
+                it.putExtra(Intent.EXTRA_TEXT, "Baixe o aplicativo Central Pet! \n Download em: https://play.google.com/store/apps/details?id=appcentralpet.com.newcentralpet");
                 startActivity(it);
             }
         });
@@ -54,6 +64,15 @@ public class Suporte extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://mail.google.com/mail/u/0/#inbox?compose=new"));
                 startActivity(intent);
+            }
+        });
+
+        politica = (RelativeLayout) view.findViewById(R.id.politica);
+        politica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent poli = new Intent(getContext(), PoliticaDePrivacidade.class);
+                startActivity(poli);
             }
         });
 

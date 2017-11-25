@@ -7,13 +7,9 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
 
-import appcentralpet.com.newcentralpet.NavigationDrawer;
 import appcentralpet.com.newcentralpet.R;
 
 
@@ -45,13 +41,13 @@ public class MyAlarmService extends Service
         Notification.Builder builder = new Notification.Builder(MyAlarmService.this);
         Intent notificationIntent = new Intent(this,Vacinas.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
-        builder.setSmallIcon(R.color.wallet_holo_blue_light)
+        builder.setSmallIcon(R.drawable.iconnotificacao)
                 .setContentTitle("Central Pet")
                 .setContentText("Seu pet tem uma vacina agendada para hoje")
                 .setContentIntent(pendingIntent);
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Notification notification = builder.getNotification();
-        notificationManager.notify(R.color.wallet_holo_blue_light, notification);
+        notificationManager.notify(R.drawable.iconnotificacao, notification);
 
     }
 

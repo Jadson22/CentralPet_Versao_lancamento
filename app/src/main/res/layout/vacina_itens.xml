@@ -92,7 +92,7 @@
         android:layout_alignParentRight="true"/>
 
     <TextView
-        android:text="Retornar em: "
+        android:text="Local: "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ret"

@@ -123,7 +123,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1.0 - Beta"
+            android:text="2.0.1"
             android:textColor="@color/txtgeral"
             android:layout_below="@+id/versao"
             android:textSize="@dimen/txt_cad"
@@ -143,12 +143,49 @@
 
     </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linhaa4"
+            android:id="@+id/politica"
+            android:layout_margin="7dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/politicapri"
+                android:text="Política de Privacidade"
+                android:textColor="@color/txtgeral"
+                android:textSize="@dimen/txt_cad"
+                android:layout_marginLeft="15dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Consulte nossos termos e serviços"
+                android:textColor="@color/txtgeral"
+                android:layout_below="@+id/politicapri"
+                android:textSize="@dimen/txt_cad"
+                android:layout_marginLeft="15dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linhaa5"
+            android:layout_below="@id/versaoid"
+            android:layout_margin="5dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/linha_info"/>
+        </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rl2"
         android:padding="@dimen/espc_telas"
-        android:layout_below="@id/linhaa4">
+        android:layout_below="@id/linhaa5">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

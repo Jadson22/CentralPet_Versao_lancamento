@@ -145,7 +145,7 @@ public class Vacinas extends Fragment implements Serializable {
         MaskEditTextChangedListener maskpData = new MaskEditTextChangedListener("##/##/####", editarPdata);
         editarPdata.addTextChangedListener(maskpData);
         final EditText editarSData = (EditText) dialogEdit.findViewById(R.id.edtRetorno);
-        MaskEditTextChangedListener masksData = new MaskEditTextChangedListener("##/##/####", editarSData);
+        MaskEditTextChangedListener masksData = new MaskEditTextChangedListener("#########################################", editarSData);
         editarSData.addTextChangedListener(masksData);
         Button btnEditar = (Button) dialogEdit.findViewById(R.id.btnAdd);
 
@@ -239,7 +239,7 @@ public class Vacinas extends Fragment implements Serializable {
          MaskEditTextChangedListener maskedtdata = new MaskEditTextChangedListener("##/##/####", edtData);
          edtData.addTextChangedListener(maskedtdata);
          edtRetorno = (EditText) dialog.findViewById(R.id.edtRetorno);
-         MaskEditTextChangedListener maskedtretorno = new MaskEditTextChangedListener("##/##/####", edtRetorno);
+         MaskEditTextChangedListener maskedtretorno = new MaskEditTextChangedListener("#########################################", edtRetorno);
          edtRetorno.addTextChangedListener(maskedtretorno);
         Cursor c = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");
         final ArrayAdapter<String> arrID = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);

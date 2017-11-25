@@ -22,7 +22,7 @@ public class ServicoAlarme extends JobService {
         Notification noti= new Notification.Builder(getBaseContext())
                 .setContentTitle("Central Pet" )
                 .setContentText("Vacina marcada para hoje")
-                .setSmallIcon(R.mipmap.ic_launcher).setContentIntent(pi).build();
+                .setSmallIcon(R.drawable.iconnotificacao).setContentIntent(pi).build();
         NotificationManager notificationManager= (NotificationManager) getBaseContext().getSystemService(getBaseContext().NOTIFICATION_SERVICE);
         noti.flags|= Notification.FLAG_AUTO_CANCEL;
         notificationManager.notify(id, noti);
