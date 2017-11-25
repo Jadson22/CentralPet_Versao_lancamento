@@ -28,12 +28,10 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
+
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+
 import java.io.Serializable;
 
 import appcentralpet.com.newcentralpet.NavigationDrawer;
@@ -49,7 +47,7 @@ public class Cadastro extends Fragment implements Serializable{
     EditText edtName, edtIdade;
     AutoCompleteTextView edtRaca;
     RadioGroup radioGroupSexo, radioGroupTipo;
-    ImageButton imageView;
+    ImageView imageView;
 
 
     final int REQUEST_CODE_GALLERY = 999;
@@ -90,7 +88,7 @@ public class Cadastro extends Fragment implements Serializable{
         radioGroupSexo = (RadioGroup) view.findViewById(R.id.radioSexo);
         radioGroupTipo = (RadioGroup) view.findViewById(R.id.radioTipo);
 
-        imageView = (ImageButton) view.findViewById(R.id.imageView);
+        imageView = (ImageView) view.findViewById(R.id.imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

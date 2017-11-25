@@ -259,11 +259,11 @@ public class Vacinas extends Fragment implements Serializable {
                 // time at which alarm will be scheduled here alarm is scheduled at 1 day from current time,
                 // we fetch  the current time in milliseconds and added 1 day time
                 // i.e. 24*60*60*1000= 86,400,000   milliseconds in a day
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.HOUR,8);
-                calendar.set(Calendar.MINUTE,38);
+                //Calendar calendar = Calendar.getInstance();
+                //calendar.set(Calendar.HOUR,8);
+                //calendar.set(Calendar.MINUTE,38);
                 Long time = new GregorianCalendar().getTimeInMillis()+3000;
-                long intervalo =  10 * 1000;
+                long intervalo = 24*60*60*1000 ;
                 //24*60*60*1000
 
                 // create an Intent and set the class which will execute when Alarm triggers, here we have
@@ -276,8 +276,6 @@ public class Vacinas extends Fragment implements Serializable {
 
                 //set the alarm for particular time
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time, intervalo, PendingIntent.getBroadcast(getContext(),1 ,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
-                Toast.makeText(getContext(), "Será avisado quando estiver no dia", Toast.LENGTH_LONG).show();
-
             }
 
 

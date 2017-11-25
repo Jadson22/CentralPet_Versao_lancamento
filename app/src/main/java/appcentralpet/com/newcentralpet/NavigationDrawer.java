@@ -1,11 +1,7 @@
 package appcentralpet.com.newcentralpet;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
+
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -16,30 +12,22 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.google.android.gms.common.data.DataHolder;
-import com.google.android.gms.common.server.converter.StringToIntConverter;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.util.Calendar;
-import java.util.Date;
+
 
 import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
 import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
 import appcentralpet.com.newcentralpet.BancoMeusPets.SQLiteHelper;
 import appcentralpet.com.newcentralpet.ListExpansivel.DuvFrequentes;
-import appcentralpet.com.newcentralpet.Vacinas.MyReceiver;
-import appcentralpet.com.newcentralpet.Vacinas.SQLiteHelperVacinas;
+
 import appcentralpet.com.newcentralpet.Vacinas.Vacinas;
 import appcentralpet.com.newcentralpet.mapa.MapaClinicaActivity;
 
 public class NavigationDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Serializable{
-    private PendingIntent pendingIntent;
-    SQLiteHelperVacinas sqLiteHelperVacinas;
-    String pData;
+
 
     public static SQLiteHelper sqLiteHelper;
 
@@ -131,25 +119,6 @@ public class NavigationDrawer extends AppCompatActivity
         return true;
     }
 
-   /* public void notificação() {
-        Calendar calendar = Calendar.getInstance();
-        Date data = calendar.getTime();
-        DateFormat format = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        String dt = format.format(data);
-
-        Cursor pData = sqLiteHelperVacinas.getData("SELECT pData FROM VACINAS");
-
-                Intent myIntent = new Intent(NavigationDrawer.this, MyReceiver.class);
-                pendingIntent = PendingIntent.getBroadcast(NavigationDrawer.this, 0, myIntent, 0);
-
-        while(dt.equals(pData)) {
-
-                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),5000, pendingIntent);
-
-            return;
-        }
-        }*/
     }
 
 
