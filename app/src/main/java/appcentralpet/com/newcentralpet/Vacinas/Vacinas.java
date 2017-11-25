@@ -263,7 +263,7 @@ public class Vacinas extends Fragment implements Serializable {
                 //calendar.set(Calendar.HOUR,8);
                 //calendar.set(Calendar.MINUTE,38);
                 Long time = new GregorianCalendar().getTimeInMillis()+3000;
-                long intervalo = 24*60*60*1000 ;
+                long intervalo = 24*60*60*1000;
                 //24*60*60*1000
 
                 // create an Intent and set the class which will execute when Alarm triggers, here we have
