@@ -123,7 +123,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2.0.1"
+            android:text="2.1"
             android:textColor="@color/txtgeral"
             android:layout_below="@+id/versao"
             android:textSize="@dimen/txt_cad"
