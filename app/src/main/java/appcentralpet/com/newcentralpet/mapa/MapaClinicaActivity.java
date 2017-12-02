@@ -238,7 +238,7 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
         habilitarBussola();
 
 
-        Toast.makeText(MapaClinicaActivity.this,"Sua localização", Toast.LENGTH_LONG).show();
+        //Toast.makeText(MapaClinicaActivity.this,"Sua localização", Toast.LENGTH_LONG).show();
 
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));
 

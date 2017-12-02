@@ -1,6 +1,7 @@
 package appcentralpet.com.newcentralpet.BancoMeusPets;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,10 +99,22 @@ public class PetListAdapter extends BaseAdapter {
             holder.iconeTipo.setImageResource(R.drawable.iconegato);
         }
 
-        if(pet.getIdade().equals("1")){
+        if(pet.getIdade()!=null) {
+            try {
+                double idadee = Double.parseDouble(pet.getIdade());
+                if (idadee < 1) {
+                    holder.textoAnos.setText("meses");
+                } else if (idadee > 1) {
+                    holder.textoAnos.setText("anos");
+                }
+            } catch (NumberFormatException e) {
+            }
+        }
+
+        if(pet.getIdade().equals("")){
+            holder.textoAnos.setText("");
+        }else if(pet.getIdade().equals("1")){
             holder.textoAnos.setText("ano");
-        }else{
-            holder.textoAnos.setText("anos");
         }
 
         return row;

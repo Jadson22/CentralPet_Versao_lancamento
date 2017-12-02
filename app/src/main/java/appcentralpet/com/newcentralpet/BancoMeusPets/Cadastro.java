@@ -82,7 +82,7 @@ public class Cadastro extends Fragment implements Serializable{
         edtRaca.setAdapter(array);
 
         edtIdade = (EditText) view.findViewById(R.id.editarIdade);
-        MaskEditTextChangedListener maskedtIdade = new MaskEditTextChangedListener("##", edtIdade);
+        MaskEditTextChangedListener maskedtIdade = new MaskEditTextChangedListener("####", edtIdade);
         edtIdade.addTextChangedListener(maskedtIdade);
 
         radioGroupSexo = (RadioGroup) view.findViewById(R.id.radioSexo);
@@ -159,15 +159,17 @@ public class Cadastro extends Fragment implements Serializable{
         if(requestCode == REQUEST_CODE_GALLERY && resultCode == getActivity().RESULT_OK && data != null){
             Uri uri = data.getData();
                 Glide.with(this)
-                .load(uri)
-                .asBitmap()
-                .into(imageView);
+                    .load(uri)
+                    .asBitmap()
+                    .centerCrop()
+                    .into(imageView);
 
         }  else if(requestCode == REQUEST_CODE_CAMERA && resultCode == getActivity().RESULT_OK && data!= null){
             Uri uir = data.getData();
             Glide.with(this)
                     .load(uir)
                     .asBitmap()
+                    .centerCrop()
                     .into(imageView);
             /* CropImage.activity(uir)
                     .setAspectRatio(1, 1)

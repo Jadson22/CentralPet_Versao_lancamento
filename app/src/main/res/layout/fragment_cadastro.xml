@@ -162,7 +162,7 @@
                     android:textColor="@color/primaryText"
                     android:ems="10"
                     android:id="@+id/editarIdade"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
         </LinearLayout>

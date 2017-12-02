@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 
 import appcentralpet.com.newcentralpet.NavigationDrawer;
 import appcentralpet.com.newcentralpet.R;
+import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +47,9 @@ public class PetList extends Fragment implements Serializable{
     ListView listView;
     ArrayList<Pet> list;
     PetListAdapter adapter = null;
+
+    final int REQUEST_CODE_GALLERY = 999;
+    final int REQUEST_CODE_CAMERA = 200;
 
     public PetList() {
         // Required empty public constructor
@@ -132,6 +137,8 @@ public class PetList extends Fragment implements Serializable{
         ArrayAdapter<String> array = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, Cadastro.RACAS);
         edtRaca.setAdapter(array);
         final EditText edtIdade = (EditText) dialog.findViewById(R.id.upidade);
+        MaskEditTextChangedListener maskedtIdade = new MaskEditTextChangedListener("####", edtIdade);
+        edtIdade.addTextChangedListener(maskedtIdade);
 
         upradioSexo = (RadioGroup) dialog.findViewById(R.id.upradioSexo);
         upradioTipo = (RadioGroup) dialog.findViewById(R.id.upradioTipo);
@@ -147,13 +154,27 @@ public class PetList extends Fragment implements Serializable{
         imgPet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // request photo library
-                requestPermissions(
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                        888
-                );
+
+                CharSequence[] itens = {"Tirar foto", "Escolher da galeria"};
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+
+                dialog.setTitle("Escolher imagem");
+                dialog.setItems(itens, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int item) {
+                        if(item == 0 ){
+                            //tirar foto
+                            abrircamera();
+                        }else{
+                            //galeria
+                            escolherImg();
+                        }
+                    }
+                });
+                dialog.show();
             }
         });
+
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,6 +222,19 @@ public class PetList extends Fragment implements Serializable{
 
             }
         });
+    }
+
+    private void abrircamera() {
+        requestPermissions(
+                new String[]{Manifest.permission.CAMERA},
+                REQUEST_CODE_CAMERA);
+    }
+
+    public void escolherImg(){
+        requestPermissions(
+                new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                REQUEST_CODE_GALLERY
+        );
     }
 
     private void showDialogDelete(final int idPet){
@@ -254,13 +288,22 @@ public class PetList extends Fragment implements Serializable{
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        if(requestCode == 888){
+        if(requestCode == REQUEST_CODE_GALLERY){
             if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
-                startActivityForResult(intent, 888);
+                startActivityForResult(intent, REQUEST_CODE_GALLERY);
             }
             else {
+                Snackbar snackbar = Snackbar.make(getView(), "Você não tem permissão para acessar os arquivos!", Snackbar.LENGTH_SHORT);
+                snackbar.show();
+            }
+            return;
+        }else if(requestCode == REQUEST_CODE_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, REQUEST_CODE_CAMERA);
+            } else {
                 Snackbar snackbar = Snackbar.make(getView(), "Você não tem permissão para acessar os arquivos!", Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
@@ -272,20 +315,21 @@ public class PetList extends Fragment implements Serializable{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if(requestCode == 888 && resultCode == getActivity().RESULT_OK && data != null){
+        if(requestCode == REQUEST_CODE_GALLERY && resultCode == getActivity().RESULT_OK && data != null){
             Uri uri = data.getData();
-            try {
-                InputStream inputStream = getContext().getContentResolver().openInputStream(uri);
+            Glide.with(this)
+                    .load(uri)
+                    .asBitmap()
+                    .centerCrop()
+                    .into(imgPet);
 
-                Glide.with(this)
-                        .load(uri)
-                        .asBitmap()
-                        .centerCrop()
-                        .into(imgPet);
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+        }  else if(requestCode == REQUEST_CODE_CAMERA && resultCode == getActivity().RESULT_OK && data!= null) {
+            Uri uir = data.getData();
+            Glide.with(this)
+                    .load(uir)
+                    .asBitmap()
+                    .centerCrop()
+                    .into(imgPet);
         }
 
         super.onActivityResult(requestCode, resultCode, data);
