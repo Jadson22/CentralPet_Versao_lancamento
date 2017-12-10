@@ -47,6 +47,7 @@ public class PetList extends Fragment implements Serializable{
     ListView listView;
     ArrayList<Pet> list;
     PetListAdapter adapter = null;
+    ImageView sempet;
 
     final int REQUEST_CODE_GALLERY = 999;
     final int REQUEST_CODE_CAMERA = 200;
@@ -66,6 +67,8 @@ public class PetList extends Fragment implements Serializable{
         list = new ArrayList<>();
         adapter = new PetListAdapter(getContext(), R.layout.pet_itens, list);
         listView.setAdapter(adapter);
+        sempet = (ImageView) view.findViewById(R.id.sempet);
+        listView.setEmptyView(sempet);
 
 
         Cursor cursor = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");

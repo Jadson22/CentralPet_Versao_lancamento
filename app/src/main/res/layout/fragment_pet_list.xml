@@ -12,4 +12,11 @@
         android:id="@+id/listView11"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="370dp"
+        android:id="@+id/sempet"
+        android:background="@drawable/semanimal"
+        android:layout_gravity="center"/>
 </LinearLayout>

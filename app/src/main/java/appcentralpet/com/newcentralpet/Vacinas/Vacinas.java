@@ -25,6 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -52,6 +53,7 @@ public class Vacinas extends Fragment implements Serializable {
     ListView listaVacinas;
     ArrayList<Vacina> list;
     VacinaListAdapter adapter = null;
+    ImageView semvacina;
 
 
     public Vacinas() {
@@ -80,6 +82,8 @@ public class Vacinas extends Fragment implements Serializable {
         list = new ArrayList<>();
         adapter = new VacinaListAdapter(getContext(), R.layout.vacina_itens, list);
         listaVacinas.setAdapter(adapter);
+        semvacina = (ImageView) view.findViewById(R.id.semvacina);
+        listaVacinas.setEmptyView(semvacina);
 
         Cursor cursor = sqLiteHelperVacinas.getData("SELECT * FROM VACINAS");
         list.clear();
