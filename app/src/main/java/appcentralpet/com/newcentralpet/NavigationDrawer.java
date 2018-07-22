@@ -97,9 +97,8 @@ public class NavigationDrawer extends AppCompatActivity
             getSupportActionBar().setTitle("Vacinas");
 
         } else if (id == R.id.nav_clinicas) {
-            //getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new MapaClinicaActivity()).commit();
-            Intent intent = new Intent(NavigationDrawer.this, MapaClinicaActivity.class);
-            startActivity(intent);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new fragMap()).commit();
+            getSupportActionBar().setTitle("Clínicas e Petshops");
 
         } else if (id == R.id.nav_duvFreq) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new DuvFrequentes()).commit();

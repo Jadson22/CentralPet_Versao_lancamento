@@ -13,9 +13,6 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-        <include layout="@layout/toolbar"
-            android:id="@+id/toolbar_mapa"/>
-
         <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"

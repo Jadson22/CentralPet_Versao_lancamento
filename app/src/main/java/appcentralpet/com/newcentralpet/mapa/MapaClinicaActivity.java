@@ -54,15 +54,10 @@ public class MapaClinicaActivity extends FragmentActivity implements OnMapReadyC
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
 
-    private Toolbar toolbar_mapa;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
-
-        toolbar_mapa = (Toolbar) findViewById(R.id.toolbar_mapa);
-        toolbar_mapa.setTitle("Clínicas e Pet Shops");
 
         if(!Online()){
             Log.d("onCreate","tem conexão");
