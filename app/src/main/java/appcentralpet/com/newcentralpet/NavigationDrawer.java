@@ -52,8 +52,8 @@ public class NavigationDrawer extends AppCompatActivity
                 "image BLOB)");
 
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Vacinas()).commit();
+        Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);
+        startActivity(intent);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -93,12 +93,12 @@ public class NavigationDrawer extends AppCompatActivity
             getSupportActionBar().setTitle("Meus Pets");
 
         } else if (id == R.id.nav_vacina) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Vacinas()).commit();
-            getSupportActionBar().setTitle("Vacinas");
+            Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_clinicas) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new fragMap()).commit();
-            getSupportActionBar().setTitle("Clínicas e Petshops");
+            Intent intent = new Intent(NavigationDrawer.this, MapaClinicaActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_duvFreq) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new DuvFrequentes()).commit();

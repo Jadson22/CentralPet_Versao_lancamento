@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -22,8 +23,7 @@
     //permissão da notificação
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -68,7 +68,28 @@
 
         <receiver android:name=".Vacinas.MyReceiver" />
 
-        <activity android:name=".PoliticaDePrivacidade"></activity>
+        <activity android:name=".PoliticaDePrivacidade" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".AddReminderActivity"
+            android:label="@string/title_activity_add_reminder"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                />
+        </activity>
+        <provider
+            android:name=".data.AlarmReminderProvider"
+            android:authorities="appcentralpet.com.newcentralpet"
+            android:exported="false" />
+        <service
+            android:name=".reminder.ReminderAlarmService"
+            android:exported="false" />
     </application>
 
 </manifest>
