@@ -8,17 +8,20 @@
             android:icon="@drawable/ic_seringa"
             android:title="Vacinas" />
         <item
-            android:id="@+id/nav_emergencia"
+            android:id="@+id/nav_cadastro"
             android:icon="@drawable/ic_add"
-            android:title="Contato De Emergência" />
+            android:title="Novo pet" />
+
         <item
             android:id="@+id/nav_meusPets"
             android:icon="@drawable/newdog"
             android:title="Meus pets" />
+
         <item
-            android:id="@+id/nav_cadastro"
-            android:icon="@drawable/ic_add"
-            android:title="Novo pet" />
+            android:id="@+id/nav_emergencia"
+            android:icon="@drawable/emergencia"
+            android:title="Contato De Emergência" />
+
         <item
             android:id="@+id/nav_clinicas"
             android:icon="@drawable/ic_clinicas"
