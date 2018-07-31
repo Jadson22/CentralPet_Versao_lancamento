@@ -8,14 +8,12 @@ public class Vacina {
     private int id;
     private String nomePet;
     private String nomeVacina;
-    private String pData;
     private String sData;
 
-    public Vacina(int id, String nomePet, String nomeVacina, String pData, String sData) {
+    public Vacina(int id, String nomePet, String nomeVacina, String sData) {
         this.id = id;
         this.nomePet = nomePet;
         this.nomeVacina = nomeVacina;
-        this.pData = pData;
         this.sData = sData;
     }
 
@@ -41,14 +39,6 @@ public class Vacina {
 
     public void setNomeVacina(String nomeVacina) {
         this.nomeVacina = nomeVacina;
-    }
-
-    public String getpData() {
-        return pData;
-    }
-
-    public void setpData(String pData) {
-        this.pData = pData;
     }
 
     public String getsData() {

@@ -42,7 +42,7 @@ public class VacinaListAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView nomePet, nomeVacina, pData, sData, ponto;
+        TextView nomePet, nomeVacina, sData, ponto;
     }
 
     @Override
@@ -57,7 +57,6 @@ public class VacinaListAdapter extends BaseAdapter {
 
             holder.nomePet = (TextView) row.findViewById(R.id.setarNome);
             holder.nomeVacina = (TextView) row.findViewById(R.id.setarVacina);
-            holder.pData = (TextView) row.findViewById(R.id.pData);
             holder.sData = (TextView) row.findViewById(R.id.sData);
             holder.ponto = (TextView) row.findViewById(R.id.ponto);
             row.setTag(holder);
@@ -69,7 +68,6 @@ public class VacinaListAdapter extends BaseAdapter {
 
         holder.nomePet.setText(vacina.getNomePet());
         holder.nomeVacina.setText(vacina.getNomeVacina());
-        holder.pData.setText(vacina.getpData());
         holder.sData.setText(vacina.getsData());
         holder.ponto.setText("");
 

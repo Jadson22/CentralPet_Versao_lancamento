@@ -48,7 +48,7 @@ public class Vacinas extends Fragment implements Serializable {
 
     public static SQLiteHelperVacinas sqLiteHelperVacinas;
 
-    EditText edtData, edtRetorno;
+    EditText edtRetorno;
     AutoCompleteTextView nomepet, edtVacina;
     ListView listaVacinas;
     ArrayList<Vacina> list;
@@ -91,10 +91,9 @@ public class Vacinas extends Fragment implements Serializable {
             int id = cursor.getInt(0);
             String nomePet = cursor.getString(1);
             String nomeVacina = cursor.getString(2);
-            String pData = cursor.getString(3);
             String sData = cursor.getString(4);
 
-            list.add(new Vacina(id, nomePet, nomeVacina, pData, sData));
+            list.add(new Vacina(id, nomePet, nomeVacina, sData));
         }
         adapter.notifyDataSetChanged();
 
@@ -143,11 +142,10 @@ public class Vacinas extends Fragment implements Serializable {
         dialogEdit.setTitle("Editar");
 
         final AutoCompleteTextView editarVacina = (AutoCompleteTextView) dialogEdit.findViewById(R.id.edtVacina);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, VACINAS);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
         editarVacina.setAdapter(arrayAdapter);
-        final EditText editarPdata = (EditText) dialogEdit.findViewById(R.id.edtData);
-        MaskEditTextChangedListener maskpData = new MaskEditTextChangedListener("##/##/####", editarPdata);
-        editarPdata.addTextChangedListener(maskpData);
+
+
         final EditText editarSData = (EditText) dialogEdit.findViewById(R.id.edtRetorno);
         MaskEditTextChangedListener masksData = new MaskEditTextChangedListener("#########################################", editarSData);
         editarSData.addTextChangedListener(masksData);
@@ -174,13 +172,12 @@ public class Vacinas extends Fragment implements Serializable {
                         if(editarNomePet.getText().toString().length() == 0) {
                             editarNomePet.setError("Preencha um nome");
                         }else {
-                            editarVacina.setError("Selecione uma vacina");
+                            editarVacina.setError("Preencha o contato");
                         }
                     }else{
                         sqLiteHelperVacinas.updateData(
                                 editarNomePet.getText().toString().trim(),
                                 editarVacina.getText().toString().trim(),
-                                editarPdata.getText().toString().trim(),
                                 editarSData.getText().toString().trim(),
                                 position
                         );
@@ -202,7 +199,7 @@ public class Vacinas extends Fragment implements Serializable {
         final AlertDialog.Builder dialogDelete = new AlertDialog.Builder(getContext());
 
         dialogDelete.setTitle("Atenção!");
-        dialogDelete.setMessage("Apagar Vacina?");
+        dialogDelete.setMessage("Apagar contato de emergência?");
         dialogDelete.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -226,8 +223,6 @@ public class Vacinas extends Fragment implements Serializable {
         dialogDelete.show();
     }
 
-    public static final String[] VACINAS = new String[]{"V8", "V10", "Gripe Canina", "Giardíase", "Anti-rábica", "Quádrupla Felina"};
-
     private void ShowDialogAdd(){
 
         final Dialog dialog = new Dialog(getActivity());
@@ -236,12 +231,10 @@ public class Vacinas extends Fragment implements Serializable {
 
 
          edtVacina = (AutoCompleteTextView) dialog.findViewById(R.id.edtVacina);
-         ArrayAdapter<String> adpVac = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, VACINAS);
+         ArrayAdapter<String> adpVac = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
          edtVacina.setAdapter(adpVac);
 
-         edtData = (EditText) dialog.findViewById(R.id.edtData);
-         MaskEditTextChangedListener maskedtdata = new MaskEditTextChangedListener("##/##/####", edtData);
-         edtData.addTextChangedListener(maskedtdata);
+
          edtRetorno = (EditText) dialog.findViewById(R.id.edtRetorno);
          MaskEditTextChangedListener maskedtretorno = new MaskEditTextChangedListener("#########################################", edtRetorno);
          edtRetorno.addTextChangedListener(maskedtretorno);
@@ -260,26 +253,6 @@ public class Vacinas extends Fragment implements Serializable {
                 adicionarVacina();
                 dialog.dismiss();
 
-                // time at which alarm will be scheduled here alarm is scheduled at 1 day from current time,
-                // we fetch  the current time in milliseconds and added 1 day time
-                // i.e. 24*60*60*1000= 86,400,000   milliseconds in a day
-                //Calendar calendar = Calendar.getInstance();
-                //calendar.set(Calendar.HOUR,8);
-                //calendar.set(Calendar.MINUTE,38);
-                Long time = new GregorianCalendar().getTimeInMillis()+3000;
-                long intervalo = 24*60*60*1000;
-                //24*60*60*1000
-
-                // create an Intent and set the class which will execute when Alarm triggers, here we have
-                // given AlarmReciever in the Intent, the onRecieve() method of this class will execute when
-                // alarm triggers and
-                //we will write the code to send SMS inside onRecieve() method pf Alarmreciever class
-                Intent intentAlarm = new Intent(getContext(), MyReceiver.class);
-                // create the object
-                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-
-                //set the alarm for particular time
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,time, intervalo, PendingIntent.getBroadcast(getContext(),1 ,  intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
             }
 
 
@@ -298,32 +271,6 @@ public class Vacinas extends Fragment implements Serializable {
 
     }
 
-
-
-
-
-
-        /*
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(edtData.getText().toString()));
-
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(PData.getText.toString()));
-        Intent myIntent = new Intent(.this, MyReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(Vacina.this, 0, myIntent, 0);
-
-        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);*/
-
-        /*String data=edtData.getText().toString();
-        ComponentName serviceName= new ComponentName(getContext(), ServicoAlarme.class);
-        JobInfo jobInfo= new JobInfo.Builder(0, serviceName).setPeriodic(21/10/2017)
-                .setMinimumLatency(12)
-                .setRequiresCharging(false).build();
-        JobScheduler scheduler= (JobScheduler) getContext().getSystemService(Context.JOB_SCHEDULER_SERVICE);
-        int result= scheduler.schedule(jobInfo);
-        if(result== JobScheduler.RESULT_SUCCESS)Log.d("MainActivity", "vacina agendada!");*/
-
-
-
     private void adicionarVacina() {
 
         try{
@@ -332,21 +279,19 @@ public class Vacinas extends Fragment implements Serializable {
                 if(nomepet.getText().toString().length() == 0) {
                     nomepet.setError("Preencha um nome");
                 }else {
-                    edtVacina.setError("Selecione uma vacina");
+                    edtVacina.setError("Selecione um contato");
                 }
             }else{
 
                 sqLiteHelperVacinas.insertData(
                         nomepet.getText().toString().trim(),
                         edtVacina.getText().toString().trim(),
-                        edtData.getText().toString().trim(),
                         edtRetorno.getText().toString().trim()
                 );
                 Snackbar snackbar = Snackbar.make(getView(), "Adicionado!", Snackbar.LENGTH_SHORT);
                 snackbar.show();
                 nomepet.setText("");
                 edtVacina.setText("");
-                edtData.setText("");
                 edtRetorno.setText("");
             }
 
@@ -364,10 +309,9 @@ public class Vacinas extends Fragment implements Serializable {
             int id = cursor.getInt(0);
             String nomePet = cursor.getString(1);
             String nomeVacina = cursor.getString(2);
-            String pData = cursor.getString(3);
             String sData = cursor.getString(4);
 
-            list.add(new Vacina(id, nomePet, nomeVacina, pData, sData));
+            list.add(new Vacina(id, nomePet, nomeVacina, sData));
         }
         adapter.notifyDataSetChanged();
 

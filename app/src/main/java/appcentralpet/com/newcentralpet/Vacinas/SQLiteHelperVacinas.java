@@ -20,7 +20,7 @@ public class SQLiteHelperVacinas extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sql);
     }
 
-    public void insertData(String nomePet, String nomeVacina, String pData, String sData){
+    public void insertData(String nomePet, String nomeVacina, String sData){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String sql = "INSERT INTO VACINAS VALUES (NULL, ?, ?, ?, ?)";
 
@@ -29,23 +29,21 @@ public class SQLiteHelperVacinas extends SQLiteOpenHelper {
 
         statement.bindString(1, nomePet);
         statement.bindString(2, nomeVacina);
-        statement.bindString(3, pData);
-        statement.bindString(4, sData);
+        statement.bindString(3, sData);
 
         statement.executeInsert();
     }
 
-    public void updateData( String nomePet, String nomeVacina, String pData, String sData, int id){
+    public void updateData( String nomePet, String nomeVacina, String sData, int id){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
-        String sql = "UPDATE VACINAS SET nome = ?, vacina = ?, pdata = ?, sdata = ? WHERE id = ?";
+        String sql = "UPDATE VACINAS SET nome = ?, vacina = ?, sdata = ? WHERE id = ?";
         SQLiteStatement statement = sqLiteDatabase.compileStatement(sql);
 
         statement.bindString(1, nomePet);
         statement.bindString(2, nomeVacina);
-        statement.bindString(3, pData);
-        statement.bindString(4, sData);
-        statement.bindDouble(5, (double)id);
+        statement.bindString(3, sData);
+        statement.bindDouble(4, (double)id);
 
         statement.execute();
         sqLiteDatabase.close();

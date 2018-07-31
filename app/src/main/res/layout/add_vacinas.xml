@@ -13,32 +13,32 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pet:"
-        android:id="@+id/textView9"
-        android:textColor="@color/primaryText"
-        android:textSize="@dimen/txt_cad"
-        android:padding="5dp"/>
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Clínica Veterinária:"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/txt_cad" />
 
-    <AutoCompleteTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nomePet"
-        android:completionThreshold="1"
-        android:hint="Nome do pet"
-        android:inputType="textCapSentences"
-        android:textColor="@color/primaryText"/>
+            <AutoCompleteTextView
+                android:id="@+id/nomePet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:completionThreshold="1"
+                android:hint="Nome da clinica de sua confiança"
+                android:inputType="textCapSentences"
+                android:textColor="@color/primaryText" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vacina:"
-        android:id="@+id/textView1"
-        android:textColor="@color/primaryText"
-        android:textSize="@dimen/txt_cad"
-        android:padding="5dp"/>
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Contato:"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/txt_cad" />
 
     <AutoCompleteTextView
         android:id="@+id/edtVacina"
@@ -48,30 +48,14 @@
         android:completionThreshold="1"
         android:textColor="@color/primaryText"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data Vacinação:"
-        android:id="@+id/textView3"
-        android:textColor="@color/primaryText"
-        android:textSize="@dimen/txt_cad"
-        android:padding="5dp"/>
-
-    <EditText
-        android:id="@+id/edtData"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/primaryText"
-        android:inputType="number" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Local:"
-        android:id="@+id/textView5"
-        android:textColor="@color/primaryText"
-        android:textSize="@dimen/txt_cad"
-        android:padding="5dp"/>
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Endereço:"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/txt_cad" />
 
     <EditText
         android:id="@+id/edtRetorno"
@@ -80,12 +64,14 @@
         android:inputType="textPersonName"
         android:textColor="@color/primaryText" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Adicionar"
-        android:id="@+id/btnAdd"
-        android:layout_gravity="center"/>
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorAccent"
+                android:text="Adicionar"
+                android:textColor="@color/mdtp_white" />
 
         </LinearLayout>
     </ScrollView>

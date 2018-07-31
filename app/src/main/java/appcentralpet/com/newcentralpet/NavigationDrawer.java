@@ -35,7 +35,6 @@ public class NavigationDrawer extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
-        //Notificação
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -55,6 +54,7 @@ public class NavigationDrawer extends AppCompatActivity
         Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);
         startActivity(intent);
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -64,8 +64,6 @@ public class NavigationDrawer extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
-
-        //notificação();
     }
 
     @Override
@@ -103,6 +101,10 @@ public class NavigationDrawer extends AppCompatActivity
         } else if (id == R.id.nav_duvFreq) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new DuvFrequentes()).commit();
             getSupportActionBar().setTitle("Dúvidas Frequentes");
+
+        } else if (id == R.id.nav_emergencia) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Vacinas()).commit();
+            getSupportActionBar().setTitle("Contato de Emegência");
 
         } else if (id == R.id.nav_suporte) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Suporte()).commit();
