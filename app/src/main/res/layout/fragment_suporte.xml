@@ -30,31 +30,33 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/avalieid"
-        android:layout_below="@id/rl1"
-        android:layout_margin="7dp">
+        <RelativeLayout
+            android:id="@+id/avalieid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl1"
+            android:layout_margin="7dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/avalie"
-            android:text="Avalie"
-            android:textColor="@color/txtgeral"
-            android:textSize="@dimen/txt_cad"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Gostou do aplicativo? Deixe sua avaliação"
-            android:textColor="@color/txtgeral"
-            android:layout_below="@+id/avalie"
-            android:textSize="@dimen/txt_cad"
-            android:layout_marginLeft="15dp" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/avalie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:text="Gostou do aplicativo?"
+                android:textColor="@color/txtgeral"
+                android:textSize="@dimen/txt_cad" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/avalie"
+                android:layout_marginLeft="15dp"
+                android:text="Clique aqui e deixe sua avaliação"
+                android:textColor="@color/txtgeral"
+                android:textSize="@dimen/txt_cad" />
+        </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,21 +77,22 @@
         android:layout_margin="7dp">
 
         <TextView
+            android:id="@+id/compartilhe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/compartilhe"
+            android:layout_marginLeft="15dp"
             android:text="Compartilhe"
             android:textColor="@color/txtgeral"
-            android:textSize="@dimen/txt_cad"
-            android:layout_marginLeft="15dp" />
+            android:textSize="@dimen/txt_cad" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Compartilhe o aplicativo com seus amigos"
-            android:textColor="@color/txtgeral"
             android:layout_below="@+id/compartilhe"
-            android:textSize="@dimen/txt_cad"
-            android:layout_marginLeft="15dp" />
+            android:layout_marginLeft="15dp"
+            android:text="Clique e recomende o Central Pet para seus amigos"
+            android:textColor="@color/txtgeral"
+            android:textSize="@dimen/txt_cad" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -196,30 +199,31 @@
             android:id="@+id/contatos" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rl2"
-        android:id="@+id/contatoid"
-        android:layout_margin="7dp">
+        <RelativeLayout
+            android:id="@+id/contatoid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl2"
+            android:layout_margin="7dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/contato"
-            android:text="Contato"
-            android:textColor="@color/txtgeral"
-            android:textSize="@dimen/txt_cad"
-            android:layout_marginLeft="15dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="appcentralpet@gmail.com"
-            android:textColor="@color/txtgeral"
-            android:layout_below="@+id/contato"
-            android:textSize="@dimen/txt_cad"
-            android:layout_marginLeft="15dp" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/contato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="Email"
+                android:textColor="@color/txtgeral"
+                android:textSize="@dimen/txt_cad" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contato"
+                android:layout_marginLeft="15dp"
+                android:text="appcentralpet@gmail.com"
+                android:textColor="@color/txtgeral"
+                android:textSize="@dimen/txt_cad" />
+        </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -269,6 +273,33 @@
             android:layout_height="1dp"
             android:background="@drawable/linha_info"/>
     </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl2"
+            android:id="@+id/instagramid"
+            android:layout_margin="7dp">
+
+            <TextView
+                android:id="@+id/instagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:text="Instagram"
+                android:textColor="@color/txtgeral"
+                android:textSize="@dimen/txt_cad" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Siga-nos no Instagram"
+                android:textColor="@color/txtgeral"
+                android:layout_below="@+id/instagram"
+                android:textSize="@dimen/txt_cad"
+                android:layout_marginLeft="15dp" />
+        </RelativeLayout>
     </LinearLayout>
     </ScrollView>
 </FrameLayout>

@@ -18,6 +18,7 @@ public class Suporte extends Fragment {
     RelativeLayout twitterid;
     RelativeLayout contatoid;
     RelativeLayout politica;
+    RelativeLayout instagramid;
 
     public Suporte() {
         // Required empty public constructor
@@ -76,6 +77,14 @@ public class Suporte extends Fragment {
             }
         });
 
+        instagramid = (RelativeLayout) view.findViewById(R.id.instagramid);
+        instagramid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ava = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/appcentralpet/"));
+                startActivity(ava);
+            }
+        });
         return view;
     }
 
