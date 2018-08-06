@@ -18,12 +18,12 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/discard_reminder"
-          android:icon="@drawable/mr_ic_close_dark"
+          android:icon="@drawable/ic_delete_white_24dp"
           android:title="@string/action_settings"
           app:showAsAction="ifRoom" />
 
     <item android:id="@+id/save_reminder"
-          android:icon="@android:drawable/ic_menu_save"
+          android:icon="@drawable/ic_check_white_24dp"
           android:title="@string/action_settings"
           app:showAsAction="ifRoom" />
 </menu>

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     ListView reminderListView;
     ProgressDialog prgDialog;
     TextView reminderText;
-    ImageView semvacina;
+    TextView semAgenda;
 
     private String alarmTitle = "";
 
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         mToolbar = (Toolbar) findViewById(R.id.vacina_nova);
-        mToolbar.setTitle("Vacinas");
+        mToolbar.setTitle("Agenda");
 
 
         reminderListView = (ListView) findViewById(R.id.list);
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void addReminderTitle(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Nome da Vacina");
+        builder.setTitle("Nome do lembrete");
 
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
                 if (newUri == null) {
-                    Toast.makeText(getApplicationContext(), "A definição da vacina falhou", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "A definição do lembrete falhou", Toast.LENGTH_SHORT).show();
                 }
 
             }

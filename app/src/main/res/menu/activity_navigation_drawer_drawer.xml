@@ -5,8 +5,8 @@
 
         <item
             android:id="@+id/nav_vacina"
-            android:icon="@drawable/ic_seringa"
-            android:title="Vacinas" />
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Agenda" />
         <item
             android:id="@+id/nav_cadastro"
             android:icon="@drawable/ic_add"

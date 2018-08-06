@@ -72,7 +72,7 @@ public class AlarmCursorAdapter extends CursorAdapter {
     public void setReminderTitle(String title) {
         mTitleText.setText(title);
         // Create a circular icon consisting of  a random background colour and first letter of title
-        mThumbnailImage.setImageResource(R.drawable.ic_seringa);
+        mThumbnailImage.setImageResource(R.drawable.pet);
     }
 
     // Set date and time views

@@ -54,7 +54,7 @@
                 android:layout_below="@+id/avalie"
                 android:layout_marginLeft="15dp"
                 android:text="Clique aqui e deixe sua avaliação"
-                android:textColor="@color/txtgeral"
+                android:textColor="@color/wallet_holo_blue_light"
                 android:textSize="@dimen/txt_cad" />
         </RelativeLayout>
     <RelativeLayout
@@ -91,7 +91,7 @@
             android:layout_below="@+id/compartilhe"
             android:layout_marginLeft="15dp"
             android:text="Clique e recomende o Central Pet para seus amigos"
-            android:textColor="@color/txtgeral"
+            android:textColor="@color/wallet_holo_blue_light"
             android:textSize="@dimen/txt_cad" />
     </RelativeLayout>
 
@@ -161,14 +161,15 @@
                 android:textColor="@color/txtgeral"
                 android:textSize="@dimen/txt_cad"
                 android:layout_marginLeft="15dp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Consulte nossos termos e serviços"
-                android:textColor="@color/txtgeral"
                 android:layout_below="@+id/politicapri"
-                android:textSize="@dimen/txt_cad"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                android:text="Consulte nossos termos e serviços"
+                android:textColor="@color/wallet_holo_blue_light"
+                android:textSize="@dimen/txt_cad" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -221,7 +222,7 @@
                 android:layout_below="@+id/contato"
                 android:layout_marginLeft="15dp"
                 android:text="appcentralpet@gmail.com"
-                android:textColor="@color/txtgeral"
+                android:textColor="@color/wallet_holo_blue_light"
                 android:textSize="@dimen/txt_cad" />
         </RelativeLayout>
 
@@ -253,14 +254,15 @@
             android:textColor="@color/txtgeral"
             android:textSize="@dimen/txt_cad"
             android:layout_marginLeft="15dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Acompanhe-nos no Twitter"
-            android:textColor="@color/txtgeral"
             android:layout_below="@+id/tt"
-            android:textSize="@dimen/txt_cad"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp"
+            android:text="Acompanhe-nos no Twitter"
+            android:textColor="@color/wallet_holo_blue_light"
+            android:textSize="@dimen/txt_cad" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -291,14 +293,15 @@
                 android:text="Instagram"
                 android:textColor="@color/txtgeral"
                 android:textSize="@dimen/txt_cad" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Siga-nos no Instagram"
-                android:textColor="@color/txtgeral"
                 android:layout_below="@+id/instagram"
-                android:textSize="@dimen/txt_cad"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                android:text="Siga-nos no Instagram"
+                android:textColor="@color/wallet_holo_blue_light"
+                android:textSize="@dimen/txt_cad" />
         </RelativeLayout>
     </LinearLayout>
     </ScrollView>

@@ -229,7 +229,7 @@ public class AddReminderActivity extends AppCompatActivity implements
     // On clicking Time picker
     public void setTime(View v){
         if(mCurrentReminderUri == null){
-            Toast.makeText(this, "Clique novamente na vacina para definir o alarme da hora", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Clique novamente no lembrete para definir o alarme da hora", Toast.LENGTH_LONG).show();
             return;
         }
         Calendar now = Calendar.getInstance();
@@ -246,7 +246,7 @@ public class AddReminderActivity extends AppCompatActivity implements
     // On clicking Date picker
     public void setDate(View v){
         if(mCurrentReminderUri == null){
-            Toast.makeText(this, "Clique novamente na vacina para definir o alarme da data", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Clique novamente no lembrete para definir o alarme da data", Toast.LENGTH_LONG).show();
             return;
         }
         Calendar now = Calendar.getInstance();
@@ -405,7 +405,7 @@ public class AddReminderActivity extends AppCompatActivity implements
 
 
                 if (mTitleText.getText().toString().length() == 0){
-                    mTitleText.setError("O título da vacina não pode estar em branco!");
+                    mTitleText.setError("O título do lembrete não pode estar em branco!");
                 }
 
                 else {
@@ -575,7 +575,7 @@ public class AddReminderActivity extends AppCompatActivity implements
                         Toast.LENGTH_SHORT).show();
             } else {
                 // Otherwise, the insertion was successful and we can display a toast.
-                Toast.makeText(this,("Vacina Agendada"),
+                Toast.makeText(this,("Atividade Agendada"),
                         Toast.LENGTH_SHORT).show();
             }
         } else {
@@ -589,7 +589,7 @@ public class AddReminderActivity extends AppCompatActivity implements
                         Toast.LENGTH_SHORT).show();
             } else {
                 // Otherwise, the update was successful and we can display a toast.
-                Toast.makeText(this,("Vacina agendada"),
+                Toast.makeText(this,("Atividade agendada"),
                         Toast.LENGTH_SHORT).show();
             }
         }

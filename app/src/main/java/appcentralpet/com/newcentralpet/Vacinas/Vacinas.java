@@ -82,7 +82,6 @@ public class Vacinas extends Fragment implements Serializable {
         list = new ArrayList<>();
         adapter = new VacinaListAdapter(getContext(), R.layout.vacina_itens, list);
         listaVacinas.setAdapter(adapter);
-        semvacina = (ImageView) view.findViewById(R.id.semvacina);
         listaVacinas.setEmptyView(semvacina);
 
         Cursor cursor = sqLiteHelperVacinas.getData("SELECT * FROM VACINAS");

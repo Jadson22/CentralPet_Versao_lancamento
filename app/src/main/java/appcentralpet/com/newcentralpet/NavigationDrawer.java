@@ -38,7 +38,7 @@ public class NavigationDrawer extends AppCompatActivity
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Vacinas");
+        toolbar.setTitle("Agenda");
         setSupportActionBar(toolbar);
 
         sqLiteHelper = new SQLiteHelper(this, "PetDB.sqlite", null, 4);
