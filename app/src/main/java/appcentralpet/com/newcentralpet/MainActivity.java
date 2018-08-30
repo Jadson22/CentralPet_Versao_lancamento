@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Agenda");
+        getSupportActionBar().setTitle("Caderneta");
 
         reminderListView = (ListView) findViewById(R.id.list);
 

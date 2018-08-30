@@ -41,7 +41,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import appcentralpet.com.newcentralpet.R;
-import appcentralpet.com.newcentralpet.fragMap;
 
 
 public class MapaClinicaActivity extends AppCompatActivity implements OnMapReadyCallback,

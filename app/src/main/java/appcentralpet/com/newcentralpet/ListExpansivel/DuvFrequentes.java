@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import appcentralpet.com.newcentralpet.Ebook;
+import appcentralpet.com.newcentralpet.PoliticaDePrivacidade;
 import appcentralpet.com.newcentralpet.R;
 
 /**
@@ -39,8 +41,9 @@ public class DuvFrequentes extends Fragment {
         link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.mundodosanimais.pt/"));
-                startActivity(it);
+                Intent poli = new Intent(getContext(), Ebook.class);
+                startActivity(poli);
+
             }
         });
         lst_view = (ExpandableListView) view.findViewById(R.id.lst_view);
