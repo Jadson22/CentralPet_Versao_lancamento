@@ -9,11 +9,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
-/**
- * Created by delaroy on 10/25/17.
- */
+import appcentralpet.com.newcentralpet.MainActivity;
+
+
 
 public class AlarmReminderProvider extends ContentProvider {
 

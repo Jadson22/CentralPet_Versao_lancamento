@@ -4,6 +4,8 @@ package appcentralpet.com.newcentralpet;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -50,9 +52,9 @@ public class NavigationDrawer extends AppCompatActivity
                 "idade VARCHAR, " +
                 "image BLOB)");
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new PetList()).commit();
+        getSupportActionBar().setTitle("Seja bem vindo!");
 
-        Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);
-        startActivity(intent);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -86,14 +88,14 @@ public class NavigationDrawer extends AppCompatActivity
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new Cadastro()).commit();
             getSupportActionBar().setTitle("Novo Pet");
 
+
         } else if (id == R.id.nav_meusPets) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new PetList()).commit();
-            getSupportActionBar().setTitle("Meus Pets");
+            getSupportActionBar().setTitle("Home");
 
         } else if (id == R.id.nav_vacina) {
             Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);
             startActivity(intent);
-
         } else if (id == R.id.nav_clinicas) {
             Intent intent = new Intent(NavigationDrawer.this, MapaClinicaActivity.class);
             startActivity(intent);

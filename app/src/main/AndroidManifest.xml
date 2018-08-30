@@ -57,22 +57,23 @@
 
         <activity
             android:name=".mapa.MapaClinicaActivity"
-            android:label="@string/title_activity_mapa" />
+            android:label="@string/title_activity_mapa">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".NavigationDrawer"
+            />
+        </activity>
         <activity android:name=".ListExpansivel.TextosDuvidas" />
         <activity android:name=".ListExpansivel.TabelaVacinasCaes" />
         <activity android:name=".ListExpansivel.TabelaVacinasGato" />
 
-        <service
-            android:name=".Vacinas.MyAlarmService"
-            android:enabled="true" />
-
-        <receiver android:name=".Vacinas.MyReceiver" />
-
         <activity android:name=".PoliticaDePrivacidade" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme" />
+        <activity android:name=".MainActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".NavigationDrawer"
+            />
+        </activity>
         <activity android:name=".AddReminderActivity"
             android:label="@string/title_activity_add_reminder"
             android:parentActivityName=".MainActivity"

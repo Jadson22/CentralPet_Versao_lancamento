@@ -1,6 +1,8 @@
 package appcentralpet.com.newcentralpet;
 
 
+
+
 import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -9,26 +11,37 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.Serializable;
+
+import appcentralpet.com.newcentralpet.BancoMeusPets.Cadastro;
+import appcentralpet.com.newcentralpet.BancoMeusPets.PetList;
+import appcentralpet.com.newcentralpet.ListExpansivel.DuvFrequentes;
+import appcentralpet.com.newcentralpet.Vacinas.Vacinas;
 import appcentralpet.com.newcentralpet.data.AlarmReminderContract;
 import appcentralpet.com.newcentralpet.data.AlarmReminderDbHelper;
 
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
     private FloatingActionButton mAddReminderButton;
     private Toolbar mToolbar;
@@ -36,8 +49,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     AlarmReminderDbHelper alarmReminderDbHelper = new AlarmReminderDbHelper(this);
     ListView reminderListView;
     ProgressDialog prgDialog;
-    TextView reminderText;
     TextView semAgenda;
+
 
     private String alarmTitle = "";
 
@@ -48,12 +61,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = (Toolbar) findViewById(R.id.vacina_nova);
-        mToolbar.setTitle("Agenda");
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle("Agenda");
 
         reminderListView = (ListView) findViewById(R.id.list);
-        reminderText = (TextView) findViewById(R.id.reminderText);
 
         View emptyView = findViewById(R.id.empty_view);
         reminderListView.setEmptyView(emptyView);
@@ -91,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         getSupportLoaderManager().initLoader(VEHICLE_LOADER, null, this);
 
-
     }
 
     @Override
@@ -120,9 +133,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         mCursorAdapter.swapCursor(cursor);
         if (cursor.getCount() > 0){
-            reminderText.setVisibility(View.VISIBLE);
+            reminderListView.setVisibility(View.VISIBLE);
         }else{
-            reminderText.setVisibility(View.INVISIBLE);
+            reminderListView.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -176,4 +189,5 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void restartLoader(){
         getSupportLoaderManager().restartLoader(VEHICLE_LOADER, null, this);
     }
+
 }

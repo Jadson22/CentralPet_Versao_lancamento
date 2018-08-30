@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -47,13 +48,14 @@ import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 public class Vacinas extends Fragment implements Serializable {
 
     public static SQLiteHelperVacinas sqLiteHelperVacinas;
-
+    private FloatingActionButton indicações;
     EditText edtRetorno;
     AutoCompleteTextView nomepet, edtVacina;
     ListView listaVacinas;
     ArrayList<Vacina> list;
     VacinaListAdapter adapter = null;
     ImageView semvacina;
+    ListView reminderListView;
 
 
     public Vacinas() {
@@ -78,7 +80,6 @@ public class Vacinas extends Fragment implements Serializable {
                                     "sdata VARCHAR)" );
 
         listaVacinas = (ListView) view.findViewById(R.id.list_vacinas);
-
         list = new ArrayList<>();
         adapter = new VacinaListAdapter(getContext(), R.layout.vacina_itens, list);
         listaVacinas.setAdapter(adapter);
@@ -90,7 +91,7 @@ public class Vacinas extends Fragment implements Serializable {
             int id = cursor.getInt(0);
             String nomePet = cursor.getString(1);
             String nomeVacina = cursor.getString(2);
-            String sData = cursor.getString(4);
+            String sData = cursor.getString(3);
 
             list.add(new Vacina(id, nomePet, nomeVacina, sData));
         }
@@ -131,6 +132,15 @@ public class Vacinas extends Fragment implements Serializable {
             }
         });
 
+        indicações = (FloatingActionButton) view.findViewById(R.id.fab2);
+
+        indicações.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"Parcerias em breve!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return view;
     }
 
@@ -141,12 +151,12 @@ public class Vacinas extends Fragment implements Serializable {
         dialogEdit.setTitle("Editar");
 
         final AutoCompleteTextView editarVacina = (AutoCompleteTextView) dialogEdit.findViewById(R.id.edtVacina);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
-        editarVacina.setAdapter(arrayAdapter);
+        MaskEditTextChangedListener masketretorno = new MaskEditTextChangedListener("(##)#####-####", editarVacina);
+        editarVacina.addTextChangedListener(masketretorno);
 
 
         final EditText editarSData = (EditText) dialogEdit.findViewById(R.id.edtRetorno);
-        MaskEditTextChangedListener masksData = new MaskEditTextChangedListener("#########################################", editarSData);
+        MaskEditTextChangedListener masksData = new MaskEditTextChangedListener("##########################################", editarSData);
         editarSData.addTextChangedListener(masksData);
         Button btnEditar = (Button) dialogEdit.findViewById(R.id.btnAdd);
 
@@ -182,8 +192,7 @@ public class Vacinas extends Fragment implements Serializable {
                         );
                     }
                     dialogEdit.dismiss();
-                    Snackbar snackbar = Snackbar.make(getView(), "Editado com sucesso!", Snackbar.LENGTH_SHORT);
-                    snackbar.show();
+                    Toast.makeText(getContext(), "Editado com sucesso", Toast.LENGTH_SHORT).show();
 
                 }catch (Exception error){
                     Log.e("Update erro: ", error.getMessage());
@@ -204,8 +213,7 @@ public class Vacinas extends Fragment implements Serializable {
             public void onClick(DialogInterface dialog, int which) {
                 try {
                     sqLiteHelperVacinas.deleteData(idVacina);
-                    Snackbar snackbar = Snackbar.make(getView(), "Excluido!", Snackbar.LENGTH_SHORT);
-                    snackbar.show();
+                    Toast.makeText(getContext(), "Excluido", Toast.LENGTH_SHORT).show();
                 } catch (Exception e){
                     Log.e("error", e.getMessage());
                 }
@@ -230,13 +238,14 @@ public class Vacinas extends Fragment implements Serializable {
 
 
          edtVacina = (AutoCompleteTextView) dialog.findViewById(R.id.edtVacina);
-         ArrayAdapter<String> adpVac = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
-         edtVacina.setAdapter(adpVac);
+        MaskEditTextChangedListener masketretorno = new MaskEditTextChangedListener("(##)#####-####", edtVacina);
+        edtVacina.addTextChangedListener(masketretorno);
 
 
          edtRetorno = (EditText) dialog.findViewById(R.id.edtRetorno);
          MaskEditTextChangedListener maskedtretorno = new MaskEditTextChangedListener("#########################################", edtRetorno);
          edtRetorno.addTextChangedListener(maskedtretorno);
+
         Cursor c = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");
         final ArrayAdapter<String> arrID = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
         while (c.moveToNext()){
@@ -287,8 +296,8 @@ public class Vacinas extends Fragment implements Serializable {
                         edtVacina.getText().toString().trim(),
                         edtRetorno.getText().toString().trim()
                 );
-                Snackbar snackbar = Snackbar.make(getView(), "Adicionado!", Snackbar.LENGTH_SHORT);
-                snackbar.show();
+                Toast.makeText(getContext(), "adicionado", Toast.LENGTH_SHORT).show();
+
                 nomepet.setText("");
                 edtVacina.setText("");
                 edtRetorno.setText("");
@@ -308,7 +317,7 @@ public class Vacinas extends Fragment implements Serializable {
             int id = cursor.getInt(0);
             String nomePet = cursor.getString(1);
             String nomeVacina = cursor.getString(2);
-            String sData = cursor.getString(4);
+            String sData = cursor.getString(3);
 
             list.add(new Vacina(id, nomePet, nomeVacina, sData));
         }

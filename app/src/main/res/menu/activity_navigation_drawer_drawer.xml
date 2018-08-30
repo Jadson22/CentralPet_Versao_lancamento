@@ -3,19 +3,21 @@
 
     <group android:checkableBehavior="single">
 
+
+        <item
+            android:id="@+id/nav_meusPets"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+
         <item
             android:id="@+id/nav_vacina"
             android:icon="@android:drawable/ic_menu_agenda"
             android:title="Agenda" />
+
         <item
             android:id="@+id/nav_cadastro"
             android:icon="@drawable/ic_add"
             android:title="Novo pet" />
-
-        <item
-            android:id="@+id/nav_meusPets"
-            android:icon="@drawable/newdog"
-            android:title="Meus pets" />
 
         <item
             android:id="@+id/nav_emergencia"
