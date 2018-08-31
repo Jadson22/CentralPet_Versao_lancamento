@@ -16,14 +16,14 @@
         app:titleTextColor="#ffffff"/>
 
     <TextView
-        android:layout_width="374dp"
+        android:layout_width="306dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:layout_marginTop="68dp"
-        android:text="Ebook's sobre o aprofundamento dos cuidados e treinamentos de seu pet:"
-        android:textSize="20sp" />
+        android:text="Ebook's para o aprofundamento dos cuidados e treinamentos de seu pet:"
+        android:textSize="18sp" />
 
     <RelativeLayout
         android:id="@+id/adBrasil"
@@ -44,7 +44,7 @@
             android:layout_marginStart="0dp"
             android:text="Adestrador de cães Brasil"
             android:textColor="@color/wallet_holo_blue_light"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
     </RelativeLayout>
 
 
@@ -66,7 +66,7 @@
             android:layout_alignParentTop="true"
             android:text="Guia de adestramento"
             android:textColor="@color/wallet_holo_blue_light"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -87,7 +87,7 @@
             android:layout_alignParentTop="true"
             android:text="Como educar seu cachorro"
             android:textColor="@color/wallet_holo_blue_light"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -108,7 +108,7 @@
             android:layout_alignParentTop="true"
             android:text="Cão saudável"
             android:textColor="@color/wallet_holo_blue_light"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
     </RelativeLayout>
 
 

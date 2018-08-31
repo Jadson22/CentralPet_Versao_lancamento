@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,6 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 
 import java.io.Serializable;
 
@@ -26,10 +31,12 @@ import appcentralpet.com.newcentralpet.ListExpansivel.DuvFrequentes;
 
 import appcentralpet.com.newcentralpet.Vacinas.Vacinas;
 import appcentralpet.com.newcentralpet.mapa.MapaClinicaActivity;
+import appcentralpet.com.newcentralpet.mapa.NovoMapa;
 
 public class NavigationDrawer extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, Serializable{
+        implements NavigationView.OnNavigationItemSelectedListener, Serializable, OnMapReadyCallback{
 
+    SupportMapFragment mapFragment;
 
     public static SQLiteHelper sqLiteHelper;
 
@@ -66,6 +73,9 @@ public class NavigationDrawer extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
+
+
+
     }
 
     @Override
@@ -96,9 +106,10 @@ public class NavigationDrawer extends AppCompatActivity
         } else if (id == R.id.nav_vacina) {
             Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);
             startActivity(intent);
+
         } else if (id == R.id.nav_clinicas) {
-            Intent intent = new Intent(NavigationDrawer.this, MapaClinicaActivity.class);
-            startActivity(intent);
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new NovoMapa()).commit();
+            getSupportActionBar().setTitle("Clínicas e Pet Shops");
 
         } else if (id == R.id.nav_duvFreq) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new DuvFrequentes()).commit();
@@ -122,7 +133,11 @@ public class NavigationDrawer extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
     }
+}
 
 
 

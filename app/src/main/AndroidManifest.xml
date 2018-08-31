@@ -92,7 +92,11 @@
             android:name=".reminder.ReminderAlarmService"
             android:exported="false" />
 
-        <activity android:name=".Ebook"></activity>
+        <activity android:name=".Ebook">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>
