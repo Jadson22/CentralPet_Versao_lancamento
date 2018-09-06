@@ -5,7 +5,7 @@
 
 
         <item
-            android:id="@+id/nav_meusPets"
+            android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
             android:title="Home" />
 
@@ -15,8 +15,8 @@
             android:title="Novo pet" />
 
         <item
-            android:id="@+id/nav_vacina"
-            android:icon="@android:drawable/ic_menu_agenda"
+            android:id="@+id/nav_caderneta"
+            android:icon="@drawable/ic_bloco"
             android:title="Caderneta" />
 
 
@@ -33,6 +33,11 @@
             android:id="@+id/nav_duvFreq"
             android:icon="@drawable/ic_duvidas"
             android:title="Dúvidas Frequentes" />
+
+        <item
+            android:id="@+id/nav_ebook"
+            android:icon="@drawable/ic_ebook"
+            android:title="Ebook's" />
     </group>
 
     <group android:checkableBehavior="single">

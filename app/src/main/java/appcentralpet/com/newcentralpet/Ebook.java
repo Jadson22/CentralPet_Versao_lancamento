@@ -14,6 +14,10 @@ public class Ebook extends AppCompatActivity {
     RelativeLayout adGuia;
     RelativeLayout adCachorrro;
     RelativeLayout manCachorro;
+    RelativeLayout monetize;
+    RelativeLayout monetize2;
+    RelativeLayout monetize3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,33 @@ public class Ebook extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent ava = new Intent(Intent.ACTION_VIEW, Uri.parse("https://go.hotmart.com/G8764212L"));
+                startActivity(ava);
+            }
+        });
+
+        monetize = (RelativeLayout) findViewById(R.id.Monetize);
+        monetize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ava = new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.monetizze.com.br/checkout/KQZ27452"));
+                startActivity(ava);
+            }
+        });
+
+        monetize2 = (RelativeLayout) findViewById(R.id.Monetize2);
+        monetize2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ava = new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.monetizze.com.br/r/AFL1498768"));
+                startActivity(ava);
+            }
+        });
+
+        monetize3 = (RelativeLayout) findViewById(R.id.Monetize3);
+        monetize3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ava = new Intent(Intent.ACTION_VIEW, Uri.parse("https://app.monetizze.com.br/r/ADS1498847"));
                 startActivity(ava);
             }
         });

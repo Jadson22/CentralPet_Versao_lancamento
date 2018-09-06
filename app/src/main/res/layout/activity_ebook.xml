@@ -32,7 +32,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="175dp"
+        android:layout_marginTop="165dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="83dp">
 
@@ -55,7 +55,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="195dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="83dp">
 
@@ -92,12 +92,11 @@
 
     <RelativeLayout
         android:id="@+id/manCachorro"
-        android:layout_width="362dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="259dp"
+        android:layout_marginTop="225dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="83dp">
 
@@ -106,10 +105,73 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
             android:text="Cão saudável"
             android:textColor="@color/wallet_holo_blue_light"
             android:textSize="17sp" />
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/Monetize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="227dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="83dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:text="Curso de banho e tosa"
+            android:textColor="@color/wallet_holo_blue_light"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Monetize2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="257dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="83dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:text="A arte de criar gatos"
+            android:textColor="@color/wallet_holo_blue_light"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Monetize3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="255dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="83dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:text="O cão não é o vilão"
+            android:textColor="@color/wallet_holo_blue_light"
+            android:textSize="17sp" />
+    </RelativeLayout>
 
 </RelativeLayout>

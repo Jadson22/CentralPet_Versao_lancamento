@@ -156,18 +156,18 @@ public class Cadastro extends Fragment implements Serializable{
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_CODE_GALLERY && resultCode == getActivity().RESULT_OK && data != null){
+        if (requestCode == REQUEST_CODE_GALLERY && resultCode == getActivity().RESULT_OK && data != null) {
             Uri uri = data.getData();
-                Glide.with(this)
+            Glide.with(this)
                     .load(uri)
                     .asBitmap()
                     .centerCrop()
                     .into(imageView);
 
-        }  else if(requestCode == REQUEST_CODE_CAMERA && resultCode == getActivity().RESULT_OK && data!= null){
-            Uri uir = data.getData();
+        } else if (requestCode == REQUEST_CODE_CAMERA && resultCode == getActivity().RESULT_OK && data != null) {
+            Uri uri = data.getData();
             Glide.with(this)
-                    .load(uir)
+                    .load(uri)
                     .asBitmap()
                     .centerCrop()
                     .into(imageView);
@@ -190,6 +190,7 @@ public class Cadastro extends Fragment implements Serializable{
             }
             */
         }
+
 
         super.onActivityResult(requestCode, resultCode, data);
 

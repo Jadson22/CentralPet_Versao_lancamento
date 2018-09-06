@@ -99,11 +99,11 @@ public class NavigationDrawer extends AppCompatActivity
             getSupportActionBar().setTitle("Novo Pet");
 
 
-        } else if (id == R.id.nav_meusPets) {
+        } else if (id == R.id.nav_home) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new PetList()).commit();
             getSupportActionBar().setTitle("Home");
 
-        } else if (id == R.id.nav_vacina) {
+        } else if (id == R.id.nav_caderneta) {
             Intent intent = new Intent(NavigationDrawer.this, MainActivity.class);
             startActivity(intent);
 
@@ -126,6 +126,10 @@ public class NavigationDrawer extends AppCompatActivity
         } else if (id == R.id.nav_ong) {
             Intent ong = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/anjosdequatrop4tas"));
             startActivity(ong);
+        }else if (id == R.id.nav_ebook) {
+            Intent intent = new Intent(NavigationDrawer.this, Ebook.class);
+            startActivity(intent);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
