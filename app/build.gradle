@@ -46,6 +46,7 @@ dependencies {
     compile 'com.bignerdranch.android:recyclerview-multiselect:+'
     compile 'com.wrapp.floatlabelededittext:library:0.0.6'
     compile 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    implementation 'joda-time:joda-time:2.10'
     testCompile 'junit:junit:4.12'
 
 }

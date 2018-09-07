@@ -3,6 +3,7 @@ package appcentralpet.com.newcentralpet.BancoMeusPets;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -31,10 +33,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Months;
+import org.joda.time.Years;
+
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import appcentralpet.com.newcentralpet.NavigationDrawer;
 import appcentralpet.com.newcentralpet.R;
@@ -128,6 +139,8 @@ public class PetList extends Fragment implements Serializable{
 
     ImageView imgPet;
     RadioGroup upradioSexo, upradioTipo;
+    TextView edtIdade;
+    EditText edtAniversario;
 
     private void showDialogUpdate(Activity activity, final int position){
 
@@ -140,9 +153,14 @@ public class PetList extends Fragment implements Serializable{
         final AutoCompleteTextView edtRaca = (AutoCompleteTextView) dialog.findViewById(R.id.upraca);
         ArrayAdapter<String> array = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, Cadastro.RACAS);
         edtRaca.setAdapter(array);
-        final EditText edtIdade = (EditText) dialog.findViewById(R.id.upidade);
-        MaskEditTextChangedListener maskedtIdade = new MaskEditTextChangedListener("####", edtIdade);
-        edtIdade.addTextChangedListener(maskedtIdade);
+        edtAniversario = (EditText) dialog.findViewById(R.id.upidade);
+        edtIdade = (TextView) dialog.findViewById(R.id.edtIdadee);
+        edtAniversario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pegarData();
+            }
+        });
 
         upradioSexo = (RadioGroup) dialog.findViewById(R.id.upradioSexo);
         upradioTipo = (RadioGroup) dialog.findViewById(R.id.upradioTipo);
@@ -211,7 +229,7 @@ public class PetList extends Fragment implements Serializable{
                                 sexo.trim(),
                                 edtRaca.getText().toString().trim(),
                                 tipo.trim(),
-                                edtIdade.getText().toString().trim(),
+                                edtAniversario.getText().toString().trim(),
                                 Cadastro.imageViewToByte(imgPet),
                                 position
                         );
@@ -226,6 +244,80 @@ public class PetList extends Fragment implements Serializable{
 
             }
         });
+    }
+
+    private void pegarData() {
+
+        Calendar c = Calendar.getInstance();
+        int dia = c.get(Calendar.DAY_OF_MONTH);
+        int mes = c.get(Calendar.MONTH);
+        int ano = c.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        String DataNascimento = dayOfMonth + "/" + (month) + "/" + year;
+                        edtAniversario.setText(DataNascimento);
+                        calcularIdade(dayOfMonth, month, year);
+                    }
+                }, ano, mes, dia);
+        datePickerDialog.show();
+
+    }
+
+    private void calcularIdade(int diaN, int mesN, int anoN) {
+        Calendar c = Calendar.getInstance();
+        int diaA = c.get(Calendar.DAY_OF_MONTH);
+        int mesA = c.get(Calendar.MONTH);
+        int anoA = c.get(Calendar.YEAR);
+
+        String DataAtual = diaA + "/" + mesA + "/" + anoA;
+        String DataNascimento = diaN + "/" + mesN + "/" + anoN;
+
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date date1 = null;
+        Date date2 = null;
+
+        try {
+            date1 = format.parse(DataNascimento);
+            date2 = format.parse(DataAtual);
+
+            DateTime dt1 = new DateTime(date1);
+            DateTime dt2 = new DateTime(date2);
+
+            long difdia = Days.daysBetween(dt1, dt2).getDays();
+            long difMes = Months.monthsBetween(dt1, dt2).getMonths();
+            long difAnos = Years.yearsBetween(dt1, dt2).getYears();
+
+            long idade = difAnos;
+
+            if (idade == 1) {
+                edtIdade.setText(idade + " ano");
+            } else if (idade > 1) {
+                edtIdade.setText(idade + " anos");
+            } else if (idade < 1) {
+                idade = difMes;
+                if (idade == 1) {
+                    edtIdade.setText(idade + " mês");
+                } else if (idade > 1) {
+                    edtIdade.setText(idade + " meses");
+                } else if (idade < 1) {
+                    idade = difdia;
+                    if (idade == 1) {
+                        edtIdade.setText(idade + " dia");
+                    } else {
+                        edtIdade.setText(idade + " dias");
+                    }
+                }
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private void abrircamera() {

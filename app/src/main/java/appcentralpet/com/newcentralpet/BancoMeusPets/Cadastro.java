@@ -1,6 +1,7 @@
 package appcentralpet.com.newcentralpet.BancoMeusPets;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,6 +15,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,17 +24,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Months;
+import org.joda.time.Years;
+
 import java.io.ByteArrayOutputStream;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import appcentralpet.com.newcentralpet.NavigationDrawer;
 import appcentralpet.com.newcentralpet.R;
@@ -41,10 +54,11 @@ import br.com.jansenfelipe.androidmask.MaskEditTextChangedListener;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Cadastro extends Fragment implements Serializable{
+public class Cadastro extends Fragment implements Serializable {
 
 
-    EditText edtName, edtIdade;
+    EditText edtName, edtAniversario;
+    TextView edtIdade;
     AutoCompleteTextView edtRaca;
     RadioGroup radioGroupSexo, radioGroupTipo;
     ImageView imageView;
@@ -81,9 +95,14 @@ public class Cadastro extends Fragment implements Serializable{
         ArrayAdapter<String> array = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line, RACAS);
         edtRaca.setAdapter(array);
 
-        edtIdade = (EditText) view.findViewById(R.id.editarIdade);
-        MaskEditTextChangedListener maskedtIdade = new MaskEditTextChangedListener("####", edtIdade);
-        edtIdade.addTextChangedListener(maskedtIdade);
+        edtIdade = (TextView) view.findViewById(R.id.edtIdade);
+        edtAniversario = (EditText) view.findViewById(R.id.editarIdade);
+        edtAniversario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pegarData();
+            }
+        });
 
         radioGroupSexo = (RadioGroup) view.findViewById(R.id.radioSexo);
         radioGroupTipo = (RadioGroup) view.findViewById(R.id.radioTipo);
@@ -99,10 +118,10 @@ public class Cadastro extends Fragment implements Serializable{
                 dialog.setItems(itens, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int item) {
-                        if(item == 0 ){
+                        if (item == 0) {
                             //tirar foto
                             abrircamera();
-                        }else{
+                        } else {
                             //galeria
                             escolherImg();
                         }
@@ -115,13 +134,87 @@ public class Cadastro extends Fragment implements Serializable{
         return view;
     }
 
+    private void pegarData() {
+
+        Calendar c = Calendar.getInstance();
+        int dia = c.get(Calendar.DAY_OF_MONTH);
+        int mes = c.get(Calendar.MONTH);
+        int ano = c.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        String DataNascimento = dayOfMonth + "/" + (month) + "/" + year;
+                        edtAniversario.setText(DataNascimento);
+                        calcularIdade(dayOfMonth, month, year);
+                    }
+                }, ano, mes, dia);
+        datePickerDialog.show();
+
+    }
+
+    private void calcularIdade(int diaN, int mesN, int anoN) {
+        Calendar c = Calendar.getInstance();
+        int diaA = c.get(Calendar.DAY_OF_MONTH);
+        int mesA = c.get(Calendar.MONTH);
+        int anoA = c.get(Calendar.YEAR);
+
+        String DataAtual = diaA + "/" + mesA + "/" + anoA;
+        String DataNascimento = diaN + "/" + mesN + "/" + anoN;
+
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date date1 = null;
+        Date date2 = null;
+
+        try {
+            date1 = format.parse(DataNascimento);
+            date2 = format.parse(DataAtual);
+
+            DateTime dt1 = new DateTime(date1);
+            DateTime dt2 = new DateTime(date2);
+
+            long difdia = Days.daysBetween(dt1, dt2).getDays();
+            long difMes = Months.monthsBetween(dt1, dt2).getMonths();
+            long difAnos = Years.yearsBetween(dt1, dt2).getYears();
+
+            long idade = difAnos;
+
+            if (idade == 1) {
+                edtIdade.setText(idade + " ano");
+            } else if (idade > 1) {
+                edtIdade.setText(idade + " anos");
+            } else if (idade < 1) {
+                idade = difMes;
+                if (idade == 1) {
+                    edtIdade.setText(idade + " mês");
+                } else if (idade > 1) {
+                    edtIdade.setText(idade + " meses");
+                } else if (idade < 1) {
+                    idade = difdia;
+                    if (idade == 1) {
+                        edtIdade.setText(idade + " dia");
+                    } else {
+                        edtIdade.setText(idade + " dias");
+                    }
+                }
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void abrircamera() {
         requestPermissions(
                 new String[]{Manifest.permission.CAMERA},
                 REQUEST_CODE_CAMERA);
     }
 
-    public void escolherImg(){
+    public void escolherImg() {
         requestPermissions(
                 new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
                 REQUEST_CODE_GALLERY
@@ -130,8 +223,8 @@ public class Cadastro extends Fragment implements Serializable{
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == REQUEST_CODE_GALLERY){
-            if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == REQUEST_CODE_GALLERY) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, REQUEST_CODE_GALLERY);
@@ -140,9 +233,8 @@ public class Cadastro extends Fragment implements Serializable{
                 snackbar.show();
             }
             return;
-        }
-        else if(requestCode == REQUEST_CODE_CAMERA){
-            if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        } else if (requestCode == REQUEST_CODE_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent, REQUEST_CODE_CAMERA);
             } else {
@@ -201,7 +293,7 @@ public class Cadastro extends Fragment implements Serializable{
     public void adicionar() {
 
         String sexo = null;
-        switch (radioGroupSexo.getCheckedRadioButtonId()){
+        switch (radioGroupSexo.getCheckedRadioButtonId()) {
             case R.id.rbMacho:
                 sexo = "macho";
                 break;
@@ -210,7 +302,7 @@ public class Cadastro extends Fragment implements Serializable{
         }
 
         String tipo = null;
-        switch (radioGroupTipo.getCheckedRadioButtonId()){
+        switch (radioGroupTipo.getCheckedRadioButtonId()) {
             case R.id.rbCao:
                 tipo = "cao";
                 break;
@@ -219,20 +311,20 @@ public class Cadastro extends Fragment implements Serializable{
         }
 
         try {
-            if((edtName.getText().toString().length() == 0) || (edtRaca.getText().toString().length() == 0)){
-                if(edtName.getText().toString().length() == 0) {
+            if ((edtName.getText().toString().length() == 0) || (edtRaca.getText().toString().length() == 0)) {
+                if (edtName.getText().toString().length() == 0) {
                     edtName.setError("Digite um nome");
-                }else {
+                } else {
                     edtRaca.setError("Digite uma raça");
                 }
-            }else {
+            } else {
 
                 nv.sqLiteHelper.insertData(
                         edtName.getText().toString().trim(),
                         sexo.trim(),
                         edtRaca.getText().toString().trim(),
                         tipo.trim(),
-                        edtIdade.getText().toString().trim(),
+                        edtAniversario.getText().toString().trim(),
                         imageViewToByte(imageView)
                 );
                 Snackbar snackbar = Snackbar.make(getView(), "Novo pet salvo!", Snackbar.LENGTH_SHORT);
@@ -248,7 +340,7 @@ public class Cadastro extends Fragment implements Serializable{
     }
 
     public static byte[] imageViewToByte(ImageView image) {
-        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
@@ -261,6 +353,7 @@ public class Cadastro extends Fragment implements Serializable{
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_cadstromeuspets, menu);

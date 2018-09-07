@@ -11,7 +11,16 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.Months;
+import org.joda.time.Years;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import appcentralpet.com.newcentralpet.R;
 
@@ -23,6 +32,7 @@ public class PetListAdapter extends BaseAdapter {
     private Context context;
     private  int layout;
     private ArrayList<Pet> petList;
+    public String NovaIdade;
 
     public PetListAdapter(Context context, int layout, ArrayList<Pet> petList) {
         this.context = context;
@@ -47,7 +57,7 @@ public class PetListAdapter extends BaseAdapter {
 
     private class ViewHolder{
         ImageView imgPerfil, iconeSexo, iconeTipo;
-        TextView textoName, textoRaca, textoIdade, textoAnos;
+        TextView textoName, textoRaca, textoIdade;
     }
 
     @Override
@@ -66,7 +76,6 @@ public class PetListAdapter extends BaseAdapter {
             holder.imgPerfil = (ImageView) row.findViewById(R.id.imgPerfil);
             holder.iconeSexo = (ImageView) row.findViewById(R.id.iconeSexo);
             holder.iconeTipo = (ImageView) row.findViewById(R.id.iconeTipo);
-            holder.textoAnos = (TextView) row.findViewById(R.id.idy) ;
 
             row.setTag(holder);
         }else{
@@ -75,9 +84,15 @@ public class PetListAdapter extends BaseAdapter {
 
         Pet pet = petList.get(position);
 
+        String ani = pet.getIdade();
+        calcularIdade(ani);
+        Idade idade1 = new Idade(NovaIdade);
+
+
         holder.textoName.setText(pet.getName());
         holder.textoRaca.setText(pet.getRaca());
-        holder.textoIdade.setText(pet.getIdade());
+        holder.textoIdade.setText(idade1.getIdadeClasse());
+
         byte[] petImage = pet.getImage();
         Glide.with(this.context)
                 .load(petImage)
@@ -99,24 +114,68 @@ public class PetListAdapter extends BaseAdapter {
             holder.iconeTipo.setImageResource(R.drawable.iconegato);
         }
 
-        if(pet.getIdade()!=null) {
-            try {
-                double idadee = Double.parseDouble(pet.getIdade());
-                if (idadee < 1) {
-                    holder.textoAnos.setText("meses");
-                } else if (idadee > 1) {
-                    holder.textoAnos.setText("anos");
-                }
-            } catch (NumberFormatException e) {
-            }
-        }
-
-        if(pet.getIdade().equals("")){
-            holder.textoAnos.setText("");
-        }else if(pet.getIdade().equals("1")){
-            holder.textoAnos.setText("ano");
-        }
-
         return row;
+
+    }
+    private void calcularIdade(String aniv) {
+        Calendar c = Calendar.getInstance();
+        int diaA = c.get(Calendar.DAY_OF_MONTH);
+        int mesA = c.get(Calendar.MONTH);
+        int anoA = c.get(Calendar.YEAR);
+
+        String DataAtual = diaA + "/" + mesA + "/" + anoA;
+        String DataNascimento = aniv;
+
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date date1 = null;
+        Date date2 = null;
+
+        try {
+            date1 = format.parse(DataNascimento);
+            date2 = format.parse(DataAtual);
+
+            DateTime dt1 = new DateTime(date1);
+            DateTime dt2 = new DateTime(date2);
+
+            long difdia = Days.daysBetween(dt1, dt2).getDays();
+            long difMes = Months.monthsBetween(dt1, dt2).getMonths();
+            long difAnos = Years.yearsBetween(dt1, dt2).getYears();
+
+            long idade = difAnos;
+
+            if (idade == 1) {
+                //edtIdade.setText(idade + " ano");
+                NovaIdade = idade + " ano";
+            } else if (idade > 1) {
+                //edtIdade.setText(idade + " anos");
+                NovaIdade = idade + " anos";
+            } else if (idade < 1) {
+                idade = difMes;
+                if (idade == 1) {
+                    //edtIdade.setText(idade + " mês");
+                    NovaIdade = idade + " mês";
+                } else if (idade > 1) {
+                    //edtIdade.setText(idade + " meses");
+                    NovaIdade = idade + " meses";
+                } else if (idade < 1) {
+                    idade = difdia;
+                    if (idade == 1) {
+                        //edtIdade.setText(idade + " dia");
+                        NovaIdade = idade + " dia";
+                    } else {
+                        //edtIdade.setText(idade + " dias");
+                        NovaIdade = idade + " dias";
+                    }
+                }
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void passarIdade(String idaa){
+        String idaadee = idaa;
     }
 }
