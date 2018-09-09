@@ -146,7 +146,7 @@ public class Cadastro extends Fragment implements Serializable {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                        String DataNascimento = dayOfMonth + "/" + (month) + "/" + year;
+                        String DataNascimento = dayOfMonth + "/" + (month + 1) + "/" + year;
                         edtAniversario.setText(DataNascimento);
                         calcularIdade(dayOfMonth, month, year);
                     }
@@ -332,6 +332,7 @@ public class Cadastro extends Fragment implements Serializable {
                 edtName.setText("");
                 edtRaca.setText("");
                 edtIdade.setText("");
+                edtAniversario.setText("");
                 imageView.setImageResource(R.drawable.novaphoto);
             }
         } catch (Exception e) {

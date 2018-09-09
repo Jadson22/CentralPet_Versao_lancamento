@@ -49,13 +49,14 @@ public class Vacinas extends Fragment implements Serializable {
 
     public static SQLiteHelperVacinas sqLiteHelperVacinas;
     private FloatingActionButton indicações;
-    EditText edtRetorno;
-    AutoCompleteTextView nomepet, edtVacina;
+    EditText edtRetorno, nomepet;
+    AutoCompleteTextView edtVacina;
     ListView listaVacinas;
     ArrayList<Vacina> list;
     VacinaListAdapter adapter = null;
     ImageView semvacina;
     ListView reminderListView;
+    EditText editarSData;
 
 
     public Vacinas() {
@@ -70,14 +71,13 @@ public class Vacinas extends Fragment implements Serializable {
         View view = inflater.inflate(R.layout.fragment_vacinas, container, false);
 
 
-
         sqLiteHelperVacinas = new SQLiteHelperVacinas(getContext(), "PetVacina.sqlite", null, 1);
         sqLiteHelperVacinas.queryData("CREATE TABLE IF NOT EXISTS VACINAS " +
-                                    "(Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                                    "nome VARCHAR, " +
-                                    "vacina VARCHAR, " +
-                                    "pdata VARCHAR, " +
-                                    "sdata VARCHAR)" );
+                "(Id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "nome VARCHAR, " +
+                "vacina VARCHAR, " +
+                "pdata VARCHAR, " +
+                "sdata VARCHAR)");
 
         listaVacinas = (ListView) view.findViewById(R.id.list_vacinas);
         list = new ArrayList<>();
@@ -87,7 +87,7 @@ public class Vacinas extends Fragment implements Serializable {
 
         Cursor cursor = sqLiteHelperVacinas.getData("SELECT * FROM VACINAS");
         list.clear();
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String nomePet = cursor.getString(1);
             String nomeVacina = cursor.getString(2);
@@ -107,20 +107,20 @@ public class Vacinas extends Fragment implements Serializable {
                 dialog.setItems(itens, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int item) {
-                        if(item == 0 ){
+                        if (item == 0) {
                             //editar
                             Cursor cur = sqLiteHelperVacinas.getData("SELECT id FROM VACINAS");
                             ArrayList<Integer> arrayId = new ArrayList<Integer>();
-                            while (cur.moveToNext()){
+                            while (cur.moveToNext()) {
                                 arrayId.add(cur.getInt(0));
                             }
                             showDialogUpdate(getActivity(), arrayId.get(position));
 
-                        }else{
+                        } else {
                             //apagar
                             Cursor cur = sqLiteHelperVacinas.getData("SELECT id FROM VACINAS");
                             ArrayList<Integer> arrayId = new ArrayList<Integer>();
-                            while (cur.moveToNext()){
+                            while (cur.moveToNext()) {
                                 arrayId.add(cur.getInt(0));
                             }
                             showDialogDelete(arrayId.get(position));
@@ -137,7 +137,7 @@ public class Vacinas extends Fragment implements Serializable {
         indicações.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"Parcerias em breve!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Parcerias em breve!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -154,19 +154,12 @@ public class Vacinas extends Fragment implements Serializable {
         MaskEditTextChangedListener masketretorno = new MaskEditTextChangedListener("(##)#####-####", editarVacina);
         editarVacina.addTextChangedListener(masketretorno);
 
-
         final EditText editarSData = (EditText) dialogEdit.findViewById(R.id.edtRetorno);
-        MaskEditTextChangedListener masksData = new MaskEditTextChangedListener("##########################################", editarSData);
-        editarSData.addTextChangedListener(masksData);
+
         Button btnEditar = (Button) dialogEdit.findViewById(R.id.btnAdd);
 
-        Cursor c = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");
-        ArrayAdapter<String> arrID = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
-        while (c.moveToNext()){
-            arrID.add(c.getString(1));
-        }
-        final AutoCompleteTextView editarNomePet = (AutoCompleteTextView) dialogEdit.findViewById(R.id.nomePet);
-        editarNomePet.setAdapter(arrID);
+        final EditText editarNomePet = (EditText) dialogEdit.findViewById(R.id.nomePet);
+
 
         int width = (int) (getActivity().getResources().getDisplayMetrics().widthPixels * 0.95);
         int height = (int) (getActivity().getResources().getDisplayMetrics().heightPixels * 0.7);
@@ -176,14 +169,14 @@ public class Vacinas extends Fragment implements Serializable {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                    if((editarNomePet.getText().toString().length() == 0) || (editarVacina.getText().toString().length() == 0)){
-                        if(editarNomePet.getText().toString().length() == 0) {
+                try {
+                    if ((editarNomePet.getText().toString().length() == 0) || (editarVacina.getText().toString().length() == 0)) {
+                        if (editarNomePet.getText().toString().length() == 0) {
                             editarNomePet.setError("Preencha um nome");
-                        }else {
+                        } else {
                             editarVacina.setError("Preencha o contato");
                         }
-                    }else{
+                    } else {
                         sqLiteHelperVacinas.updateData(
                                 editarNomePet.getText().toString().trim(),
                                 editarVacina.getText().toString().trim(),
@@ -194,7 +187,7 @@ public class Vacinas extends Fragment implements Serializable {
                     dialogEdit.dismiss();
                     Toast.makeText(getContext(), "Editado com sucesso", Toast.LENGTH_SHORT).show();
 
-                }catch (Exception error){
+                } catch (Exception error) {
                     Log.e("Update erro: ", error.getMessage());
                 }
                 atualizarListView();
@@ -214,7 +207,7 @@ public class Vacinas extends Fragment implements Serializable {
                 try {
                     sqLiteHelperVacinas.deleteData(idVacina);
                     Toast.makeText(getContext(), "Excluido", Toast.LENGTH_SHORT).show();
-                } catch (Exception e){
+                } catch (Exception e) {
                     Log.e("error", e.getMessage());
                 }
                 atualizarListView();
@@ -230,29 +223,20 @@ public class Vacinas extends Fragment implements Serializable {
         dialogDelete.show();
     }
 
-    private void ShowDialogAdd(){
+    private void ShowDialogAdd() {
 
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.add_vacinas);
         dialog.setTitle("Adicionar");
 
 
-         edtVacina = (AutoCompleteTextView) dialog.findViewById(R.id.edtVacina);
+        edtVacina = (AutoCompleteTextView) dialog.findViewById(R.id.edtVacina);
         MaskEditTextChangedListener masketretorno = new MaskEditTextChangedListener("(##)#####-####", edtVacina);
         edtVacina.addTextChangedListener(masketretorno);
 
+        edtRetorno = (EditText) dialog.findViewById(R.id.edtRetorno);
 
-         edtRetorno = (EditText) dialog.findViewById(R.id.edtRetorno);
-         MaskEditTextChangedListener maskedtretorno = new MaskEditTextChangedListener("#########################################", edtRetorno);
-         edtRetorno.addTextChangedListener(maskedtretorno);
-
-        Cursor c = NavigationDrawer.sqLiteHelper.getData("SELECT * FROM PET");
-        final ArrayAdapter<String> arrID = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line);
-        while (c.moveToNext()){
-            arrID.add(c.getString(1));
-        }
-        nomepet = (AutoCompleteTextView) dialog.findViewById(R.id.nomePet);
-        nomepet.setAdapter(arrID);
+        nomepet = (EditText) dialog.findViewById(R.id.nomePet);
 
         Button btnAdd = (Button) dialog.findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -264,32 +248,25 @@ public class Vacinas extends Fragment implements Serializable {
             }
 
 
-
-
-
-
-
         });
 
         int width = (int) (getActivity().getResources().getDisplayMetrics().widthPixels * 0.95);
         int height = (int) (getActivity().getResources().getDisplayMetrics().heightPixels * 0.7);
         dialog.getWindow().setLayout(width, height);
         dialog.show();
-
-
     }
 
     private void adicionarVacina() {
 
-        try{
+        try {
 
-            if((nomepet.getText().toString().length() == 0) || (edtVacina.getText().toString().length() == 0)){
-                if(nomepet.getText().toString().length() == 0) {
+            if ((nomepet.getText().toString().length() == 0) || (edtVacina.getText().toString().length() == 0)) {
+                if (nomepet.getText().toString().length() == 0) {
                     nomepet.setError("Preencha um nome");
-                }else {
+                } else {
                     edtVacina.setError("Selecione um contato");
                 }
-            }else{
+            } else {
 
                 sqLiteHelperVacinas.insertData(
                         nomepet.getText().toString().trim(),
@@ -303,17 +280,17 @@ public class Vacinas extends Fragment implements Serializable {
                 edtRetorno.setText("");
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         atualizarListView();
     }
 
-    private void atualizarListView(){
+    private void atualizarListView() {
 
         Cursor cursor = sqLiteHelperVacinas.getData("SELECT * FROM VACINAS");
         list.clear();
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String nomePet = cursor.getString(1);
             String nomeVacina = cursor.getString(2);
@@ -325,13 +302,12 @@ public class Vacinas extends Fragment implements Serializable {
 
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_meuspets, menu);

@@ -123,7 +123,7 @@ public class PetListAdapter extends BaseAdapter {
         int mesA = c.get(Calendar.MONTH);
         int anoA = c.get(Calendar.YEAR);
 
-        String DataAtual = diaA + "/" + mesA + "/" + anoA;
+        String DataAtual = diaA + "/" + (mesA + 1) + "/" + anoA;
         String DataNascimento = aniv;
 
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -173,9 +173,5 @@ public class PetListAdapter extends BaseAdapter {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    }
-
-    private void passarIdade(String idaa){
-        String idaadee = idaa;
     }
 }

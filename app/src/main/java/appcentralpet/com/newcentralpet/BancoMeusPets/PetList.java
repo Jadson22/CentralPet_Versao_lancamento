@@ -258,7 +258,7 @@ public class PetList extends Fragment implements Serializable{
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                        String DataNascimento = dayOfMonth + "/" + (month) + "/" + year;
+                        String DataNascimento = dayOfMonth + "/" + (month + 1) + "/" + year;
                         edtAniversario.setText(DataNascimento);
                         calcularIdade(dayOfMonth, month, year);
                     }

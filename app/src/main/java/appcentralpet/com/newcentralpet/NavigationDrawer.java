@@ -108,8 +108,10 @@ public class NavigationDrawer extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_clinicas) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new NovoMapa()).commit();
-            getSupportActionBar().setTitle("Clínicas e Pet Shops");
+            //getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new NovoMapa()).commit();
+            //getSupportActionBar().setTitle("Clínicas e Pet Shops");
+            Intent intent = new Intent(NavigationDrawer.this, MapaClinicaActivity.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_duvFreq) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameprincipal, new DuvFrequentes()).commit();
