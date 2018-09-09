@@ -6,4 +6,7 @@
     <color name="primaryText">#212121</color>
     <color name="fundoPrincipal">#FFF</color>
     <color name="txtgeral">#212121</color>
+
+    <color name="mdtp_accent_color">#448aff</color>
+    <color name="mdtp_accent_color_dark">#0288D1</color>
 </resources>
