@@ -86,7 +86,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_view_day_grey600_24dp"
+                    android:src="@drawable/ic_view_day_grey"
                     android:layout_centerVertical="true" />
 
                 <LinearLayout
@@ -131,7 +131,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_access_time_grey600_24dp"
+                    android:src="@drawable/ic_access_time"
                     android:layout_centerVertical="true" />
 
                 <LinearLayout
@@ -173,7 +173,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_sync_grey600_24dp"
+                    android:src="@drawable/ic_sync"
                     android:layout_centerVertical="true" />
 
                 <LinearLayout
@@ -232,7 +232,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_unfold_more_grey600_24dp"
+                    android:src="@drawable/ic_unfold"
                     android:layout_centerVertical="true" />
 
                 <LinearLayout
@@ -277,7 +277,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_subject_grey600_24dp"
+                    android:src="@drawable/ic_subject"
                     android:layout_centerVertical="true" />
 
                 <LinearLayout
@@ -310,12 +310,6 @@
 
     </ScrollView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@+id/add_reminder_layout_top"
-        android:background="@drawable/toolbar_dropshadow" />
-
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/starred1"
         android:layout_width="wrap_content"
@@ -326,7 +320,7 @@
         app:fab_size="normal"
         fab:fab_colorNormal="@color/colorPrimary"
         fab:fab_colorPressed="@color/colorPrimary"
-        fab:fab_icon="@drawable/ic_notifications_off_grey600_24dp" />
+        fab:fab_icon="@drawable/ic_notifications_off" />
 
     <com.getbase.floatingactionbutton.FloatingActionButton
         android:id="@+id/starred2"
@@ -338,6 +332,6 @@
         app:fab_size="normal"
         fab:fab_colorNormal="@color/colorPrimary"
         fab:fab_colorPressed="@color/colorPrimary"
-        fab:fab_icon="@drawable/ic_notifications_on_white_24dp" />
+        fab:fab_icon="@drawable/ic_notifications_on" />
 
 </RelativeLayout>

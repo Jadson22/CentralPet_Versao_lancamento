@@ -68,7 +68,7 @@ public class ReminderAlarmService extends IntentService {
         Notification note = new Notification.Builder(this)
                 .setContentTitle("Atividade agendada:")
                 .setContentText(description)
-                .setSmallIcon(R.drawable.ic_alarm_on_white_24dp)
+                .setSmallIcon(R.drawable.ic_alarm_on)
                 .setContentIntent(operation)
                 .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                 .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)

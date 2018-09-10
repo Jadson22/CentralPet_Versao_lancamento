@@ -61,6 +61,6 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:src="@drawable/ic_notifications_off_grey600_24dp" />
+        android:src="@drawable/ic_notifications_off" />
 
 </RelativeLayout>

@@ -101,14 +101,14 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         if (mCurrentReminderUri == null) {
 
-            setTitle(getString(R.string.editor_activity_title_new_reminder));
+            ///setTitle(getString(R.string.editor_activity_title_new_reminder));
 
             // Invalidate the options menu, so the "Delete" menu option can be hidden.
             // (It doesn't make sense to delete a reminder that hasn't been created yet.)
             invalidateOptionsMenu();
         } else {
 
-            setTitle(getString(R.string.editor_activity_title_edit_reminder));
+            //setTitle(getString(R.string.editor_activity_title_edit_reminder));
 
 
             getLoaderManager().initLoader(EXISTING_VEHICLE_LOADER, null, this);
@@ -452,7 +452,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the postivie and negative buttons on the dialog.
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.unsaved_changes_dialog_msg);
+        //builder.setMessage(R.string.unsaved_changes_dialog_msg);
         builder.setPositiveButton(R.string.discard, discardButtonClickListener);
         builder.setNegativeButton(R.string.keep_editing, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
